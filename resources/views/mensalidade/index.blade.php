@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Ficha de Inscrição')
+@section('title', 'Cadastro de Categoria')
 
 @section('content_header')
     

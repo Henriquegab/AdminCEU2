@@ -253,16 +253,36 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'CONTROLE FINANCEIRO'],
+
         [
-            'text' => 'Mensalidades',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-calendar',
+            'text'    => 'Mensalidades',
+            'icon'    => 'fas fa-fw fa-calendar',
+            'submenu' => [
+                [
+                    'text'        => 'Cadastro de Categoria',
+                    'route'       => 'mensalidades.index',
+                    'icon'        => 'fas fa-cart-plus',
+                    
+                ],
+                [
+                    'text'        => 'Listagem de Categorias',
+                    'url'  => 'admin/settings',
+                    'icon'        => 'fas fa-cart-arrow-down',
+                    
+                ],
+                [
+                    'text' => 'Pagamentos',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-fw fa-dollar-sign',
+                ],
+               
+                
+
+            ]
         ],
-        [
-            'text' => 'Pagamentos',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-dollar-sign',
-        ],
+
+        
+        
 
         
        
