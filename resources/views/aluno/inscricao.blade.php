@@ -152,13 +152,19 @@
 
             <div class="col-md-3 mb-3">
                 <label for="categoria">Categoria</label>
-                <select class="form-control" required>
+                <select class="form-control" name="categoria" required>
                     <option disabled selected value> Selecione uma Opção </option>
-                    <option value="0">Professor</option>
-                    <option value="1">Acadêmico</option>
-                    <option value="2">Servidor</option>
-                    <option value="3">Comunidade</option>
-                    <option value="4">Outros</option>
+                    <option>Professor</option>
+                    <option>Acadêmico</option>
+                    <option>Servidor (Nível Superior)</option>
+                    <option>Servidor (Nível Médio)</option>
+                    <option>Comunidade</option>
+                    <option>Conveniados</option>
+                    <option>Comunidade</option>
+                    <option>Comunidade</option>
+                    <option>Comunidade</option>
+                    <option>Comunidade</option>
+                    <option>Outros</option>
                     
                 </select>
             </div>
