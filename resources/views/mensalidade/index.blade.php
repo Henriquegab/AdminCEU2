@@ -41,7 +41,7 @@
     })();
     </script>
 
-<x-adminlte-card class="mt-3" title="Ficha de Inscrição" theme="dark" icon="far fa-fw fa-file">
+<x-adminlte-card class="mt-3" title="Cadastro de Categoria" theme="dark" icon="far fa-fw fa-file">
     
     <form method="post" action="{{ route('alunos.store') }}">
         @csrf
@@ -49,36 +49,41 @@
         <div class="form-row">
 
 
-            <div class="col-md-6 mb-3">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" name="nome" placeholder="Henrique Gabriel" required>
+            <div class="col-md-5 mb-3">
+                <label for="nome">Nome da categoria</label>
+                <input type="text" class="form-control" name="categoria" placeholder="Acadêmico" required>
                 <div class="valid-feedback">
                     Ok!
                 </div>
                 <div class="invalid-feedback">
-                    Digite o nome!
+                    Digite a Categoria!
                 </div>
             </div>
 
-            <div class="col-md-2 mb-3">
-                <label for="cpf">CPF</label>
-                <input type="text" class="form-control" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00" required>
-                <div class="valid-feedback">
-                    Ok!
-                </div>
-                <div class="invalid-feedback">
-                    Digite o CPF!
-                </div>
+            <div class="col-md-3 mb-3">
+                <label for="dias">Quantidade de Dias</label>
+                <select class="form-control" name="dias" required>
+                    <option disabled selected value> Selecione uma Opção </option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>                  
+                </select>
             </div>
 
             <div class="col-md-4 mb-3">
-                <label for="nascimento">Data de Nascimento</label>
-                <input type="date" class="form-control" name="nascimento" placeholder="12/12/2012" required>
+                <label for="preco">Preço (em reais)</label>
+                <input type="number" class="form-control" name="preco" data-mask="000000" placeholder="40" required>
                 <div class="valid-feedback">
                     Ok!
                 </div>
                 <div class="invalid-feedback">
-                    Digite o CPF!
+                    Campo obrigatório!
                 </div>
             </div>
 
@@ -89,88 +94,10 @@
 
 
         </div>
-        <div class="form-row">
-
-            <div class="col-md-6 mb-3">
-                <label for="pai">Pai</label>
-                <input type="text" class="form-control" name="pai" placeholder="Roberto Silveira">
-                <div class="valid-feedback">
-                    Ok!
-                </div>
-                <div class="invalid-feedback">
-                    Digite o nome!
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="mae">Mãe</label>
-                <input type="text" class="form-control" name="mae" placeholder="Maria do Carmo">
-                <div class="valid-feedback">
-                    Ok!
-                </div>
-                <div class="invalid-feedback">
-                    Digite o nome!
-                </div>
-            </div>
+        
 
 
-        </div>
-
-        <div class="form-row">
-
-            <div class="col-md-5 mb-3">
-                <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" name="endereco" placeholder="Rua do Cristal">
-                <div class="valid-feedback">
-                    Ok!
-                </div>
-                <div class="invalid-feedback">
-                    Digite o nome!
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-3">
-                <label for="numero">Número</label>
-                <input type="text" class="form-control" name="numero" placeholder="123">
-                <div class="valid-feedback">
-                    Ok!
-                </div>
-                <div class="invalid-feedback">
-                    Digite o nome!
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-3">
-                <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 00000-0000">
-                <div class="valid-feedback">
-                    Ok!
-                </div>
-                <div class="invalid-feedback">
-                    Digite o nome!
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <label for="categoria">Categoria</label>
-                <select class="form-control" name="categoria" required>
-                    <option disabled selected value> Selecione uma Opção </option>
-                    <option>Professor</option>
-                    <option>Acadêmico</option>
-                    <option>Servidor (Nível Superior)</option>
-                    <option>Servidor (Nível Médio)</option>
-                    <option>Comunidade</option>
-                    <option>Conveniados</option>
-                    <option>Comunidade</option>
-                    <option>Comunidade</option>
-                    <option>Comunidade</option>
-                    <option>Comunidade</option>
-                    <option>Outros</option>
-                    
-                </select>
-            </div>
-
-
-        </div>
+        
 
         <button class="btn btn-primary" type="submit">Cadastrar</button>
         
