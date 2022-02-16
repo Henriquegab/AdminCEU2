@@ -8,67 +8,168 @@
 
 @section('content')
 
-<script>
-
-$(document).on('keydown', '[data-mask-for-cpf-cnpj]', function (e) {
-
-var digit = e.key.replace(/\D/g, '');
-
-var value = $(this).val().replace(/\D/g, '');
-
-var size = value.concat(digit).length;
-
-$(this).mask((size <= 11) ? '000.000.000-00' : '00.000.000/0000-00');
-});
-
+<script> 
+// função pra limitar campo de cpf pra ter apenas digitos
+    function onlyNumberKey(evt) {
+          
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
 </script>
 
+<script>
+    // função javascript pra evitar de fazer o submit caso haja campos invládios pelo frontend
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
+
 <x-adminlte-card class="mt-3" title="Ficha de Inscrição" theme="dark" icon="far fa-fw fa-file">
-   
+    
     <form method="post" action="{{ route('alunos.store') }}">
         @csrf
-           
-       <div class="row">
         
-            <x-adminlte-input enable-old-support name="nome" type="name" placeholder="Henrique gabriel" fgroup-class="col-md-5" label="Nome"/>
-        
+        <div class="form-row">
 
-           
 
-            <div class="form-group mb-4">
-                <label for="CPF">CPF</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" data-mask-for-cpf-cnpj />
-            
+            <div class="col-md-6 mb-3">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" placeholder="Henrique Gabriel" required>
+                <div class="valid-feedback">
+                    Ok!
+                </div>
+                <div class="invalid-feedback">
+                    Digite o nome!
+                </div>
             </div>
 
-           <x-adminlte-input enable-old-support name="cpf" type="text" label="CPF" placeholder="11111111111"
-                fgroup-class="col-md-5"/>
+            <div class="col-md-2 mb-3">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00" required>
+                <div class="valid-feedback">
+                    Ok!
+                </div>
+                <div class="invalid-feedback">
+                    Digite o CPF!
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="nascimento">Data de Nascimento</label>
+                <input type="date" class="form-control" name="nascimento" placeholder="12/12/2012" required>
+                <div class="valid-feedback">
+                    Ok!
+                </div>
+                <div class="invalid-feedback">
+                    Digite o CPF!
+                </div>
+            </div>
+
+            
+
+
+
+
+
+        </div>
+        <div class="form-row">
+
+            <div class="col-md-6 mb-3">
+                <label for="pai">Pai</label>
+                <input type="text" class="form-control" name="pai" placeholder="Roberto Silveira">
+                <div class="valid-feedback">
+                    Ok!
+                </div>
+                <div class="invalid-feedback">
+                    Digite o nome!
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="mae">Mãe</label>
+                <input type="text" class="form-control" name="mae" placeholder="Maria do Carmo">
+                <div class="valid-feedback">
+                    Ok!
+                </div>
+                <div class="invalid-feedback">
+                    Digite o nome!
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-5 mb-3">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" name="endereco" placeholder="Rua do Cristal">
+                <div class="valid-feedback">
+                    Ok!
+                </div>
+                <div class="invalid-feedback">
+                    Digite o nome!
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <label for="numero">Número</label>
+                <input type="text" class="form-control" name="numero" placeholder="123">
+                <div class="valid-feedback">
+                    Ok!
+                </div>
+                <div class="invalid-feedback">
+                    Digite o nome!
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 00000-0000">
+                <div class="valid-feedback">
+                    Ok!
+                </div>
+                <div class="invalid-feedback">
+                    Digite o nome!
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="categoria">Categoria</label>
+                <select class="form-control" required>
+                    <option disabled selected value> Selecione uma Opção </option>
+                    <option value="0">Professor</option>
+                    <option value="1">Acadêmico</option>
+                    <option value="2">Servidor</option>
+                    <option value="3">Comunidade</option>
+                    <option value="4">Outros</option>
+                    
+                </select>
+            </div>
+
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+        
            
-           <x-adminlte-input enable-old-support name="email" type="email" placeholder="mail@example.com" fgroup-class="col-md-5" label="Email"/>
-
-           
-           
-               
-       </div>
-       <div class="row">
-           <x-adminlte-select enable-old-support label="Sexo" name="sexo" fgroup-class="col-md-3">
-               <x-adminlte-options :options="['Masculino', 'Feminino', 'Outros']"
-                   empty-option="Selecione uma opção"/>
-           </x-adminlte-select>
        
-           <x-adminlte-input enable-old-support name="endereco" type="name" placeholder="Rua Joaquim Costa" fgroup-class="col-md-4" label="Endereço"/>
-
-           <x-adminlte-input enable-old-support name="numerocasa" type="name" label="Número" placeholder="2"
-                   fgroup-class="col-md-1"/>
-
-           <x-adminlte-input enable-old-support name="cep" type="name" label="CEP" placeholder="39402000"
-           fgroup-class="col-md-2"/>
-
-           <x-adminlte-input enable-old-support name="uf" type="name" placeholder="MG" fgroup-class="col-md-2" label="UF"/>
-       </div>
-       
-       
-           <x-adminlte-button class="btn-flat" type="submit" label="Cadastrar" theme="success" icon="fas fa-lg fa-save"/>
    </form>
 
 
