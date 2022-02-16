@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlunoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Auth::routes();
 Route::middleware('auth')->group(
     function(){
 
-
+        Route::resource('alunos', AlunoController::class);
         
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

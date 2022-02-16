@@ -243,7 +243,7 @@ return [
         ['header' => 'GERENCIAMENTO DE ALUNOS'],
         [
             'text'        => 'Ficha de inscrição',
-            'url'         => 'admin/pages',
+            'route'         => 'alunos.index',
             'icon'        => 'far fa-fw fa-file',
             
         ],
