@@ -14,7 +14,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('mensalidade.categoria');
+        return view('categorias.lista');
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.cadastro');
     }
 
     /**

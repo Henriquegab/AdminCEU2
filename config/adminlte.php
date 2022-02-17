@@ -243,7 +243,7 @@ return [
         ['header' => 'GERENCIAMENTO DE ALUNOS'],
         [
             'text'        => 'Ficha de inscrição',
-            'route'         => 'alunos.index',
+            'route'         => 'alunos.create',
             'icon'        => 'far fa-fw fa-file',
             
         ],
@@ -260,13 +260,13 @@ return [
             'submenu' => [
                 [
                     'text'        => 'Cadastro de Categoria',
-                    'route'       => 'categorias.index',
+                    'route'       => 'categorias.create',
                     'icon'        => 'fas fa-cart-plus',
                     
                 ],
                 [
                     'text'        => 'Listagem de Categorias',
-                    'url'  => 'admin/settings',
+                    'route'       => 'categorias.index',
                     'icon'        => 'fas fa-cart-arrow-down',
                     
                 ],

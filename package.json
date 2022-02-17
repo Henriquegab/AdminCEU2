@@ -19,5 +19,10 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1"
+    },
+    "dependencies": {
+        "datatables.net": "^1.11.4",
+        "datatables.net-bs4": "^1.11.4",
+        "datatables.net-dt": "^1.11.4"
     }
 }

@@ -150,24 +150,21 @@
                 </div>
             </div>
 
-            <div class="col-md-3 mb-3">
-                <label for="categoria">Categoria</label>
-                <select class="form-control" name="categoria" required>
-                    <option disabled selected value> Selecione uma Opção </option>
-                    <option>Professor</option>
-                    <option>Acadêmico</option>
-                    <option>Servidor (Nível Superior)</option>
-                    <option>Servidor (Nível Médio)</option>
-                    <option>Comunidade</option>
-                    <option>Conveniados</option>
-                    <option>Comunidade</option>
-                    <option>Comunidade</option>
-                    <option>Comunidade</option>
-                    <option>Comunidade</option>
-                    <option>Outros</option>
-                    
-                </select>
-            </div>
+            @php
+                $optionsc = [];
+        
+                    foreach ($categorias as $categoria) {
+                        $optionsc += [$categoria->id => $categoria->categoria];
+                    }
+            @endphp
+            <x-adminlte-select2 enable-old-support label="Categoria" name="categoria" fgroup-class="col-md-3">
+                <x-adminlte-options
+
+                        empty-option="Selecione uma opção"        
+                        :options="$optionsc" 
+                        
+                        />
+            </x-adminlte-select2>
 
 
         </div>

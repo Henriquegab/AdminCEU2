@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
@@ -14,7 +15,7 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        return view('aluno.inscricao');
+        
     }
 
     /**
@@ -24,7 +25,8 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::all();
+        return view('aluno.create', ['categorias' => $categorias]);
     }
 
     /**
