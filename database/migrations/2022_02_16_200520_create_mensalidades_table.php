@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('mensalidades', function (Blueprint $table) {
             $table->id();
             $table->string('categoria', 30);
-            $table->integer('dias');
+            
             $table->float('preco', 8, 2)->default(0);
             
             $table->timestamps();

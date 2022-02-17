@@ -14,7 +14,7 @@ class MensalidadeController extends Controller
      */
     public function index()
     {
-        return view('mensalidade.index');
+        return view('mensalidade.categoria');
     }
 
     /**
@@ -35,7 +35,27 @@ class MensalidadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $regras = [
+            'categoria' => 'required|unique:mensalidades,categoria',
+            'preco' => 'required|gte:0'
+        ];
+
+        $feedback = [
+            'required' => 'O campo :atribute é obrigatório!',
+            'preco.gte' => 'O preço não pode ser menor que 0!',
+            'unique' => 'Essa categoria já existe!',
+        ];
+
+
+        $request->validate($regras, $feedback);
+
+
+
+        Mensalidade::create($request->all());
+
+        return view('home');
+        
     }
 
     /**
