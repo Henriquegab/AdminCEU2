@@ -260,7 +260,7 @@ return [
             'submenu' => [
                 [
                     'text'        => 'Cadastro de Categoria',
-                    'route'       => 'mensalidades.index',
+                    'route'       => 'categorias.index',
                     'icon'        => 'fas fa-cart-plus',
                     
                 ],

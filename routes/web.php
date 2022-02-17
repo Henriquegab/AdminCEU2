@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AlunoController;
-use App\Http\Controllers\MensalidadeController;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ Route::middleware('auth')->group(
     function(){
 
         Route::resource('alunos', AlunoController::class);
-        Route::resource('mensalidades', MensalidadeController::class);
+        Route::resource('categorias', CategoriaController::class);
         
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

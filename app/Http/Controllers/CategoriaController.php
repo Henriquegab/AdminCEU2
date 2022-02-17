@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mensalidade;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class MensalidadeController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,12 +37,12 @@ class MensalidadeController extends Controller
     {
 
         $regras = [
-            'categoria' => 'required|unique:mensalidades,categoria',
+            'categoria' => 'required|unique:categorias,categoria',
             'preco' => 'required|gte:0'
         ];
 
         $feedback = [
-            'required' => 'O campo :atribute é obrigatório!',
+            'required' => 'O campo :attribute é obrigatório!',
             'preco.gte' => 'O preço não pode ser menor que 0!',
             'unique' => 'Essa categoria já existe!',
         ];
@@ -52,7 +52,7 @@ class MensalidadeController extends Controller
 
 
 
-        Mensalidade::create($request->all());
+        Categoria::create($request->all());
 
         return view('home');
         
@@ -61,10 +61,10 @@ class MensalidadeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mensalidade  $mensalidade
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function show(Mensalidade $mensalidade)
+    public function show(Categoria $categoria)
     {
         //
     }
@@ -72,10 +72,10 @@ class MensalidadeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mensalidade  $mensalidade
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mensalidade $mensalidade)
+    public function edit(Categoria $categoria)
     {
         //
     }
@@ -84,10 +84,10 @@ class MensalidadeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mensalidade  $mensalidade
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mensalidade $mensalidade)
+    public function update(Request $request, Categoria $categoria)
     {
         //
     }
@@ -95,10 +95,10 @@ class MensalidadeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mensalidade  $mensalidade
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mensalidade $mensalidade)
+    public function destroy(Categoria $categoria)
     {
         //
     }
