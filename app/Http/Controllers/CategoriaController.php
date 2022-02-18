@@ -78,7 +78,7 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        //
+        return view('categorias.edit', ['categoria' => $categoria]);
     }
 
     /**
@@ -90,7 +90,29 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        //
+
+        //dd($categoria);
+        $regras = [
+            'categoria' => 'required|unique:categorias,categoria,' .$categoria->id,
+            'preco' => 'required|gte:0'
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é obrigatório!',
+            'preco.gte' => 'O preço não pode ser menor que 0!',
+            'unique' => 'Essa categoria já existe!',
+        ];
+
+
+        $request->validate($regras, $feedback);
+
+        
+
+        $categoria->update($request->all());
+        
+        
+
+        return view('home');
     }
 
     /**
