@@ -141,7 +141,7 @@
 
             <div class="col-md-2 mb-3">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 00000-0000">
+                <input type="text" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 000000000">
                 <div class="valid-feedback">
                     Ok!
                 </div>
@@ -157,14 +157,14 @@
                         $optionsc += [$categoria->id => $categoria->categoria];
                     }
             @endphp
-            <x-adminlte-select enable-old-support label="Categoria" name="categoria" fgroup-class="col-md-4">
+            <x-adminlte-select2 enable-old-support label="Categoria" name="categoria" fgroup-class="col-md-4">
                 <x-adminlte-options
 
                         empty-option="Selecione uma opção"        
                         :options="$optionsc" 
                         
                         />
-            </x-adminlte-select>
+            </x-adminlte-select2>
 
 
         </div>
