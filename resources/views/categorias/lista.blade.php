@@ -12,7 +12,7 @@
 
 @section('content')
 
-
+<br>
 
 
 @php
@@ -75,7 +75,7 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
                 
 
                 
-                <form method="post" action="">
+                <form method="post" action="{{ route('categorias.destroy', $categoria->id) }}">
 
 
                     <x-adminlte-modal id="{{ 'ctz'.$categoria->id }}" title="Confirmar Exclusão" size="md" theme="warning"

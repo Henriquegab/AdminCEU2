@@ -101,6 +101,8 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        $deletar = Categoria::where('id', $categoria->id);
+        $deletar->delete();
+        return redirect()->route('categorias.index');
     }
 }
