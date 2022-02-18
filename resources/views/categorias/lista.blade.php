@@ -12,6 +12,9 @@
 
 @section('content')
 
+
+
+
 @php
 $heads = [
     ['label' => 'Id', 'width' => 20],
@@ -32,9 +35,9 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
             
     $config = [
     'paging' => true,
+    'language' => ['url' => 'dataTables.pt-BR.json'],
     
-    
-    'order' => [[0, 'asc']],
+    'order' => [[1, 'asc']],
     'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
 ];
      /*   $cont = 1;
@@ -55,7 +58,7 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
                 
                 <td>{{$categoria->id}}</td>
                 <td>{{$categoria->categoria}}</td>
-                <td>{{$categoria->preco}}</td>
+                <td>{{'R$ '.number_format($categoria->preco, 2) }}</td>
                 
                 <td>
                 
