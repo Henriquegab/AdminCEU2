@@ -117,7 +117,7 @@
 
         <div class="form-row">
 
-            <div class="col-md-5 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="endereco">Endereço</label>
                 <input type="text" class="form-control" name="endereco" placeholder="Rua do Cristal">
                 <div class="valid-feedback">
@@ -157,14 +157,14 @@
                         $optionsc += [$categoria->id => $categoria->categoria];
                     }
             @endphp
-            <x-adminlte-select2 enable-old-support label="Categoria" name="categoria" fgroup-class="col-md-3">
+            <x-adminlte-select enable-old-support label="Categoria" name="categoria" fgroup-class="col-md-4">
                 <x-adminlte-options
 
                         empty-option="Selecione uma opção"        
                         :options="$optionsc" 
                         
                         />
-            </x-adminlte-select2>
+            </x-adminlte-select>
 
 
         </div>

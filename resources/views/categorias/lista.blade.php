@@ -12,51 +12,98 @@
 
 @section('content')
 
+@php
+$heads = [
+    ['label' => 'Id', 'width' => 20],
+    ['label' => 'Nome', 'width' => 20],
+    ['label' => 'Preço', 'width' => 20],
+    ['label' => 'Ações', 'no-export' => true, 'width' => 5]
+];
+$btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                <i class="fa fa-lg fa-fw fa-pen"></i>
+            </button>';
+$btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                <i class="fa fa-lg fa-fw fa-trash"></i>
+            </button>';
+$btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+                <i class="fa fa-lg fa-fw fa-eye"></i>
+            </button>';
+
+            
+    $config = [
+    'paging' => true,
+    
+    
+    'order' => [[0, 'asc']],
+    'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
+];
+     /*   $cont = 1;
+
+        if ($clientes->currentPage() != 1) {
+            $cont = 30 * ($clientes->currentPage() - 1);
+        }
+        
+        */
+
+@endphp
+    
 
     
-<x-adminlte-card class="mt-3" title="Ficha de Inscrição" theme="dark" icon="far fa-fw fa-file">
+    <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
+        @foreach($categorias as $categoria)
+            <tr>
+                
+                <td>{{$categoria->id}}</td>
+                <td>{{$categoria->categoria}}</td>
+                <td>{{$categoria->preco}}</td>
+                
+                <td>
+                
+                <form action="">
+                    <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
+                        <i class="fa fa-lg fa-fw fa-pen"></i>
+                    </button>
+                </form>
+                
+                
 
+                
+                
+                
+
+                
+                <form method="post" action="">
+
+
+                    <x-adminlte-modal id="{{ 'ctz'.$categoria->id }}" title="Confirmar Exclusão" size="md" theme="warning"
+                        icon="fas fa-exclamation-circle" v-centered static-backdrop >
+                        <div style="height:50px;">Você tem Certeza que deseja excluir a categoria {{ $categoria->categoria }}?</div>
+                        <x-slot name="footerSlot">
+                            <x-adminlte-button class="mr-auto" type="submit" theme="success" label="Sim"/>
+                            
+                            
+                            <x-adminlte-button theme="danger" label="Não" data-dismiss="modal"/>
+                            @csrf
+                        </x-slot>
+                    </x-adminlte-modal>
+
+                   
+
+                    
+                    @method('DELETE')
+                    
+                    
+                </form>
+                
+                <button class="btn btn-xs btn-default text-danger mx-1 shadow"  data-toggle="modal" data-target="{{ '#ctz'.$categoria->id }}" title="Deletar">
+                    <i class="fa fa-lg fa-fw fa-trash"></i>
+                </button>
+            
+                </td>
+            </tr>
+        @endforeach
     
-    <table id="tabela"  style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td>$86,000</td>
-            </tr>
-           
-            
-            
-    </table>
+    </x-adminlte-datatable>
 
 
 
@@ -68,7 +115,7 @@
 
 
 
-</x-adminlte-card>
+
 
 @stop
 
