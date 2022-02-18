@@ -81,7 +81,7 @@
     
             
     
-            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            <button class="btn btn-primary" type="submit">Salvar</button>
             
                
            
