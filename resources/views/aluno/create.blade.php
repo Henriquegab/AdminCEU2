@@ -51,20 +51,20 @@
 
             <div class="col-md-6 mb-3">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" name="nome" placeholder="Henrique Gabriel" required>
-               
+                <input type="text" class="form-control @error('nome') is-invalid @enderror" value="{{ old('nome') }}" name="nome" placeholder="Henrique Gabriel" required>
+                @error('nome') <div class="invalid-feedback">{{ $errors->first('nome') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00" required>
-                
+                <input type="text" value="{{ old('cpf') }}" class="form-control @error('cpf') is-invalid @enderror" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00" required>
+                @error('cpf') <div class="invalid-feedback">{{ $errors->first('cpf') }}</div> @enderror
             </div>
 
             <div class="col-md-4 mb-3">
                 <label for="nascimento">Data de Nascimento</label>
-                <input type="date" class="form-control" name="nascimento" placeholder="12/12/2012" required>
-                
+                <input type="date" value="{{ old('nascimento') }}" class="form-control @error('nascimento') is-invalid @enderror" name="nascimento" placeholder="12/12/2012" required>
+                @error('nascimento') <div class="invalid-feedback">{{ $errors->first('nascimento') }}</div> @enderror
             </div>
 
             
@@ -78,12 +78,12 @@
 
             <div class="col-md-6 mb-3">
                 <label for="pai">Pai</label>
-                <input type="text" class="form-control" name="pai" placeholder="Roberto Silveira">
+                <input type="text" class="form-control" name="pai" value="{{ old('pai') }}" placeholder="Roberto Silveira">
                 
             </div>
             <div class="col-md-6 mb-3">
                 <label for="mae">Mãe</label>
-                <input type="text" class="form-control" name="mae" placeholder="Maria do Carmo">
+                <input type="text" class="form-control" name="mae" value="{{ old('mae') }}" placeholder="Maria do Carmo">
                 
             </div>
 
@@ -94,19 +94,19 @@
 
             <div class="col-md-4 mb-3">
                 <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" name="endereco" placeholder="Rua do Cristal" required>
-                
+                <input type="text" value="{{ old('endereco') }}" class="form-control @error('endereco') is-invalid @enderror" name="endereco" placeholder="Rua do Cristal" required>
+                @error('endereco') <div class="invalid-feedback">{{ $errors->first('endereco') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
                 <label for="numero">Número</label>
-                <input type="text" class="form-control" name="numero" placeholder="123" required>
-                
+                <input type="text" value="{{ old('numero') }}" class="form-control @error('numero') is-invalid @enderror" name="numero" placeholder="123" required>
+                @error('numero') <div class="invalid-feedback">{{ $errors->first('numero') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 000000000">
+                <input type="text" value="{{ old('telefone') }}" class="form-control @error('telefone') is-invalid @enderror" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 000000000">
                 
             </div>
 
@@ -117,7 +117,7 @@
                         $optionsc += [$categoria->id => $categoria->categoria];
                     }
             @endphp
-            <x-adminlte-select2 enable-old-support required label="Categoria" name="categoria" fgroup-class="col-md-4">
+            <x-adminlte-select2 enable-old-support required label="Categoria" name="categoria_id" fgroup-class="col-md-4">
                 <x-adminlte-options
 
                         empty-option="Selecione uma opção"        
@@ -131,7 +131,7 @@
 
         <div class="form-row">
 
-            <x-adminlte-select enable-old-support required label="Modalidade" name="modalidade" fgroup-class="col-md-4">
+            <x-adminlte-select enable-old-support required label="Modalidade" name="modalidade" fgroup-class="col-md-3">
                 
                                     <option selected value="" disabled>Selecione uma opção</option>
                                     <option>Natação</option>
@@ -140,31 +140,33 @@
                                     
             </x-adminlte-select>
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="data">Data de Inscrição</label>
-                <input type="date" class="form-control" name="data" placeholder="12/12/2012" required>
-                
+                <input type="date" value="{{ old('data') }}" class="form-control @error('data') is-invalid @enderror" name="data" placeholder="12/12/2012" required>
+                @error('data') <div class="invalid-feedback">{{ $errors->first('data') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
                 <label for="horario">Horário</label>
-                <input type="text" class="form-control" name="horario" placeholder="00:00 até 00:00" data-mask="00:00 até 00:00">
-                
+                <input type="text" value="{{ old('horario') }}" class="form-control @error('horario') is-invalid @enderror" name="horario" placeholder="00:00 até 00:00" data-mask="00:00 até 00:00">
+                @error('horario') <div class="invalid-feedback">{{ $errors->first('horario') }}</div> @enderror
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="data_atestado">Data do atestado médico</label>
+                <input type="date" value="{{ old('data_atestado') }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012" required>
+                @error('data_atestado') <div class="invalid-feedback">{{ $errors->first('data_atestado') }}</div> @enderror
             </div>
 
         </div>
 
         <div class="form-row">
 
-            <div class="col-md-4 mb-3">
-                <label for="data_atestado">Data do atestado médico</label>
-                <input type="date" class="form-control" name="data_atestado" placeholder="12/12/2012" required>
-                
-            </div>
+            
 
-            <div class="col-md-8 mb-3">
-                <label for="descricao">Descrição</label>
-                <x-adminlte-textarea name="descricao" placeholder="Insert description..."/>
+            <div class="col-md-12 mb-3">
+                <label for="observacao">Observações</label>
+                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações"/>
                 
             </div>
 

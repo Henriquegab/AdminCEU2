@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aluno;
 use App\Models\Categoria;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
@@ -37,7 +38,55 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
+
+        $hoje = Carbon::now();
+
+        // dd($hoje);
+
+        $regras = [
+            'nome' => 'required',
+            'cpf' => 'required|cpf',
+            'nascimento' => 'required|date|before:'.$hoje,
+            'endereco' => 'required',
+            'telefone' => 'required',
+            'categoria_id' => 'required',
+            'modalidade' => 'required',
+            'data' => 'required|date',
+            'horario' => 'required',
+            'data_atestado' => 'required|date',
+            
+            
+            
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é obrigatório!',
+            'cpf.cpf' => 'O cpf é inválido!',
+            'nascimento.before' => 'A data de nascimento não pode ser no futuro e nem hoje!',
+            
+        ];
+
+
+        $request->validate($regras, $feedback);
+
+        
+
+        Aluno::create($request->all());
+        
+        
+
+        return view('home');
+    
+
+
+
+
+
+
+
+
+
     }
 
     /**

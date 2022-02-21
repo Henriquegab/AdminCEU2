@@ -20,20 +20,16 @@ return new class extends Migration
             $table->date('nascimento');
             $table->string('pai', 50)->nullable();
             $table->string('mae', 50)->nullable();
-            $table->string('endereco', 50)->nullable();;
-            $table->string('numero', 50)->nullable();;
+            $table->string('endereco', 50)->nullable();
+            $table->string('numero', 50)->nullable();
             $table->string('telefone', 30)->nullable();
-            $table->string('categoria', 30);
+            
             $table->string('modalidade', 30)->nullable();
-            $table->date('data')->nullable();;
-            $table->string('professor', 30)->nullable();;
-            $table->string('turno', 30)->nullable();;
-            $table->string('horario', 30)->nullable();;
-            $table->string('dias', 30)->nullable();;
-            $table->string('nome_medico', 50);
+            $table->date('data')->nullable();
+            $table->string('horario', 30)->nullable();        
+            $table->text('observacao')->nullable();       
             $table->date('data_atestado');
-
-
+            
             $table->timestamps();
         });
     }
