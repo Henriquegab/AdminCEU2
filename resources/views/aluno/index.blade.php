@@ -16,6 +16,9 @@
 
 
 @php
+use App\Models\Categoria;
+
+
 $heads = [
     ['label' => 'Id', 'width' => 5],
     ['label' => 'Nome', 'width' => 20],
@@ -44,13 +47,7 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
     'order' => [[1, 'asc']],
     'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
 ];
-     /*   $cont = 1;
-
-        if ($clientes->currentPage() != 1) {
-            $cont = 30 * ($clientes->currentPage() - 1);
-        }
-        
-        */
+     
 
 @endphp
     
@@ -66,8 +63,9 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
                 <td>{{ $aluno->modalidade }}</td>
                 <td>{{ $aluno->inicio }}</td>
                 <td>{{ $aluno->termino }}</td>
-                <td></td>
+                <td>{{ 'R$ '.number_format(Categoria::find($aluno->categoria_id)->preco, 2) }}</td>
                 <td>
+                   
                 
                 <form action="{{ route('alunos.edit', $aluno->id) }}">
                     <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
