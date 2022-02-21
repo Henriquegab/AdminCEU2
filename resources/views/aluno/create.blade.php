@@ -8,6 +8,11 @@
 
 @section('content')
 
+@php
+    use Carbon\Carbon;
+    $hoje = Carbon::now();
+@endphp
+
 <script> 
 // função pra limitar campo de cpf pra ter apenas digitos
     function onlyNumberKey(evt) {
@@ -42,7 +47,7 @@
     </script>
 
 <x-adminlte-card class="mt-3" title="Ficha de Inscrição" theme="dark" icon="far fa-fw fa-file">
-    
+    <h6>(*) - Campos Obrigatórios</h6>
     <form method="post" action="{{ route('alunos.store') }}">
         @csrf
         
@@ -50,19 +55,19 @@
 
 
             <div class="col-md-6 mb-3">
-                <label for="nome">Nome</label>
+                <label for="nome">Nome*</label>
                 <input type="text" class="form-control @error('nome') is-invalid @enderror" value="{{ old('nome') }}" name="nome" placeholder="Henrique Gabriel" required>
                 @error('nome') <div class="invalid-feedback">{{ $errors->first('nome') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
-                <label for="cpf">CPF</label>
+                <label for="cpf">CPF*</label>
                 <input type="text" value="{{ old('cpf') }}" class="form-control @error('cpf') is-invalid @enderror" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00" required>
                 @error('cpf') <div class="invalid-feedback">{{ $errors->first('cpf') }}</div> @enderror
             </div>
 
             <div class="col-md-4 mb-3">
-                <label for="nascimento">Data de Nascimento</label>
+                <label for="nascimento">Data de Nascimento*</label>
                 <input type="date" value="{{ old('nascimento') }}" class="form-control @error('nascimento') is-invalid @enderror" name="nascimento" placeholder="12/12/2012" required>
                 @error('nascimento') <div class="invalid-feedback">{{ $errors->first('nascimento') }}</div> @enderror
             </div>
@@ -93,13 +98,13 @@
         <div class="form-row">
 
             <div class="col-md-4 mb-3">
-                <label for="endereco">Endereço</label>
+                <label for="endereco">Endereço*</label>
                 <input type="text" value="{{ old('endereco') }}" class="form-control @error('endereco') is-invalid @enderror" name="endereco" placeholder="Rua do Cristal" required>
                 @error('endereco') <div class="invalid-feedback">{{ $errors->first('endereco') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
-                <label for="numero">Número</label>
+                <label for="numero">Número*</label>
                 <input type="text" value="{{ old('numero') }}" class="form-control @error('numero') is-invalid @enderror" name="numero" placeholder="123" required>
                 @error('numero') <div class="invalid-feedback">{{ $errors->first('numero') }}</div> @enderror
             </div>
@@ -117,7 +122,7 @@
                         $optionsc += [$categoria->id => $categoria->categoria];
                     }
             @endphp
-            <x-adminlte-select2 enable-old-support required label="Categoria" name="categoria_id" fgroup-class="col-md-4">
+            <x-adminlte-select2 enable-old-support required label="Categoria*" name="categoria_id" fgroup-class="col-md-4">
                 <x-adminlte-options
 
                         empty-option="Selecione uma opção"        
@@ -131,7 +136,7 @@
 
         <div class="form-row">
 
-            <x-adminlte-select enable-old-support required label="Modalidade" name="modalidade" fgroup-class="col-md-3">
+            <x-adminlte-select enable-old-support required label="Modalidade*" name="modalidade" fgroup-class="col-md-4">
                 
                                     <option selected value="" disabled>Selecione uma opção</option>
                                     <option>Natação</option>
@@ -140,23 +145,31 @@
                                     
             </x-adminlte-select>
 
-            <div class="col-md-3 mb-3">
-                <label for="data">Data de Inscrição</label>
-                <input type="date" value="{{ old('data') }}" class="form-control @error('data') is-invalid @enderror" name="data" placeholder="12/12/2012" required>
-                @error('data') <div class="invalid-feedback">{{ $errors->first('data') }}</div> @enderror
-            </div>
+            
 
             <div class="col-md-2 mb-3">
-                <label for="horario">Horário</label>
-                <input type="text" value="{{ old('horario') }}" class="form-control @error('horario') is-invalid @enderror" name="horario" placeholder="00:00 até 00:00" data-mask="00:00 até 00:00">
-                @error('horario') <div class="invalid-feedback">{{ $errors->first('horario') }}</div> @enderror
+                <label for="inicio">Início*</label>
+                <input type="time" value="{{ old('inicio') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio" placeholder="11:45" required>
+                @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
             </div>
+            <div class="col-md-2 mb-3">
+                
+                    <label for="termino">Término*</label>
+                    <input type="time" value="{{ old('termino') }}" class="form-control @error('termino') is-invalid @enderror" name="termino" placeholder="12:45" required>
+                    @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
 
+                    
+                
+                
+            </div>
+            
             <div class="col-md-4 mb-3">
-                <label for="data_atestado">Data do atestado médico</label>
+                <label for="data_atestado">Data do atestado*</label>
                 <input type="date" value="{{ old('data_atestado') }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012" required>
                 @error('data_atestado') <div class="invalid-feedback">{{ $errors->first('data_atestado') }}</div> @enderror
             </div>
+
+            
 
         </div>
 
@@ -172,7 +185,12 @@
 
         </div>
 
+        <input type="hidden" value="{{ $hoje }}" name="data">
+
         <button class="btn btn-primary" type="submit">Cadastrar</button>
+
+
+        
         
         
         

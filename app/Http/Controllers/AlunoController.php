@@ -38,23 +38,26 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        
 
         $hoje = Carbon::now();
 
-        // dd($hoje);
+        
+
+        // dd($request->all());
 
         $regras = [
             'nome' => 'required',
-            'cpf' => 'required|cpf',
-            'nascimento' => 'required|date|before:'.$hoje,
+            'cpf' => 'required|cpf|unique:alunos',
+            'nascimento' => 'required|date|before_or_equal:'.$hoje,
             'endereco' => 'required',
             'telefone' => 'required',
             'categoria_id' => 'required',
             'modalidade' => 'required',
-            'data' => 'required|date',
-            'horario' => 'required',
-            'data_atestado' => 'required|date',
+            
+            'inicio' => 'required|different:termino',
+            'termino' => 'required|different:inicio',
+            'data_atestado' => 'required|date|before:'.$hoje,
             
             
             
@@ -63,10 +66,15 @@ class AlunoController extends Controller
         $feedback = [
             'required' => 'O campo :attribute é obrigatório!',
             'cpf.cpf' => 'O cpf é inválido!',
-            'nascimento.before' => 'A data de nascimento não pode ser no futuro e nem hoje!',
+            'cpf.unique' => 'O cpf ja existe!',
+            'nascimento.before_or_equal' => 'A data de nascimento não pode ser no futuro e nem hoje!',
+            'data_atestado.before' => 'A data do atestado não pode ser no futuro!',
+            'inicio.different' => 'O início não pode ser igual ao termino!',
+            'termino.different' => 'O termino não pode ser igual ao início!',
             
         ];
 
+        
 
         $request->validate($regras, $feedback);
 

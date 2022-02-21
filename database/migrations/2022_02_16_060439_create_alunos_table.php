@@ -26,7 +26,8 @@ return new class extends Migration
             
             $table->string('modalidade', 30)->nullable();
             $table->date('data')->nullable();
-            $table->string('horario', 30)->nullable();        
+            $table->time('inicio')->nullable();      
+            $table->time('termino')->nullable();      
             $table->text('observacao')->nullable();       
             $table->date('data_atestado');
             
