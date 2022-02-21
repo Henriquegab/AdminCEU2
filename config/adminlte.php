@@ -249,7 +249,7 @@ return [
         ],
         [
             'text' => 'Lista de Alunos',
-            'url'  => 'admin/settings',
+            'route' => 'alunos.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'CONTROLE FINANCEIRO'],

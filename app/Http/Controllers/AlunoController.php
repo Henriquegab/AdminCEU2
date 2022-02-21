@@ -16,7 +16,8 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        
+        $alunos = Aluno::all();
+        return view('aluno.index',['alunos' => $alunos]);
     }
 
     /**
