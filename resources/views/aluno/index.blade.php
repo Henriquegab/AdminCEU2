@@ -20,13 +20,14 @@ use App\Models\Categoria;
 
 
 $heads = [
-    ['label' => 'Id', 'width' => 5],
+    
     ['label' => 'Nome', 'width' => 20],
     ['label' => 'CPF', 'width' => 20],
     ['label' => 'Modalidade', 'width' => 20],
-    ['label' => 'Início', 'width' => 20],
-    ['label' => 'Término', 'width' => 20],
+    ['label' => 'Horário', 'width' => 15],
+    ['label' => 'Categoria', 'width' => 20],
     ['label' => 'Mensalidade', 'width' => 20],
+    ['label' => 'Pagamento', 'width' => 15],
     ['label' => 'Ações', 'no-export' => true, 'width' => 5]
 ];
 $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
@@ -42,29 +43,45 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
             
     $config = [
     'paging' => true,
+    'filter' => true,
     
-    
-    'order' => [[1, 'asc']],
+    'order' => [[0, 'asc']],
     'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true],['orderable' => true],['orderable' => true],['orderable' => true],['orderable' => true], ['orderable' => false]]
 ];
      
 
 @endphp
     
-
+{{-- <div class="input-group-prepend">
+    <select class="custom-select" id="inputGroupSelect04">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <div class="input-group">
+        <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+    </div>
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button">Button</button>
+    </div>
+  </div>
+  <br> --}}
     
     <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
         @foreach($alunos as $aluno)
             <tr>
                 
-                <td>{{$aluno->id}}</td>
+                
                 <td>{{$aluno->nome}}</td>
                 <td>{{$aluno->cpf}}</td>
                 <td>{{ $aluno->modalidade }}</td>
-                <td>{{ $aluno->inicio }}</td>
-                <td>{{ $aluno->termino }}</td>
+                <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td>
+                <td>{{ Categoria::find($aluno->categoria_id)->categoria }}</td>
                 <td>{{ 'R$ '.number_format(Categoria::find($aluno->categoria_id)->preco, 2) }}</td>
+                <td></td>
                 <td>
+                
                    
                 
                 <form action="{{ route('alunos.edit', $aluno->id) }}">
@@ -75,7 +92,11 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
                 
                 
 
-                
+                <form action="{{route('alunos.show', $aluno->id)}}">
+                    <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Abrir Pedido" type="submit">
+                        <i class="fa fa-lg fa-fw fa-eye"></i>
+                    </button>
+                </form>
                 
                 
 

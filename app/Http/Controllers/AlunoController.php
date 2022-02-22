@@ -85,7 +85,7 @@ class AlunoController extends Controller
         
         
 
-        return view('home');
+        return redirect()->route('alunos.index');
     
 
 
@@ -140,6 +140,8 @@ class AlunoController extends Controller
      */
     public function destroy(Aluno $aluno)
     {
-        //
+        $deletar = Aluno::find($aluno->id);
+        $deletar->delete();
+        return redirect()->route('alunos.index');
     }
 }
