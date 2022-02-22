@@ -272,7 +272,7 @@ return [
                 ],
                 [
                     'text' => 'Pagamentos',
-                    'url'  => 'admin/settings',
+                    'route' => 'pagamentos.create',
                     'icon' => 'fas fa-fw fa-dollar-sign',
                 ],
                

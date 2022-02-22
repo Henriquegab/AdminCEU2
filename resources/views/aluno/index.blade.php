@@ -77,12 +77,12 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
                 <td>{{$aluno->cpf}}</td>
                 <td>{{ $aluno->modalidade }}</td>
                 <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td>
-                <td>{{ Categoria::find($aluno->categoria_id)->categoria }}</td>
-                <td>{{ 'R$ '.number_format(Categoria::find($aluno->categoria_id)->preco, 2) }}</td>
+                <td>{{ $aluno->categoria->categoria }}</td>
+                <td>{{ 'R$ '.number_format($aluno->categoria->preco, 2) }}</td>
                 <td></td>
                 <td>
                 
-                   
+                    
                 
                 <form action="{{ route('alunos.edit', $aluno->id) }}">
                     <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">

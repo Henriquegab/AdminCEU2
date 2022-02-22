@@ -80,6 +80,9 @@ class AlunoController extends Controller
         $request->validate($regras, $feedback);
 
         
+        
+
+        
 
         Aluno::create($request->all());
         

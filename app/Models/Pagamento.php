@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Aluno;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Pagamento extends Model
 {
-    protected $fillable = ['categoria', 'preco'];
+    protected $fillable = ['valor_pago', 'data', 'aluno_id'];
+
 
     public function aluno(){
 
-        return $this->hasOne(Aluno::class);
+        return $this->hasOne(Pagamento::class);
     }
-    
 
 
     use HasFactory;
