@@ -27,7 +27,7 @@
                         $optionsc += [$aluno->id => $aluno->nome.' ('.$aluno->cpf.')'];
                     }
             @endphp
-            <x-adminlte-select2 enable-old-support required label="Aluno" name="aluno_id" fgroup-class="col-md-4">
+            <x-adminlte-select2 enable-old-support required label="Aluno" name="aluno_id" fgroup-class="col-md-4" id="aluno">
                 <x-adminlte-options
 
                         empty-option="Selecione uma opção"        
@@ -35,15 +35,27 @@
                         
                         />
             </x-adminlte-select2>
-    
+            
+
     
                 <div class="col-md-2 mb-3">
                     <label for="aluno">Preço a pagar</label>
-                    <input type="text" class="form-control" name="valor_pretendido" disabled value=" {{ 'R$ '.number_format($aluno->categoria->preco, 2) }} " required>
+                    <input type="text" class="form-control" name="valor_pretendido" disabled value=" {{ 'R$ '.number_format($aluno->categoria->preco, 2) }} " required id="valor">
                     
-                    
+                    {{-- {{ 'R$ '.number_format($aluno->categoria->preco, 2) }} --}}
                     
                 </div>
+            
+                <script type="text/javascript">
+                var valor = "<?php echo 'R$ '.number_format($aluno->categoria->preco, 2) ?>"
+                    $('#aluno').on('change',function(){
+
+                    var valor = $(this).find('option:selected').val();
+                    // var valor = "<?php echo 'R$ '.number_format($aluno->categoria->preco, 2) ?>"
+                    document.getElementById("valor").setAttribute('value', valor);
+                
+                });
+                </script>
     
                 
     
