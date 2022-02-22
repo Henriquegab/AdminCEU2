@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Lista de Categorias')
+@section('title', 'Lista de Alunos')
 
 @section('content_header')
 
@@ -45,7 +45,7 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
     
     
     'order' => [[1, 'asc']],
-    'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
+    'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true],['orderable' => true],['orderable' => true],['orderable' => true],['orderable' => true], ['orderable' => false]]
 ];
      
 
