@@ -17,6 +17,7 @@
 
 @php
 use App\Models\Categoria;
+use App\Models\Pagamento;
 
 
 $heads = [
@@ -71,7 +72,16 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
     <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
         @foreach($alunos as $aluno)
             <tr>
-                
+                @php
+
+                    if (Pagamento::where('aluno_id', $aluno->id)->exists()) {
+                        $pago = Pagamento::where('aluno_id', $aluno->id)->first()->valor_pago;
+                    }
+                    else {
+                        $pago = 'Não pago!';
+                    }
+                    
+                @endphp
                 
                 <td>{{$aluno->nome}}</td>
                 <td>{{$aluno->cpf}}</td>
@@ -79,7 +89,7 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
                 <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td>
                 <td>{{ $aluno->categoria->categoria }}</td>
                 <td>{{ 'R$ '.number_format($aluno->categoria->preco, 2) }}</td>
-                <td></td>
+                <td>{{ $pago }}</td>
                 <td>
                 
                     
