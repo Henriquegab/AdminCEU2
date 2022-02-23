@@ -43,7 +43,7 @@ class AlunoController extends Controller
 
         $hoje = Carbon::now();
 
-        
+        dd($request);
 
         // dd($request->all());
 

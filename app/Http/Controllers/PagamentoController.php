@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use App\Models\Pagamento;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
@@ -42,7 +42,44 @@ class PagamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hoje = Carbon::now();
+
+        // dd($request);
+
+        // dd($request->all());
+
+        $regras = [
+            
+            'valor_pago' => 'required|gte:0',
+            'data' => 'required|date|before:'.$hoje,
+            
+            
+            
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é obrigatório!',
+            'data.date' => 'A data tem que ser válida!',
+            'data.before' => 'A data não pode ser no futuro!',
+            
+        ];
+
+        
+
+        $request->validate($regras, $feedback);
+
+        
+        
+
+        
+
+        Pagamento::create($request->all());
+        
+        
+
+        return redirect()->route('alunos.index');
+    
+
     }
 
     /**

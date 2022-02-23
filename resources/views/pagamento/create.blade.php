@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastro de Categoria')
+@section('title', 'Pagamentos - Seleção de Aluno')
 
 @section('content_header')
     
@@ -14,7 +14,7 @@
 
 <div class="row justify-content-center align-self-center">
 
-    <x-adminlte-card class="mt-3" style="width: 50rem;" title="Cadastro de Categoria" theme="dark" icon="far fa-fw fa-file">
+    <x-adminlte-card class="mt-3" style="width: 50rem;" title="Pagamentos - Seleção de Aluno" theme="dark" icon="far fa-fw fa-file">
     
         <form method="post" action="{{ route('pagamentos.create2') }}">
             @csrf
@@ -36,7 +36,7 @@
                         $optionsc += [$aluno->id => $aluno->nome.' ('.$aluno->cpf.')'];
                     }
             @endphp
-            <x-adminlte-select2 enable-old-support required label="Aluno" name="aluno_id" fgroup-class="col-md-6" id="aluno">
+            <x-adminlte-select2 enable-old-support required label="Aluno" name="aluno_id" fgroup-class="col-md-12" id="aluno">
                 <x-adminlte-options
 
                 empty-option="Selecione uma opção"    
@@ -47,28 +47,7 @@
             
 
     
-                <div class="col-md-2 mb-3">
-                    <label for="aluno">Preço a pagar</label>
-                    
-                        <input type="text" class="form-control" name="valor_pretendido" disabled value="" id="valor">
-
-                    
-                        
-                    
-                    {{-- {{ 'R$ '.number_format($aluno->categoria->preco, 2) }} --}}
-                    
-                </div>
-
                 
-    
-                
-    
-                <div class="col-md-4 mb-3">
-                    <label for="preco">Valor Pago</label>
-                    <input type="text" class="form-control @error('preco') is-invalid @enderror" name="preco" data-mask="R$ 00,00" maxlength="6" placeholder="40" value="{{ old('preco') }}">
-                    @error('preco') <div class="invalid-feedback">{{ $errors->first('preco') }}</div> @enderror
-                    
-                </div>
     
                 
     
@@ -82,7 +61,7 @@
     
             
     
-            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            <button class="btn btn-primary" type="submit">Continuar</button>
             
                
            

@@ -21,6 +21,8 @@
         
         <div class="form-row">
 
+            <input type="hidden" value="{{ $aluno->id }}" name="aluno_id">
+
                 <div class="col-md-5 mb-3">
                     <label for="aluno">Nome</label>
                     
@@ -69,9 +71,9 @@
                 
     
                 <div class="col-md-4 mb-3">
-                    <label for="preco">Valor Pago em Reais</label>
-                    <input type="text" class="form-control @error('preco') is-invalid @enderror" name="preco" data-mask="0000" maxlength="6" placeholder="40" value="{{ old('preco') }}">
-                    @error('preco') <div class="invalid-feedback">{{ $errors->first('preco') }}</div> @enderror
+                    <label for="valor_pago">Valor Pago em Reais</label>
+                    <input type="text" class="form-control @error('valor_pago') is-invalid @enderror" name="valor_pago" data-mask="0000" maxlength="6" placeholder="40" value="{{ old('valor_pago') }}" required>
+                    @error('valor_pago') <div class="invalid-feedback">{{ $errors->first('valor_pago') }}</div> @enderror
                     
                 </div>
     
@@ -80,12 +82,16 @@
                     <input type="date" value="{{ old('data') }}" class="form-control @error('data') is-invalid @enderror" name="data" placeholder="12/12/2012" required>
                     @error('data') <div class="invalid-feedback">{{ $errors->first('data') }}</div> @enderror
                 </div>
+
+                
     
     
     
     
     
             </div>
+
+            
             
     
     
