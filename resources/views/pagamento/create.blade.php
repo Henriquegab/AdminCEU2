@@ -8,29 +8,38 @@
 
 @section('content')
 
-
+@php
+    
+@endphp
 
 <div class="row justify-content-center align-self-center">
 
     <x-adminlte-card class="mt-3" style="width: 50rem;" title="Cadastro de Categoria" theme="dark" icon="far fa-fw fa-file">
     
-        <form method="post" action="{{ route('pagamentos.store') }}">
+        <form method="post" action="{{ route('pagamentos.create2') }}">
             @csrf
             
             <div class="form-row">
 
 
                 @php
+
+                
+
+                
+
+
                 $optionsc = [];
+               
         
                     foreach ($alunos as $aluno) {
                         $optionsc += [$aluno->id => $aluno->nome.' ('.$aluno->cpf.')'];
                     }
             @endphp
-            <x-adminlte-select2 enable-old-support required label="Aluno" name="aluno_id" fgroup-class="col-md-4" id="aluno">
+            <x-adminlte-select2 enable-old-support required label="Aluno" name="aluno_id" fgroup-class="col-md-6" id="aluno">
                 <x-adminlte-options
 
-                        empty-option="Selecione uma opção"        
+                empty-option="Selecione uma opção"    
                         :options="$optionsc" 
                         
                         />
@@ -40,28 +49,23 @@
     
                 <div class="col-md-2 mb-3">
                     <label for="aluno">Preço a pagar</label>
-                    <input type="text" class="form-control" name="valor_pretendido" disabled value=" {{ 'R$ '.number_format($aluno->categoria->preco, 2) }} " required id="valor">
+                    
+                        <input type="text" class="form-control" name="valor_pretendido" disabled value="" id="valor">
+
+                    
+                        
                     
                     {{-- {{ 'R$ '.number_format($aluno->categoria->preco, 2) }} --}}
                     
                 </div>
-            
-                <script type="text/javascript">
-                var valor = "<?php echo 'R$ '.number_format($aluno->categoria->preco, 2) ?>"
-                    $('#aluno').on('change',function(){
 
-                    var valor = $(this).find('option:selected').val();
-                    // var valor = "<?php echo 'R$ '.number_format($aluno->categoria->preco, 2) ?>"
-                    document.getElementById("valor").setAttribute('value', valor);
                 
-                });
-                </script>
     
                 
     
                 <div class="col-md-4 mb-3">
                     <label for="preco">Valor Pago</label>
-                    <input type="text" class="form-control @error('preco') is-invalid @enderror" name="preco" data-mask="R$ 00,00" maxlength="6" placeholder="40" value="{{ old('preco') }}" required>
+                    <input type="text" class="form-control @error('preco') is-invalid @enderror" name="preco" data-mask="R$ 00,00" maxlength="6" placeholder="40" value="{{ old('preco') }}">
                     @error('preco') <div class="invalid-feedback">{{ $errors->first('preco') }}</div> @enderror
                     
                 </div>

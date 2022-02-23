@@ -28,6 +28,11 @@ class PagamentoController extends Controller
         $alunos = Aluno::all();
         return view('pagamento.create', ['alunos' => $alunos]);
     }
+    public function create2(Request $request)
+    {
+        $aluno = Aluno::find($request->aluno_id);
+        return view('pagamento.create2', ['aluno' => $aluno]);
+    }
 
     /**
      * Store a newly created resource in storage.
