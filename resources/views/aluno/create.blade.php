@@ -175,14 +175,27 @@
 
         <div class="form-row">
 
-        
-        
+            
+            <div class="col-md-4 mb-3">
+                <label for="dias">Dias*</label>
+                <select class="form-control" name="dias" multiple required>
+                    
+                    <option>Segunda</option>
+                    <option>Terça</option>
+                    <option>Quarta</option>
+                    <option>Quinta</option>
+                    <option>Sexta</option>
+                    
+                  </select>
 
+            </div>
+        
+            
         
 
             
 
-            <div class="col-md-12 mb-3">
+            <div class="col-md-8 mb-3">
                 <label for="observacao">Observações</label>
                 <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações"/>
                 
