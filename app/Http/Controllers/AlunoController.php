@@ -134,7 +134,8 @@ class AlunoController extends Controller
      */
     public function edit(Aluno $aluno)
     {
-        //
+        $categorias = Categoria::all();
+        return view('aluno.edit', ['categorias' => $categorias, 'aluno' => $aluno]);
     }
 
     /**

@@ -59,10 +59,20 @@
                     
                     if (Pagamento::where('aluno_id', $aluno->id)->exists()) {
                         $pago = Pagamento::where('aluno_id', $aluno->id)->first()->valor_pago;
+                        if ($pago < $aluno->categoria->preco) {
+                            $cor = '#FFBA41';
+                        }
+                        else {
+                            $cor = 'LimeGreen';
+                        }
                         $pago = 'R$ ' . number_format($pago, 2);
+
                     } else {
                         $pago = 'Não pago!';
+                        $cor = 'Red';
                     }
+
+                    
                     
                 @endphp
 
@@ -73,7 +83,7 @@
                 <td>{{ $aluno->categoria->categoria }}</td>
                 <td>{{ $aluno->dias }}</td>
                 <td>{{ 'R$ ' . number_format($aluno->categoria->preco, 2) }}</td>
-                <td style="color:{{ Pagamento::where('aluno_id', $aluno->id)->exists() ? 'LimeGreen' : 'red' }}">
+                <td style="color:{{ $cor }}">
                     {{ $pago }}</td>
                 <td>
 
