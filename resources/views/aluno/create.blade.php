@@ -178,7 +178,7 @@
             
             <div class="col-md-4 mb-3">
                 <label for="dias">Dias*</label>
-                <select class="form-control" name="dias" multiple required>
+                <select class="form-control" name="dia[]" multiple required>
                     
                     <option>Segunda</option>
                     <option>Terça</option>
@@ -204,6 +204,7 @@
         </div>
 
         <input type="hidden" value="{{ $hoje }}" name="data">
+        <input type="hidden" value="" name="dias">
 
         <button class="btn btn-primary" type="submit">Cadastrar</button>
 

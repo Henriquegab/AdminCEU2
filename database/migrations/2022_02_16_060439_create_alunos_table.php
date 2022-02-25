@@ -29,6 +29,7 @@ return new class extends Migration
             $table->time('inicio')->nullable();      
             $table->time('termino')->nullable();      
             $table->text('observacao')->nullable();       
+            $table->string('dias', 50);       
             $table->date('data_atestado');
             
             $table->timestamps();

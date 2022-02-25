@@ -19,7 +19,16 @@
     use App\Models\Categoria;
     use App\Models\Pagamento;
 
-    $heads = [['label' => 'Nome', 'width' => 20], ['label' => 'CPF', 'width' => 20], ['label' => 'Modalidade', 'width' => 20], ['label' => 'Horário', 'width' => 15], ['label' => 'Categoria', 'width' => 20], ['label' => 'Mensalidade', 'width' => 20], ['label' => 'Pagamento', 'width' => 15], ['label' => 'Ações', 'no-export' => true, 'width' => 5]];
+    $heads = [
+        ['label' => 'Nome', 'width' => 20], 
+        ['label' => 'CPF', 'width' => 20], 
+        ['label' => 'Modalidade', 'width' => 20], 
+        ['label' => 'Horário', 'width' => 15], 
+        ['label' => 'Categoria', 'width' => 20], 
+        ['label' => 'Dias', 'width' => 20], 
+        ['label' => 'Mensalidade', 'width' => 20], 
+        ['label' => 'Pagamento', 'width' => 15], 
+        ['label' => 'Ações', 'no-export' => true, 'width' => 5]];
     $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                     <i class="fa fa-lg fa-fw fa-pen"></i>
                 </button>';
@@ -35,26 +44,12 @@
         'filter' => true,
 
         'order' => [[0, 'asc']],
-        'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
+        'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
     ];
 
     @endphp
 
-    {{-- <div class="input-group-prepend">
-    <select class="custom-select" id="inputGroupSelect04">
-      <option selected>Choose...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <div class="input-group">
-        <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-    </div>
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Button</button>
-    </div>
-  </div>
-  <br> --}}
+    
 
     <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable
         with-buttons beautify>
@@ -76,6 +71,7 @@
                 <td>{{ $aluno->modalidade }}</td>
                 <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td>
                 <td>{{ $aluno->categoria->categoria }}</td>
+                <td>{{ $aluno->dias }}</td>
                 <td>{{ 'R$ ' . number_format($aluno->categoria->preco, 2) }}</td>
                 <td style="color:{{ Pagamento::where('aluno_id', $aluno->id)->exists() ? 'LimeGreen' : 'red' }}">
                     {{ $pago }}</td>

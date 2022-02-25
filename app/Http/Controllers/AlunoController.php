@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Pagamento;
 use App\Models\Categoria;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class AlunoController extends Controller
 
         $hoje = Carbon::now();
 
-        dd($request);
+        // dd($request);
 
         // dd($request->all());
 
@@ -59,7 +60,7 @@ class AlunoController extends Controller
             'inicio' => 'required|different:termino',
             'termino' => 'required|different:inicio',
             'data_atestado' => 'required|date|before:'.$hoje,
-            
+            'dia' => 'required'
             
             
         ];
@@ -78,9 +79,22 @@ class AlunoController extends Controller
         
 
         $request->validate($regras, $feedback);
+        $count = 0;
+
+        foreach ($request->dia as $dia) {
+            if($count == 0){
+                $request['dias'] = $dia;
+            }
+            else{
+                $request['dias'] = $request->dias.' '.$dia;
+            };
+            $count++;
+            
+        }
 
         
         
+        // dd($request->all());
 
         
 
@@ -143,8 +157,10 @@ class AlunoController extends Controller
      */
     public function destroy(Aluno $aluno)
     {
-        $deletar = Aluno::find($aluno->id);
-        $deletar->delete();
+        $deletarAluno = Aluno::find($aluno->id);
+        $deletarPagamentos = Pagamento::where('aluno_id', $aluno->id);
+        $deletarPagamentos->delete();
+        $deletarAluno->delete();
         return redirect()->route('alunos.index');
     }
 }
