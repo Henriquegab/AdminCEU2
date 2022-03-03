@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Periodofiscal;
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -60,6 +61,7 @@ class HomeController extends Controller
                     $periodofiscal->data->month = $hoje->month;
                 }
                 $periodofiscal->save();
+                Aluno::query()->update(['pagamento_id' => NULL]);
                 
                 
             }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Periodofiscal;
 use App\Models\Pagamento;
+
 use App\Models\Categoria;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,8 +19,55 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        // dd(Carbon::now());
-        // Aluno::query()->update(['pagamento_id' => NULL]);
+        //Lógica para trocar o periodo fiscal se caso for necessário
+        $periodofiscal = Periodofiscal::all()->first();
+        $hoje = Carbon::now();
+        if($periodofiscal === null){
+            
+            $periodofiscal = new Periodofiscal();
+            $periodofiscal->data = Carbon::now();
+            if($hoje->day < 10){
+                $periodofiscal->data->day = 10;
+                $periodofiscal->data->month = $hoje->month - 1;
+            }
+            if($hoje->day >= 10){
+                $periodofiscal->data->day = 10;
+                $periodofiscal->data->month = $hoje->month;
+            }
+            
+            
+
+            $periodofiscal->save();
+            
+        }
+        else{
+            
+            $periodofiscal->data = new Carbon($periodofiscal->data);
+            
+            
+            
+            if($hoje >= $periodofiscal->data->addMonth(1)){
+                if($hoje->day < 10){
+                $periodofiscal->data->day = 10;
+                $periodofiscal->data->month = $hoje->month - 1;
+                }
+                else{
+                    $periodofiscal->data->day = 10;
+                    $periodofiscal->data->month = $hoje->month;
+                }
+                $periodofiscal->save();
+                Aluno::query()->update(['pagamento_id' => NULL]);
+                
+                
+            }
+            
+            
+            
+
+            
+        }
+        
+        
         $alunos = Aluno::all();
 
 
