@@ -40,9 +40,11 @@ class PagamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Aluno $aluno, Request $request)
     {
         $hoje = Carbon::now();
+
+        // dd($aluno);
 
         // dd($request);
 
@@ -73,8 +75,11 @@ class PagamentoController extends Controller
 
         
 
-        Pagamento::create($request->all());
-        
+        $pagamento = Pagamento::create($request->all());
+
+        $aluno->pagamento_id = $pagamento->id;
+
+        $aluno->save();
         
 
         return redirect()->route('alunos.index');
@@ -111,9 +116,9 @@ class PagamentoController extends Controller
      * @param  \App\Models\Pagamento  $pagamento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pagamento $pagamento)
+    public function update(Request $request, Pagamento $pagamento, Aluno $aluno)
     {
-        //
+        
     }
 
     /**

@@ -17,7 +17,11 @@ class AlunoController extends Controller
      */
     public function index()
     {
+        // dd(Carbon::now());
+        // Aluno::query()->update(['pagamento_id' => NULL]);
         $alunos = Aluno::all();
+
+
         return view('aluno.index',['alunos' => $alunos]);
     }
 
@@ -98,7 +102,8 @@ class AlunoController extends Controller
 
         
 
-        Aluno::create($request->all());
+        $aluno = Aluno::create($request->all());
+        
         
         
 

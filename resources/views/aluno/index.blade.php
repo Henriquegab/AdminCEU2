@@ -57,8 +57,8 @@
             <tr>
                 @php
                     
-                    if (Pagamento::where('aluno_id', $aluno->id)->exists()) {
-                        $pago = Pagamento::where('aluno_id', $aluno->id)->first()->valor_pago;
+                    if ($aluno->pagamento_id) {
+                        $pago = $aluno->pagamento->valor_pago;
                         if ($pago < $aluno->categoria->preco) {
                             $cor = '#FFBA41';
                         }

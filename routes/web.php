@@ -30,6 +30,8 @@ Route::middleware('auth')->group(
         Route::resource('categorias', CategoriaController::class);
         Route::resource('pagamentos', PagamentoController::class);
         Route::post('/pagamentos/create2', [PagamentoController::class, 'create2'])->name('pagamentos.create2');
+        Route::post('/pagamentos/store/{aluno}', [PagamentoController::class, 'store'])->name('pagamentos.store2');
+        
         
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

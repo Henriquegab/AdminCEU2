@@ -33,7 +33,11 @@
                
         
                     foreach ($alunos as $aluno) {
-                        $optionsc += [$aluno->id => $aluno->nome.' ('.$aluno->cpf.')'];
+
+                        if (!$aluno->pagamento_id) {
+                            $optionsc += [$aluno->id => $aluno->nome.' ('.$aluno->cpf.')'];
+                        }
+                        
                     }
             @endphp
             <x-adminlte-select2 enable-old-support required label="Aluno" name="aluno_id" fgroup-class="col-md-12" id="aluno">
