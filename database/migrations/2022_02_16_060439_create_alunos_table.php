@@ -31,7 +31,7 @@ return new class extends Migration
             $table->text('observacao')->nullable();       
             $table->string('dias', 50);       
             $table->date('data_atestado');
-            
+            $table->softDeletes();
             $table->timestamps();
         });
     }
