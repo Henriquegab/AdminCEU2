@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Lista de Alunos')
+@section('title', 'Alunos Excluidos')
 
 @section('content_header')
 
@@ -54,6 +54,7 @@
     <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable
         with-buttons beautify>
         @foreach ($alunos as $aluno)
+            
             <tr>
                 @php
                     
@@ -89,11 +90,7 @@
 
 
 
-                    <form action="{{ route('alunos.edit', $aluno->id) }}">
-                        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
-                            <i class="fa fa-lg fa-fw fa-pen"></i>
-                        </button>
-                    </form>
+                    
 
 
 
@@ -106,37 +103,41 @@
 
 
 
-                    <form method="post" action="{{ route('alunos.destroy', $aluno->id) }}">
+                    <form method="post" action="{{ route('alunos.restore', $aluno->id) }}">
 
 
                         <x-adminlte-modal id="{{ 'ctz' . $aluno->id }}" title="Confirmar Exclusão" size="md"
                             theme="warning" icon="fas fa-exclamation-circle" v-centered static-backdrop>
-                            <div style="height:50px;">Você tem Certeza que deseja excluir o(a) aluno(a)
+                            <div style="height:50px;">Você tem Certeza que deseja restaurar o(a) aluno(a)
                                 {{ $aluno->nome }}?</div>
                             <x-slot name="footerSlot">
                                 <x-adminlte-button class="mr-auto" type="submit" theme="success" label="Sim" />
 
-
+                                <input type="hidden" value="{{ $aluno->id }}" name= "id">
                                 <x-adminlte-button theme="danger" label="Não" data-dismiss="modal" />
                                 @csrf
+                                
                             </x-slot>
                         </x-adminlte-modal>
 
 
 
 
-                        @method('DELETE')
+                        
 
 
                     </form>
 
                     <button class="btn btn-xs btn-default text-danger mx-1 shadow" data-toggle="modal"
                         data-target="{{ '#ctz' . $aluno->id }}" title="Deletar">
-                        <i class="fa fa-lg fa-fw fa-trash"></i>
+                        <i class="fa fa-lg fa-fw fa-backward"></i>
+                        
                     </button>
 
                 </td>
             </tr>
+            
+            
         @endforeach
 
     </x-adminlte-datatable>

@@ -252,6 +252,11 @@ return [
             'route' => 'alunos.index',
             'icon' => 'fas fa-fw fa-user',
         ],
+        [
+            'text' => 'Alunos Excluidos',
+            'route' => 'alunos.excluidos',
+            'icon' => 'fas fa-fw fa-user-slash',
+        ],
         ['header' => 'CONTROLE FINANCEIRO'],
 
         [
@@ -275,7 +280,7 @@ return [
                     'route' => 'pagamentos.create',
                     'icon' => 'fas fa-fw fa-dollar-sign',
                 ],
-               
+                
                 
 
             ]

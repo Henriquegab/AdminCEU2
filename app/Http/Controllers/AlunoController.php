@@ -12,6 +12,40 @@ use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function excluidos()
+    {
+        $alunos = Aluno::onlyTrashed()->get();
+
+        
+
+        return view('aluno.excluidos',['alunos' => $alunos]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \App\Models\Aluno  $aluno
+     * @return \Illuminate\Http\Response
+     */
+
+    public function restore(Request $request, $id)
+    {
+        
+        
+        
+        $aluno = Aluno::withTrashed()->where('id', $id)->get()->first();
+        
+        $aluno->restore();
+
+        return redirect()->route('alunos.index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -69,6 +103,8 @@ class AlunoController extends Controller
         
         
         $alunos = Aluno::all();
+
+        // dd($alunos);
 
 
         return view('aluno.index',['alunos' => $alunos]);
@@ -218,4 +254,6 @@ class AlunoController extends Controller
         $deletarAluno->delete();
         return redirect()->route('alunos.index');
     }
+
+    
 }
