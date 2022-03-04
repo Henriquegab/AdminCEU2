@@ -82,7 +82,7 @@ class AlunoController extends Controller
             
             $periodofiscal->data = new Carbon($periodofiscal->data);
             
-            
+            // dd($hoje >= $periodofiscal->data->addMonth(1));
             
             if($hoje >= $periodofiscal->data->addMonth(1)){
                 if($hoje->day < 10){
@@ -94,7 +94,7 @@ class AlunoController extends Controller
                     $periodofiscal->data->month = $hoje->month;
                 }
                 $periodofiscal->save();
-                Aluno::query()->update(['pagamento_id' => NULL]);
+                $save = Aluno::query()->update(['pagamento_id' => NULL]);
                 
                 
             }

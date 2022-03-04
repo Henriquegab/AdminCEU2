@@ -94,11 +94,7 @@
 
 
 
-                    <form action="{{ route('alunos.show', $aluno->id) }}">
-                        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Abrir Pedido" type="submit">
-                            <i class="fa fa-lg fa-fw fa-eye"></i>
-                        </button>
-                    </form>
+                    
 
 
 

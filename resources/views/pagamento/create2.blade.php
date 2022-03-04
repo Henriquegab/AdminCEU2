@@ -94,18 +94,7 @@
             
 
 
-                <x-adminlte-modal id="{{ 'ctz' . $aluno->id }}" title="Confirmar Pagamento" size="md"
-                    theme="danger" icon="fas fa-exclamation-circle" v-centered static-backdrop>
-                    <div style="height:50px;">Você tem Certeza que deseja confirmar o pagamento de
-                        {{ $aluno->nome }}?</div>
-                    <x-slot name="footerSlot">
-                        <x-adminlte-button class="mr-auto" type="submit" theme="success" label="Sim" />
-
-
-                        <x-adminlte-button theme="danger" label="Não" data-dismiss="modal" />
-                        @csrf
-                    </x-slot>
-                </x-adminlte-modal>
+                
 
 
 
@@ -115,8 +104,7 @@
 
             
 
-            <button class="btn btn-primary" data-toggle="modal"
-                data-target="{{ '#ctz' . $aluno->id }}" title="Deletar">Confirmar Pagamento
+            <button class="btn btn-primary" type="submit">Confirmar Pagamento
                 
             </button>
             

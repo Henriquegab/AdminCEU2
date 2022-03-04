@@ -17,6 +17,7 @@
 
     @php
     use App\Models\Categoria;
+    use App\Models\Aluno;
     use App\Models\Pagamento;
     use Carbon\Carbon;
 
@@ -62,6 +63,7 @@
                 @php
                     $pagamento->data = new Carbon($pagamento->data);
                     $pagamento->data = $pagamento->data->isoFormat('DD/MM/YYYY');
+                    // dd(Aluno::find($pagamento->aluno_id)->nome);
 
                 @endphp
             <tr>
@@ -69,10 +71,10 @@
 
                 <td>{{ $pagamento->id }}</td>
                 <td>{{ $pagamento->data }}</td>
-                <td>{{ $pagamento->aluno->nome }}</td>
-                <td>{{ $pagamento->aluno->cpf }}</td>
-                <td>{{ $pagamento->aluno->categoria->categoria }}</td>
-                <td>{{ 'R$ ' . number_format($pagamento->aluno->categoria->preco, 2) }}</td>
+                <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->nome }}</td>
+                <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->cpf }}</td>
+                <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->categoria->categoria }}</td>
+                <td>{{ 'R$ ' . number_format(Aluno::withTrashed()->find($pagamento->aluno_id)->categoria->preco, 2) }}</td>
                 <td>{{ 'R$ ' . number_format($pagamento->valor_pago, 2) }}</td>
                 
                     
@@ -90,11 +92,7 @@
 
 
 
-                    <form action="">
-                        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Abrir Pedido" type="submit">
-                            <i class="fa fa-lg fa-fw fa-eye"></i>
-                        </button>
-                    </form>
+                    
 
 
 
