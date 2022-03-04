@@ -39,9 +39,13 @@ class AlunoController extends Controller
         
         
         
-        $aluno = Aluno::withTrashed()->where('id', $id)->get()->first();
+        $aluno = Aluno::onlyTrashed()->where('id', $id)->get()->first();
         
-        $aluno->restore();
+        if($aluno){
+            $aluno->restore();
+        }
+
+        
 
         return redirect()->route('alunos.index');
     }
