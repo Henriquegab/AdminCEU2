@@ -112,7 +112,7 @@ class PagamentoController extends Controller
      */
     public function edit(Pagamento $pagamento)
     {
-        //
+        return view('pagamento.edit', ['pagamento' => $pagamento]);
     }
 
     /**
@@ -122,9 +122,12 @@ class PagamentoController extends Controller
      * @param  \App\Models\Pagamento  $pagamento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pagamento $pagamento, Aluno $aluno)
+    public function update(Request $request, Pagamento $pagamento)
     {
-        
+        $pagamento->update([
+            'valor_pago' => $request['valor_pago']
+        ]);
+        return view('home');
     }
 
     /**

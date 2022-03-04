@@ -82,7 +82,7 @@
 
 
 
-                    <form action="">
+                    <form action="{{ route('pagamentos.edit', $pagamento->id) }}">
                         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
                             <i class="fa fa-lg fa-fw fa-pen"></i>
                         </button>
