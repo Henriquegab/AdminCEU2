@@ -15,7 +15,13 @@ class PagamentoController extends Controller
      */
     public function index()
     {
-        //
+        $alunos = Aluno::all();
+        $pagamentos = Pagamento::all();
+
+        // dd($alunos);
+
+
+        return view('pagamento.index',['alunos' => $alunos, 'pagamentos' => $pagamentos]);
     }
 
     /**

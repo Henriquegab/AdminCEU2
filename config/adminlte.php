@@ -280,6 +280,11 @@ return [
                     'route' => 'pagamentos.create',
                     'icon' => 'fas fa-fw fa-dollar-sign',
                 ],
+                [
+                    'text' => 'Histórico de Pagamentos',
+                    'route' => 'pagamentos.index',
+                    'icon' => 'fas fa-fw fa-file',
+                ],
                 
                 
 

@@ -23,6 +23,6 @@ class Aluno extends Model
 
     public function pagamento(){
 
-        return $this->belongsTo(Pagamento::class);
+        return $this->belongsToMany(Pagamento::class);
     }
 }
