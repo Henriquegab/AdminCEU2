@@ -56,13 +56,13 @@
 
             <div class="col-md-6 mb-3">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control @error('nome') is-invalid @enderror" value="{{ $aluno->nome }}" name="nome" placeholder="Henrique Gabriel" disabled>
+                <input type="text" class="form-control @error('nome') is-invalid @enderror" value="{{ $aluno->nome }}" name="nome" placeholder="Henrique Gabriel">
                 @error('nome') <div class="invalid-feedback">{{ $errors->first('nome') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
                 <label for="cpf">CPF</label>
-                <input type="text" value="{{ $aluno->cpf }}" class="form-control @error('cpf') is-invalid @enderror" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00" disabled>
+                <input type="text" value="{{ $aluno->cpf }}" class="form-control @error('cpf') is-invalid @enderror" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00">
                 @error('cpf') <div class="invalid-feedback">{{ $errors->first('cpf') }}</div> @enderror
             </div>
 
@@ -168,7 +168,7 @@
             
             <div class="col-md-4 mb-3">
                 <label for="data_atestado">Data do atestado*</label>
-                <input type="date" value="{{ $aluno->data_atestado }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012" disabled>
+                <input type="date" value="{{ $aluno->data_atestado }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012">
                 @error('data_atestado') <div class="invalid-feedback">{{ $errors->first('data_atestado') }}</div> @enderror
             </div>
 

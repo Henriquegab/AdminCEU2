@@ -241,7 +241,71 @@ class AlunoController extends Controller
      */
     public function update(Request $request, Aluno $aluno)
     {
-        //
+        $hoje = Carbon::now();
+
+        // dd($request);
+
+        // dd($request);
+
+        // dd($request->all());
+
+        $regras = [
+            'nome' => 'required',
+            'cpf' => 'required|cpf|unique:alunos,cpf,' .$aluno->id,
+            'nascimento' => 'required|date|before_or_equal:'.$hoje,
+            'endereco' => 'required',
+            'telefone' => 'required',
+            'categoria_id' => 'required',
+            'modalidade' => 'required',
+            
+            'inicio' => 'required|different:termino',
+            'termino' => 'required|different:inicio',
+            'data_atestado' => 'required|date|before:'.$hoje,
+            'dia' => 'required'
+            
+            
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é obrigatório!',
+            'cpf.cpf' => 'O cpf é inválido!',
+            'cpf.unique' => 'O cpf ja existe!',
+            'nascimento.before_or_equal' => 'A data de nascimento não pode ser no futuro e nem hoje!',
+            'data_atestado.before' => 'A data do atestado não pode ser no futuro!',
+            'inicio.different' => 'O início não pode ser igual ao termino!',
+            'termino.different' => 'O termino não pode ser igual ao início!',
+            
+        ];
+
+        
+
+        $request->validate($regras, $feedback);
+        $count = 0;
+
+        foreach ($request->dia as $dia) {
+            if($count == 0){
+                $request['dias'] = $dia;
+            }
+            else{
+                $request['dias'] = $request->dias.' '.$dia;
+            };
+            $count++;
+            
+        }
+
+        
+        
+        // dd($request->all());
+
+        
+
+        $aluno->update($request->all());
+        
+        
+        
+
+        return redirect()->route('alunos.index');
+    
     }
 
     /**
