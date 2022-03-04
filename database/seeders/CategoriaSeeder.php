@@ -17,102 +17,102 @@ class CategoriaSeeder extends Seeder
     {
         Categoria::create(
         [
-            'categoria' => 'Acadêmico - 1 dia',
+            'categoria' => 'Acadêmico - 1 aula',
             'preco' => '15'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Acadêmico - 2 dias',
+            'categoria' => 'Acadêmico - 2 aulas',
             'preco' => '30'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Acadêmico - 3 dias',
+            'categoria' => 'Acadêmico - 3 aulas',
             'preco' => '40'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Acadêmico - 4 dias',
+            'categoria' => 'Acadêmico - 4 aulas',
             'preco' => '50'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Acadêmico - 5 dias',
+            'categoria' => 'Acadêmico - 5 aulas',
             'preco' => '60'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Servidor - 1 dia',
+            'categoria' => 'Servidor - 1 aula',
             'preco' => '15'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Servidor - 2 dias',
+            'categoria' => 'Servidor - 2 aulas',
             'preco' => '30'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Servidor - 3 dias',
+            'categoria' => 'Servidor - 3 aulas',
             'preco' => '40'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Servidor - 4 dias',
+            'categoria' => 'Servidor - 4 aulas',
             'preco' => '50'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Servidor - 5 dias',
+            'categoria' => 'Servidor - 5 aulas',
             'preco' => '60'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Professor - 1 dia',
+            'categoria' => 'Professor - 1 aula',
             'preco' => '18'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Professor - 2 dias',
+            'categoria' => 'Professor - 2 aulas',
             'preco' => '35'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Professor - 3 dias',
+            'categoria' => 'Professor - 3 aulas',
             'preco' => '50'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Professor - 4 dias',
+            'categoria' => 'Professor - 4 aulas',
             'preco' => '60'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Professor - 5 dias',
+            'categoria' => 'Professor - 5 aulas',
             'preco' => '70'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Comunidade - 1 dia',
+            'categoria' => 'Comunidade - 1 aula',
             'preco' => '20'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Comunidade - 2 dias',
+            'categoria' => 'Comunidade - 2 aulas',
             'preco' => '40'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Comunidade - 3 dias',
+            'categoria' => 'Comunidade - 3 aulas',
             'preco' => '60'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Comunidade - 4 dias',
+            'categoria' => 'Comunidade - 4 aulas',
             'preco' => '70'
         ]);
         Categoria::create(
         [
-            'categoria' => 'Comunidade - 5 dias',
+            'categoria' => 'Comunidade - 5 aulas',
             'preco' => '80'
         ]);
     

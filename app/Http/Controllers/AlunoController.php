@@ -317,8 +317,6 @@ class AlunoController extends Controller
     public function destroy(Aluno $aluno)
     {
         $deletarAluno = Aluno::find($aluno->id);
-        $deletarPagamentos = Pagamento::where('aluno_id', $aluno->id);
-        $deletarPagamentos->delete();
         $deletarAluno->delete();
         return redirect()->route('alunos.index');
     }

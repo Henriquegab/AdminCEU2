@@ -15,7 +15,8 @@ class PagamentoController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::all();
+        $alunos = Aluno::withTrashed()->get();
+        // dd($alunos);
         $pagamentos = Pagamento::all();
 
         // dd($alunos);

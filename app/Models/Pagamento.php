@@ -13,7 +13,7 @@ class Pagamento extends Model
 
     public function aluno(){
 
-        return $this->hasOne(Aluno::class);
+        return $this->hasOne(Aluno::class)->withTrashed();
     }
 
 
