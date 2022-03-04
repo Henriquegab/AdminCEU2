@@ -31,7 +31,7 @@ Route::middleware('auth')->group(
         Route::resource('pagamentos', PagamentoController::class);
 
         Route::post('/pagamentos/create2', [PagamentoController::class, 'create2'])->name('pagamentos.create2');
-        Route::post('/pagamentos/store/{aluno}', [PagamentoController::class, 'store'])->name('pagamentos.store2');
+        Route::post('/pagamento/store/{aluno}', [PagamentoController::class, 'store'])->name('pagamentos.store2');
 
         Route::get('/aluno/excluidos', [AlunoController::class, 'excluidos'])->name('alunos.excluidos');
         Route::post('/aluno/restore/{id}', [AlunoController::class, 'restore'])->name('alunos.restore');

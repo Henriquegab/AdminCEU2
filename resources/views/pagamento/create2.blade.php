@@ -16,7 +16,7 @@
 
     <x-adminlte-card class="mt-3" style="width: 90%;" title="Pagamento" theme="dark" icon="far fa-fw fa-file">
     
-        <form method="post" action="{{ route('pagamentos.store2', ['aluno' => $aluno->id]) }}">
+        <form method="post" action="{{ route('pagamentos.store2', $aluno) }}">
             @csrf
         
         <div class="form-row">

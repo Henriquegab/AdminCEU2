@@ -49,6 +49,7 @@ class PagamentoController extends Controller
      */
     public function store(Aluno $aluno, Request $request)
     {
+        // dd(1);
         $hoje = Carbon::now();
 
         // dd($aluno);
@@ -73,12 +74,14 @@ class PagamentoController extends Controller
             
         ];
 
-        
-
-        $request->validate($regras, $feedback);
+        // dd(2);
 
         
+
+        $request->validate($regras, $feedback); // não está voltando pra rota anterior
+
         
+        dd(3);
 
         
 
