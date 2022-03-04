@@ -11,6 +11,7 @@
 @php
     use Carbon\Carbon;
     $hoje = Carbon::now();
+    // dd($aluno->observacao);
 @endphp
 
 <script> 
@@ -200,7 +201,9 @@
 
             <div class="col-md-8 mb-3">
                 <label for="observacao">Observações</label>
-                <x-adminlte-textarea value="{{ $aluno->observacao }}" name="observacao" placeholder="Insira aqui suas observações"/>
+                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações">
+                    {{ $aluno->observacao }}
+                </x-adminlte-textarea>
                 
             </div>
 
