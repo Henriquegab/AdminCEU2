@@ -9,6 +9,15 @@
 @stop
 
 @section('content')
+@php
+        
+        use Carbon\Carbon;
+        use App\Models\Pagamento;
+        use App\Models\Periodofiscal;
+        use App\Models\Aluno;
+        
+        
+    @endphp
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
 
@@ -28,48 +37,16 @@
     
 
 
-    {{-- @php
-        use App\Models\Cliente;
-        use App\Models\Produto;
-        use App\Models\PedidoProduto;
-        use App\Models\Pedido;
-        use App\Models\User;
-        $metaCliente = 300;
-        $metaProduto = 15;
-        $progressoCliente = Cliente::count() / $metaCliente * 100;
-        $progressoProduto = Produto::count() / $metaProduto * 100;
-        
-        
-        
-    @endphp --}}
+    
 
     
 
-    <div class="row">
-
-
-        <div class="col-md-6">
-            <x-adminlte-info-box title="Meta de Clientes" text="15" icon="fas fa-lg fa-users text-white" theme="gray"
-            icon-theme="dark" progress="15" progress-theme="teal"
-            description="15% da meta concluida!"/>
-        </div>
-
-
-        <div class="col-md-6">
-            <x-adminlte-info-box title="Meta de Produtos" text="2" icon="fas fa-lg fa-shopping-bag text-white"
-            theme="gray" id="ibUpdatable" progress="1" progress-theme="teal"
-            description="50% da meta concluida!"/>
-
-            
-        </div>
-
-       
-    </div>
+    
     <div class="row">
 
         <div class="col-md-4">
 
-            <x-adminlte-info-box title="Pedidos" text="12" icon="fas fa-lg fa-shopping-cart text-white" theme="gray"/>
+            <x-adminlte-info-box title="Alunos Cadastrados" text="{{ Aluno::count() }}" icon="fas fa-lg fa-user" theme="gray"/>
         </div>
         <div class="col-md-4">
         
@@ -79,7 +56,7 @@
         </div>
 
         <div class="col-md-4">
-            <x-adminlte-info-box title="1" text="Usuários Cadastrados" icon="fas fa-lg fa-user-plus text-gray"
+            <x-adminlte-info-box title="Mensalidades Pagas" text="{{ Aluno::where('pagamento_id', '!=', NULL)->count() }}" icon="fas fa-lg fa-user-plus text-gray"
             theme="gray" icon-theme="white"/>
 
             

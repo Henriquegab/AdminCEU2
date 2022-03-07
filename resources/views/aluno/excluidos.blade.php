@@ -116,7 +116,7 @@
                     <form method="post" action="{{ route('alunos.restore', $aluno->id) }}">
 
 
-                        <x-adminlte-modal id="{{ 'ctz' . $aluno->id }}" title="Confirmar Exclusão" size="md"
+                        <x-adminlte-modal id="{{ 'ctz' . $aluno->id }}" title="Confirmar Restauração" size="md"
                             theme="warning" icon="fas fa-exclamation-circle" v-centered static-backdrop>
                             <div style="height:50px;">Você tem Certeza que deseja restaurar o(a) aluno(a)
                                 {{ $aluno->nome }}?</div>
@@ -139,7 +139,7 @@
                     </form>
 
                     <button class="btn btn-xs btn-default text-danger mx-1 shadow" data-toggle="modal"
-                        data-target="{{ '#ctz' . $aluno->id }}" title="Deletar">
+                        data-target="{{ '#ctz' . $aluno->id }}" title="Restaurar">
                         <i class="fa fa-lg fa-fw fa-backward"></i>
                         
                     </button>
