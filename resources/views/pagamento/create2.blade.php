@@ -102,7 +102,7 @@
                 
 
 
-            
+            <input type="hidden" name="periodo_fiscal" value="">
 
             <button class="btn btn-primary" type="submit">Confirmar Pagamento
                 

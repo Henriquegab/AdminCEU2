@@ -60,15 +60,29 @@
                     
                     if ($aluno->pagamento_id) {
                         $pago = $aluno->pagamento->valor_pago;
-                        if ($pago < $aluno->categoria->preco) {
+                        if ($pago < $aluno->categoria->preco && $pago > 0) {
+                            //se o preço for menor que o valor da categoria mas maior que 0 a cor fica amarela
                             $cor = '#FFBA41';
+                            $pago = 'R$ ' . number_format($pago, 2);
                         }
                         else {
-                            $cor = 'LimeGreen';
+                            if ($pago == 0) {
+                                //se o valor pago for 0 é considerado isento
+                                $pago = 'Isento!';
+                                $cor = 'purple';
+                            }
+                            else {
+                                //se o valor for igual ou maior que o da categoria ficará verde
+                                $cor = 'LimeGreen';
+                                $pago = 'R$ ' . number_format($pago, 2);
+
+                            }
+                            
                         }
-                        $pago = 'R$ ' . number_format($pago, 2);
+                        
 
                     } else {
+                        //se nenhum pagamento foi constado ficará vermelho com status de não pago
                         $pago = 'Não pago!';
                         $cor = 'Red';
                     }

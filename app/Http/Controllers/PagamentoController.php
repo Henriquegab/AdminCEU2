@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Pagamento;
+use App\Models\Periodofiscal;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
 
@@ -61,9 +62,9 @@ class PagamentoController extends Controller
         
 
         
-        dd(3);
+        // dd(Periodofiscal::all()->first()['data']);
 
-        
+        $request['periodo_fiscal'] = Periodofiscal::all()->first()['data'];
 
         $pagamento = Pagamento::create($request->all());
 

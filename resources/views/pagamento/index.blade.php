@@ -23,10 +23,11 @@
 
     $heads = [
         ['label' => 'Id', 'width' => 5],
-        ['label' => 'Data', 'width' => 10],
         ['label' => 'Nome', 'width' => 20],
         ['label' => 'CPF', 'width' => 20], 
-        ['label' => 'Categoria', 'width' => 20], 
+        ['label' => 'Data', 'width' => 10],
+        ['label' => 'Categoria', 'width' => 20],
+        ['label' => 'Mês Referencia', 'width' => 10],
         ['label' => 'Mensalidade', 'width' => 18], 
         ['label' => 'Valor Pago', 'width' => 20],
         
@@ -46,7 +47,7 @@
         'filter' => true,
 
         'order' => [[0, 'asc']],
-        'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true],['orderable' => false]],
+        'columns' => [['orderable' => true],['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true],['orderable' => false]],
     ];
 
     @endphp
@@ -63,6 +64,9 @@
                 @php
                     $pagamento->data = new Carbon($pagamento->data);
                     $pagamento->data = $pagamento->data->isoFormat('DD/MM/YYYY');
+                    $pagamento->periodo_fiscal = new Carbon($pagamento->periodo_fiscal);
+                    $pagamento->periodo_fiscal = $pagamento->periodo_fiscal->isoFormat('DD/MM/YYYY');
+
                     // dd(Aluno::find($pagamento->aluno_id)->nome);
 
                 @endphp
@@ -70,10 +74,11 @@
                 
 
                 <td>{{ $pagamento->id }}</td>
-                <td>{{ $pagamento->data }}</td>
                 <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->nome }}</td>
                 <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->cpf }}</td>
+                <td>{{ $pagamento->data }}</td>
                 <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->categoria->categoria }}</td>
+                <td>{{ $pagamento->periodo_fiscal }}</td>
                 <td>{{ 'R$ ' . number_format(Aluno::withTrashed()->find($pagamento->aluno_id)->categoria->preco, 2) }}</td>
                 <td>{{ 'R$ ' . number_format($pagamento->valor_pago, 2) }}</td>
                 

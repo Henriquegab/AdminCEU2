@@ -69,7 +69,7 @@
 
             <div class="col-md-4 mb-3">
                 <label for="nascimento">Data de Nascimento*</label>
-                <input type="date" value="{{ $aluno->nascimento }}" class="form-control @error('nascimento') is-invalid @enderror" name="nascimento" placeholder="12/12/2012" required>
+                <input type="date" value="{{ $aluno->nascimento }}" class="form-control @error('nascimento') is-invalid @enderror" name="nascimento" placeholder="12/12/2012" required required max = {{ date(now()) }}>
                 @error('nascimento') <div class="invalid-feedback">{{ $errors->first('nascimento') }}</div> @enderror
             </div>
 
@@ -169,7 +169,7 @@
             
             <div class="col-md-4 mb-3">
                 <label for="data_atestado">Data do atestado*</label>
-                <input type="date" value="{{ $aluno->data_atestado }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012">
+                <input type="date" value="{{ $aluno->data_atestado }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012" required max = {{ date(now()) }}>
                 @error('data_atestado') <div class="invalid-feedback">{{ $errors->first('data_atestado') }}</div> @enderror
             </div>
 

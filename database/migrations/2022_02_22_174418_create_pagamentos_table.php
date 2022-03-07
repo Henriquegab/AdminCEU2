@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('valor_pago');
             $table->date('data');
+            $table->date('periodo_fiscal');
 
             $table->timestamps();
         });

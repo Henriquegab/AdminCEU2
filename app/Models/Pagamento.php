@@ -8,7 +8,7 @@ use App\Models\Aluno;
 
 class Pagamento extends Model
 {
-    protected $fillable = ['valor_pago', 'data', 'aluno_id'];
+    protected $fillable = ['valor_pago', 'data', 'aluno_id', 'periodo_fiscal'];
 
 
     public function aluno(){
