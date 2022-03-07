@@ -79,7 +79,7 @@
     
                 <div class="col-md-4 mb-3">
                     <label for="data">Data do Pagamento</label>
-                    <input type="date" value="{{ old('data') }}" class="form-control @error('data') is-invalid @enderror" name="data" placeholder="12/12/2012" required>
+                    <input type="date" value="{{ old('data') }}" class="form-control @error('data') is-invalid @enderror" name="data" placeholder="12/12/2012" required max = {{ date(now()) }}>
                     @error('data') <div class="invalid-feedback">{{ $errors->first('data') }}</div> @enderror
                 </div>
 

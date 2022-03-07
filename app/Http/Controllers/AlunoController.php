@@ -146,7 +146,7 @@ class AlunoController extends Controller
             'cpf' => 'required|cpf|unique:alunos',
             'nascimento' => 'required|date|before_or_equal:'.$hoje,
             'endereco' => 'required',
-            'telefone' => 'required',
+            
             'categoria_id' => 'required',
             'modalidade' => 'required',
             
@@ -254,7 +254,7 @@ class AlunoController extends Controller
             'cpf' => 'required|cpf|unique:alunos,cpf,' .$aluno->id,
             'nascimento' => 'required|date|before_or_equal:'.$hoje,
             'endereco' => 'required',
-            'telefone' => 'required',
+            
             'categoria_id' => 'required',
             'modalidade' => 'required',
             

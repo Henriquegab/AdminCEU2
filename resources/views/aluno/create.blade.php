@@ -110,9 +110,9 @@
             </div>
 
             <div class="col-md-2 mb-3">
-                <label for="telefone">Telefone*</label>
-                <input type="text" value="{{ old('telefone') }}" class="form-control @error('telefone') is-invalid @enderror" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 000000000" required>
-                @error('telefone') <div class="invalid-feedback">{{ $errors->first('telefone') }}</div> @enderror
+                <label for="telefone">Telefone</label>
+                <input type="text" value="{{ old('telefone') }}" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 000000000">
+                
             </div>
 
             @php

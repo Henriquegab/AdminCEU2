@@ -58,27 +58,7 @@ class PagamentoController extends Controller
 
         // dd($request->all());
 
-        $regras = [
-            
-            'valor_pago' => 'required|gte:0',
-            'data' => 'required|date|before:'.$hoje,
-            
-            
-            
-        ];
-
-        $feedback = [
-            'required' => 'O campo :attribute é obrigatório!',
-            'data.date' => 'A data tem que ser válida!',
-            'data.before' => 'A data não pode ser no futuro!',
-            
-        ];
-
-        // dd(2);
-
         
-
-        $request->validate($regras, $feedback); // não está voltando pra rota anterior
 
         
         dd(3);
