@@ -253,39 +253,37 @@ return [
             'route' => 'alunos.excluidos',
             'icon' => 'fas fa-fw fa-user-slash',
         ],
+        ['header' => 'GERENCIAMENTO DE CATEGORIAS'],
+        [
+            'text'        => 'Cadastro de Categoria',
+            'route'       => 'categorias.create',
+            'icon'        => 'fas fa-cart-plus',
+            
+        ],
+        [
+            'text'        => 'Listagem de Categorias',
+            'route'       => 'categorias.index',
+            'icon'        => 'fas fa-cart-arrow-down',
+            
+        ],
         ['header' => 'CONTROLE FINANCEIRO'],
 
         [
-            'text'    => 'Mensalidades',
-            'icon'    => 'fas fa-fw fa-calendar',
-            'submenu' => [
-                [
-                    'text'        => 'Cadastro de Categoria',
-                    'route'       => 'categorias.create',
-                    'icon'        => 'fas fa-cart-plus',
-                    
-                ],
-                [
-                    'text'        => 'Listagem de Categorias',
-                    'route'       => 'categorias.index',
-                    'icon'        => 'fas fa-cart-arrow-down',
-                    
-                ],
-                [
-                    'text' => 'Pagamentos',
+                    'text' => 'Pagar',
                     'route' => 'pagamentos.create',
                     'icon' => 'fas fa-fw fa-dollar-sign',
-                ],
-                [
+        ],
+        [
                     'text' => 'Histórico de Pagamentos',
                     'route' => 'pagamentos.index',
                     'icon' => 'fas fa-fw fa-file',
-                ],
-                
-                
-
-            ]
         ],
+        // [
+        //     'text' => 'Relatório de Pagamentos',
+        //     'route' => 'pagamentos.index',
+        //     'icon' => 'fas fa-fw fa-file',
+        // ],
+        
 
         
         
