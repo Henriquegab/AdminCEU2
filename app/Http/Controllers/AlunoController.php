@@ -197,7 +197,7 @@ class AlunoController extends Controller
     {
         $hoje = Carbon::now();
 
-        // dd($request);
+        dd($request);
 
         // dd($request);
 
@@ -215,7 +215,7 @@ class AlunoController extends Controller
             'inicio' => 'required|different:termino',
             'termino' => 'required|different:inicio',
             'data_atestado' => 'required|date|before:'.$hoje,
-            'dia' => 'required'
+            // 'dia' => 'required'
             
             
         ];

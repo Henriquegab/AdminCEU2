@@ -176,18 +176,25 @@
         <div class="form-row">
 
             
-            <div class="col-md-4 mb-3">
-                <label for="dias">Dias*</label>
-                <select class="form-control" name="dia[]" multiple required>
-                    
-                    <option>Segunda</option>
-                    <option>Terça</option>
-                    <option>Quarta</option>
-                    <option>Quinta</option>
-                    <option>Sexta</option>
-                    
-                  </select>
-
+            <div class="col-md-1 mb-3">
+                <label for="segunda">Segunda</label>
+                <input type="checkbox" class="input-group" name="segunda"/>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="terca">Terça</label>
+                <input type="checkbox" class="input-group" name="terca"/>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="quarta">Quarta</label>
+                <input type="checkbox" class="input-group" name="quarta"/>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="quinta">Quinta</label>
+                <input type="checkbox" class="input-group" name="quinta"/>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="sexta">Sexta</label>
+                <input type="checkbox" class="input-group" name="sexta"/>
             </div>
         
             
@@ -195,13 +202,18 @@
 
             
 
-            <div class="col-md-8 mb-3">
+            <div class="col-md-7 mb-3">
                 <label for="observacao">Observações</label>
                 <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações"/>
                 
             </div>
 
         </div>
+        <div class="form-row">
+            
+            
+        </div>
+        
 
         <input type="hidden" value="{{ $hoje }}" name="data">
         <input type="hidden" value="" name="dias">

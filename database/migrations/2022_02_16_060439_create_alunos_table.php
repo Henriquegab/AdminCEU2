@@ -29,7 +29,11 @@ return new class extends Migration
             $table->time('inicio')->nullable();      
             $table->time('termino')->nullable();      
             $table->text('observacao')->nullable();       
-            $table->string('dias', 50);       
+            $table->string('segunda', 20)->nullable();      
+            $table->string('terca', 20)->nullable();      
+            $table->string('quarta', 20)->nullable();      
+            $table->string('quinta', 20)->nullable();      
+            $table->string('sexta', 20)->nullable();      
             $table->date('data_atestado');
             $table->softDeletes();
             $table->timestamps();
