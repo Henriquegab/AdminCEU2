@@ -103,6 +103,8 @@
 
 
             <input type="hidden" name="periodo_fiscal" value="">
+            <input type="hidden" name="categoria" value="">
+            <input type="hidden" name="mensalidade" value="">
 
             <button class="btn btn-primary" type="submit">Confirmar Pagamento
                 

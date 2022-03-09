@@ -278,6 +278,11 @@ return [
                     'route' => 'pagamentos.index',
                     'icon' => 'fas fa-fw fa-file',
         ],
+        [
+            'text' => 'Relatório de Pagamentos',
+            'route' => 'pagamentos.index',
+            'icon' => 'fas fa-fw fa-file',
+        ],
         // [
         //     'text' => 'Relatório de Pagamentos',
         //     'route' => 'pagamentos.index',

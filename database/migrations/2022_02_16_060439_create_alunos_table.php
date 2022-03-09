@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('endereco', 50)->nullable();
             $table->string('numero', 50)->nullable();
             $table->string('telefone', 30)->nullable();
-            
             $table->string('modalidade', 30)->nullable();
             $table->date('data')->nullable();
             $table->time('inicio')->nullable();      

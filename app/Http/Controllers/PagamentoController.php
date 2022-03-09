@@ -65,6 +65,8 @@ class PagamentoController extends Controller
         // dd(Periodofiscal::all()->first()['data']);
 
         $request['periodo_fiscal'] = Periodofiscal::all()->last()['data'];
+        $request['categoria'] = $aluno->categoria->categoria;
+        $request['mensalidade'] = $aluno->categoria->preco;
 
         $pagamento = Pagamento::create($request->all());
 

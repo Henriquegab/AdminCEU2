@@ -55,7 +55,7 @@
         with-buttons beautify>
         @foreach ($alunos as $aluno)
             
-            <tr>
+            <tr style="background-color: rgba(255, 160, 160, 0.159)"> 
                 @php
                     
                     if ($aluno->pagamento_id) {
@@ -87,6 +87,24 @@
                         $cor = 'Red';
                     }
 
+                    $dias = '';
+                    //lógica para printar os dias na lista
+                    if ($aluno->segunda) {
+                        $dias = $dias.'Segunda';
+                    }
+                    if ($aluno->terca) {
+                        $dias = $dias.' '.'Terça';
+                    }
+                    if ($aluno->quarta) {
+                        $dias = $dias.' '.'Quarta';
+                    }
+                    if ($aluno->quinta) {
+                        $dias = $dias.' '.'Quinta';
+                    }
+                    if ($aluno->sexta) {
+                        $dias = $dias.' '.'Sexta';
+                    }
+
                     
                     
                 @endphp
@@ -96,7 +114,7 @@
                 <td>{{ $aluno->modalidade }}</td>
                 <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td>
                 <td>{{ $aluno->categoria->categoria }}</td>
-                <td>{{ $aluno->dias }}</td>
+                <td>{{ $dias }}</td>
                 <td>{{ 'R$ ' . number_format($aluno->categoria->preco, 2) }}</td>
                 <td style="color:{{ $cor }}">
                     {{ $pago }}</td>

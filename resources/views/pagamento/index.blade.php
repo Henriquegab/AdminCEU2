@@ -78,9 +78,9 @@
                 <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->nome }}</td>
                 <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->cpf }}</td>
                 <td>{{ $pagamento->data }}</td>
-                <td>{{ Aluno::withTrashed()->find($pagamento->aluno_id)->categoria->categoria }}</td>
+                <td>{{ $pagamento->categoria }}</td>
                 <td>{{ $pagamento->periodo_fiscal }}</td>
-                <td>{{ 'R$ ' . number_format(Aluno::withTrashed()->find($pagamento->aluno_id)->categoria->preco, 2) }}</td>
+                <td>{{ 'R$ ' . number_format($pagamento->mensalidade, 2) }}</td>
                 <td>{{ 'R$ ' . number_format($pagamento->valor_pago, 2) }}</td>
                 
                     

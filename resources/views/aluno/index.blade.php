@@ -86,6 +86,7 @@
                         $cor = 'Red';
                     }
                     $dias = '';
+                    //lógica para printar os dias na lista
                     if ($aluno->segunda) {
                         $dias = $dias.'Segunda';
                     }

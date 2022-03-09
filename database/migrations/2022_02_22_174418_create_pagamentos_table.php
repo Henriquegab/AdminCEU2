@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('pagamentos', function (Blueprint $table) {
             $table->id();
             $table->string('valor_pago');
+            $table->string('categoria')->nullable();
+            $table->string('mensalidade')->nullable();
             $table->date('data');
             $table->date('periodo_fiscal');
 
