@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Histórico de Pagamentos')
+@section('title', 'Relatório de Pagamentos')
 
 @section('content_header')
 
@@ -31,23 +31,15 @@
         ['label' => 'Mensalidade', 'width' => 18], 
         ['label' => 'Valor Pago', 'width' => 20],
         
-        ['label' => 'Ações', 'no-export' => true, 'width' => 5]];
-    $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                    <i class="fa fa-lg fa-fw fa-pen"></i>
-                </button>';
-    $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-                    <i class="fa fa-lg fa-fw fa-trash"></i>
-                </button>';
-    $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                    <i class="fa fa-lg fa-fw fa-eye"></i>
-                </button>';
+        ];
+   
 
     $config = [
         'paging' => true,
         'filter' => true,
 
         'order' => [[0, 'asc']],
-        'columns' => [['orderable' => true],['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true],['orderable' => false]],
+        'columns' => [['orderable' => true],['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true]],
     ];
     // dd($pagamentos->get());
 
@@ -91,38 +83,36 @@
                 
                     
                     
-                <td>
-                    
-
-
-
-                    <form action="{{ route('pagamentos.edit', $pagamento->id) }}">
-                        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
-                            <i class="fa fa-lg fa-fw fa-pen"></i>
-                        </button>
-                    </form>
-
-
-
-                    
-
-
-
-
-                    
-
-                </td>
+                
             </tr>
         @endforeach
-
+        
+        
+        
+        
         
     </x-adminlte-datatable>
-    
-    <div style="padding-left: 75%" >
 
-        <x-adminlte-info-box title="Subtotal" text="{{ 'R$ '.number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/> 
+    
+    
+    <div class="row">
+        
+        <div class="col-md-6">
+            <x-adminlte-info-box title="Mensalidades Pagas" text="{{ $pagamentos->count() }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/> 
+            
+        </div>
+        <div class="col-md-6">
+            <x-adminlte-info-box title="Subtotal" text="{{ 'R$ '.number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/> 
+
+        </div>
+        
+        
 
     </div>
+
+    <center>
+        <button class="btn btn-primary hidden-print" onclick="printar()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>Imprimir</button>
+   </center>
 
 
 
@@ -144,7 +134,11 @@
 
 @section('js')
 
-
+<script>
+    function printar() {
+    window.print();
+}
+</script>
 
 @stop
 
