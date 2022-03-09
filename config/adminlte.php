@@ -280,7 +280,7 @@ return [
         ],
         [
             'text' => 'Relatório de Pagamentos',
-            'route' => 'pagamentos.index',
+            'route' => 'pagamentos.create_relatorio',
             'icon' => 'fas fa-fw fa-file',
         ],
         // [

@@ -42,6 +42,20 @@ class PagamentoController extends Controller
         return view('pagamento.create2', ['aluno' => $aluno]);
     }
 
+    public function create_relatorio()
+    {
+        $periodofiscal = Periodofiscal::all();
+        return view('pagamento.create_relatorio', ['periodofiscal' => $periodofiscal]);
+    }
+    public function lista_relatorio(Request $request)
+    {
+        $alunos = Aluno::withTrashed()->get();
+        $periodofiscal = Periodofiscal::find($request->periodofiscal);
+        $pagamentos = Pagamento::where('periodo_fiscal', $periodofiscal->data);
+        // dd($pagamentos->get());
+        return view('pagamento.lista_relatorio', ['alunos' => $alunos, 'pagamentos' => $pagamentos]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
