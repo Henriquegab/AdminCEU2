@@ -178,20 +178,27 @@
         </div>
 
         <div class="form-row">
-
             
-            <div class="col-md-4 mb-3">
-                <label for="dias">Dias*</label>
-                <select class="form-control" name="dia[]" multiple required>
-                    
-                    <option>Segunda</option>
-                    <option>Terça</option>
-                    <option>Quarta</option>
-                    <option>Quinta</option>
-                    <option>Sexta</option>
-                    
-                  </select>
-
+            
+            <div class="col-md-1 mb-3">
+                <label for="segunda">Segunda</label>
+                <input type="checkbox" class="input-group" name="segunda" <?php echo ($aluno->segunda == 'on' ? 'checked' : '') ?>/>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="terca">Terça</label>
+                <input type="checkbox" class="input-group" name="terca" <?php echo ($aluno->terca == 'on' ? 'checked' : '') ?>/>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="quarta">Quarta</label>
+                <input type="checkbox" class="input-group" name="quarta" <?php echo ($aluno->quarta == 'on' ? 'checked' : '') ?>/>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="quinta">Quinta</label>
+                <input type="checkbox" class="input-group" name="quinta" <?php echo ($aluno->quinta == 'on' ? 'checked' : '') ?>/>
+            </div>
+            <div class="col-md-1 mb-3">
+                <label for="sexta">Sexta</label>
+                <input type="checkbox" class="input-group" name="sexta" <?php echo ($aluno->sexta == 'on' ? 'checked' : '') ?>/>
             </div>
         
             
@@ -199,18 +206,16 @@
 
             
 
-            <div class="col-md-8 mb-3">
+            <div class="col-md-7 mb-3">
                 <label for="observacao">Observações</label>
-                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações">
-                    {{ $aluno->observacao }}
-                </x-adminlte-textarea>
+                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações"/>
                 
             </div>
 
         </div>
 
-        <input type="hidden" value="{{ $hoje }}" name="data">
-        <input type="hidden" value="" name="dias">
+        {{-- <input type="hidden" value="{{ $hoje }}" name="data">
+        <input type="hidden" value="" name="dias"> --}}
 
         <button class="btn btn-primary" type="submit">Cadastrar</button>
 

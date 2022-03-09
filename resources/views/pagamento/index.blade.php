@@ -66,6 +66,7 @@
                     $pagamento->data = $pagamento->data->isoFormat('DD/MM/YYYY');
                     $pagamento->periodo_fiscal = new Carbon($pagamento->periodo_fiscal);
                     $pagamento->periodo_fiscal = $pagamento->periodo_fiscal->isoFormat('MM-YYYY');
+                    
 
                     // dd(Aluno::find($pagamento->aluno_id)->nome);
 

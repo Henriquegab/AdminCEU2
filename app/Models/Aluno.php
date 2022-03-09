@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aluno extends Model
 {
-    protected $fillable = ['nome', 'cpf', 'nascimento', 'pai', 'mae', 'endereco', 'numero','inicio', 'termino', 'telefone', 'modalidade', 'data', 'observacao', 'data_atestado', 'categoria_id', 'dias'];
+    protected $fillable = ['nome', 'cpf', 'nascimento', 'pai', 'mae', 'endereco', 'numero','inicio', 'termino', 'telefone', 'modalidade', 'data', 'observacao', 'data_atestado', 'categoria_id', 'segunda', 'terca', 'quarta', 'quinta', 'sexta'];
     use HasFactory;
     use SoftDeletes;
 

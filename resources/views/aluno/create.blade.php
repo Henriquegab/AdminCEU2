@@ -215,8 +215,8 @@
         </div>
         
 
-        <input type="hidden" value="{{ $hoje }}" name="data">
-        <input type="hidden" value="" name="dias">
+        {{-- <input type="hidden" value="{{ $hoje }}" name="data">
+        <input type="hidden" value="" name="dias"> --}}
 
         <button class="btn btn-primary" type="submit">Cadastrar</button>
 

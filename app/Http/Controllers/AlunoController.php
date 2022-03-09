@@ -107,7 +107,7 @@ class AlunoController extends Controller
             'inicio' => 'required|different:termino',
             'termino' => 'required|different:inicio',
             'data_atestado' => 'required|date|before:'.$hoje,
-            'dia' => 'required'
+            
             
             
         ];
@@ -126,18 +126,18 @@ class AlunoController extends Controller
         
 
         $request->validate($regras, $feedback);
-        $count = 0;
+        // $count = 0;
 
-        foreach ($request->dia as $dia) {
-            if($count == 0){
-                $request['dias'] = $dia;
-            }
-            else{
-                $request['dias'] = $request->dias.' '.$dia;
-            };
-            $count++;
+        // foreach ($request->dia as $dia) {
+        //     if($count == 0){
+        //         $request['dias'] = $dia;
+        //     }
+        //     else{
+        //         $request['dias'] = $request->dias.' '.$dia;
+        //     };
+        //     $count++;
             
-        }
+        // }
 
         
         
@@ -197,7 +197,7 @@ class AlunoController extends Controller
     {
         $hoje = Carbon::now();
 
-        dd($request);
+        // dd($request);
 
         // dd($request);
 
@@ -234,18 +234,18 @@ class AlunoController extends Controller
         
 
         $request->validate($regras, $feedback);
-        $count = 0;
+        // $count = 0;
 
-        foreach ($request->dia as $dia) {
-            if($count == 0){
-                $request['dias'] = $dia;
-            }
-            else{
-                $request['dias'] = $request->dias.' '.$dia;
-            };
-            $count++;
+        // foreach ($request->dia as $dia) {
+        //     if($count == 0){
+        //         $request['dias'] = $dia;
+        //     }
+        //     else{
+        //         $request['dias'] = $request->dias.' '.$dia;
+        //     };
+        //     $count++;
             
-        }
+        // }
 
         
         
