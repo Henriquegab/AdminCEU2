@@ -5,7 +5,6 @@
 @section('title', 'Menu')
 
 @section('content_header')
-    
 @stop
 
 @section('content')
@@ -15,13 +14,18 @@
         use App\Models\Pagamento;
         use App\Models\Periodofiscal;
         use App\Models\Aluno;
+        $periodofiscal = Periodofiscal::all()->last()->data;
+
+        $data = new Carbon($periodofiscal);
+        $data = $data->isoFormat('DD/MM/YYYY');
+        
         
         
     @endphp
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
 
-<x-adminlte-card class="mt-3" title="Menu Principal" theme="dark" icon="far fa-fw fa-compass">
+<x-adminlte-card class="mt-3" title="Menu Principal - Período fiscal atual: {{ $data }}" theme="dark" icon="far fa-fw fa-compass">
 
 
 
@@ -56,7 +60,7 @@
         </div>
 
         <div class="col-md-4">
-            <x-adminlte-info-box title="Mensalidades Pagas" text="{{ Aluno::where('pagamento_id', '!=', NULL)->count() }}" icon="fas fa-lg fa-user-plus text-gray"
+            <x-adminlte-info-box title="Mensalidades Pagas" text="{{ Pagamento::where('periodo_fiscal', '=', $periodofiscal)->count() }}" icon="fas fa-lg fa-user-plus text-gray"
             theme="gray" icon-theme="white"/>
 
             
