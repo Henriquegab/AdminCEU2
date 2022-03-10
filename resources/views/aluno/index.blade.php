@@ -43,7 +43,7 @@
 
     $config = [
         'paging' => true,
-        'filter' => true,
+        // 'filter' => true,
 
         'order' => [[0, 'asc']],
         'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
@@ -62,14 +62,17 @@
         @php
             $periodofiscal = Periodofiscal::all()->last();
             $periodofiscal->data = new Carbon($periodofiscal->data);
-            
+            $aluno->created_at = new Carbon($aluno->created_at);
+            $hoje = Carbon::now();
             
             
 
             
             $pagamento = Pagamento::where('periodo_fiscal', $periodofiscal->data->subMonth()->toDateString())->where('aluno_id', $aluno->id)->first();
             $periodofiscal->data->addMonth();
-            if (empty($pagamento)) {
+            //aluno ausente
+            if (empty($pagamento) && $aluno->pagamento_id == NULL && $aluno->created_at->addMonth(1) <= $hoje) {
+                $aluno->created_at->subMonth(1);
                 $status = 1;
                 $bgcolor = 'rgba(255, 160, 160, 0.250)';
             }
