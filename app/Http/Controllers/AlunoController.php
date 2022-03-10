@@ -64,6 +64,30 @@ class AlunoController extends Controller
 
         // dd($alunos);
 
+        // $teste = [];
+        // $teste2 = [];
+
+        // foreach ($alunos as $aluno) {
+        //     $periodofiscal = Periodofiscal::all()->last();
+        //     $periodofiscal->data = new Carbon($periodofiscal->data);
+            
+            
+            
+
+            
+        //     $pagamento = Pagamento::where('periodo_fiscal', $periodofiscal->data->subMonth()->toDateString())->where('aluno_id', $aluno->id)->first();
+        //     $periodofiscal->data->addMonth();
+        //     if (empty($pagamento) && $aluno->pagamento_id == NULL) {
+        //         array_push($teste, $aluno->nome);
+        //     }
+        //     else {
+                
+        //         array_push($teste2, $pagamento->id);
+                
+        //     }
+            
+        // }
+        // dd($teste);
 
         return view('aluno.index',['alunos' => $alunos]);
     }

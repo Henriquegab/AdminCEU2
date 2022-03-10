@@ -18,6 +18,8 @@
     @php
     use App\Models\Categoria;
     use App\Models\Pagamento;
+    use App\Models\Periodofiscal;
+    use Carbon\Carbon;
 
     $heads = [
         ['label' => 'Nome', 'width' => 20], 
@@ -47,6 +49,8 @@
         'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
     ];
 
+
+
     @endphp
 
     
@@ -54,7 +58,30 @@
     <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable
         with-buttons beautify>
         @foreach ($alunos as $aluno)
-            <tr>
+
+        @php
+            $periodofiscal = Periodofiscal::all()->last();
+            $periodofiscal->data = new Carbon($periodofiscal->data);
+            
+            
+            
+
+            
+            $pagamento = Pagamento::where('periodo_fiscal', $periodofiscal->data->subMonth()->toDateString())->where('aluno_id', $aluno->id)->first();
+            $periodofiscal->data->addMonth();
+            if (empty($pagamento)) {
+                $status = 1;
+                $bgcolor = 'rgba(255, 160, 160, 0.250)';
+            }
+            else {
+                
+                $status = 0;
+                $bgcolor = '';
+            }
+            // dd(2);
+            
+        @endphp
+            <tr style="background-color: {{ $bgcolor }}">
                 @php
                     
                     if ($aluno->pagamento_id) {
@@ -82,8 +109,16 @@
 
                     } else {
                         //se nenhum pagamento foi constado ficará vermelho com status de não pago
-                        $pago = 'Não pago!';
-                        $cor = 'Red';
+                        if ($status == 1) {
+                            $pago = 'Aluno Ausente!';
+                            $cor = 'purple';
+                        }
+                        else {
+                            $pago = 'Não pago!';
+                            $cor = 'Red';
+                        }
+                        
+                        
                     }
                     $dias = '';
                     //lógica para printar os dias na lista
