@@ -19,10 +19,25 @@
 
         $data = new Carbon($periodofiscal);
         
-
+        $valormes = [];
+        
         
 
+        for ($i=0; $i < 6 ; $i++) { 
+            $calculos = Pagamento::where('periodo_fiscal', $data->subMonth($i));
+            
+            $total = 0;
+            
 
+            foreach ($calculos->get() as $calculo) {
+                $total += $calculo->valor_pago;
+                
+            }
+            array_push($valormes, $total);
+            $data->addMonth($i);
+        }
+        
+        
         
         
         
@@ -59,7 +74,7 @@
         </div>
         <div class="col-md-4">
         
-            <x-adminlte-info-box title="Valor Arrecadado em {{ $data->monthName }}" text="{{ 'R$ ' . number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-green" theme="gray"/>
+            <x-adminlte-info-box title="Valor Arrecadado em {{ $data->monthName }}" text="{{ 'R$ ' . number_format($valormes[0], 2) }}" icon="fas fa-lg fa-dollar-sign text-green" theme="gray"/>
 
             
         </div>
@@ -82,10 +97,20 @@
                     const myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+                            labels: ['<?php echo $data->subMonth(5)->monthName; $data->addMonth(5); ?> de <?php echo $data->subMonth(5)->year; $data->addMonth(5); ?>',
+                            '<?php echo $data->subMonth(4)->monthName; $data->addMonth(4); ?> de <?php echo $data->subMonth(4)->year; $data->addMonth(4); ?>',
+                            '<?php echo $data->subMonth(3)->monthName; $data->addMonth(3); ?> de <?php echo $data->subMonth(3)->year; $data->addMonth(3); ?>',
+                            '<?php echo $data->subMonth(2)->monthName; $data->addMonth(2); ?> de <?php echo $data->subMonth(2)->year; $data->addMonth(2); ?>',
+                            '<?php echo $data->subMonth(1)->monthName; $data->addMonth(1); ?> de <?php echo $data->subMonth(1)->year; $data->addMonth(1); ?>',
+                            '<?php echo $data->monthName ?> de <?php echo $data->year ?>'],
                             datasets: [{
                                 label: 'Quantia',
-                                data: [1, 2, 3, 4, 5, 6],
+                                data: ['<?php echo $valormes[5] ?>',
+                                '<?php echo $valormes[4] ?>',
+                                '<?php echo $valormes[3] ?>',
+                                '<?php echo $valormes[2] ?>',
+                                '<?php echo $valormes[1] ?>',
+                                '<?php echo $valormes[0] ?>'],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)',
                                     'rgba(54, 162, 235, 0.2)',

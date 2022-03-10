@@ -86,24 +86,24 @@ class HomeController extends Controller
             
         }
 
-        $data = Periodofiscal::all()->last();
+        // $data = Periodofiscal::all()->last();
         
-        $pagamentos = Pagamento::where('periodo_fiscal', $data->data);
-        // dd($pagamentos->get());
-        $total = 0;
-        // dd($pagamentos->get());
+        // $pagamentos = Pagamento::where('periodo_fiscal', $data->data);
+        // // dd($pagamentos->get());
+        // $total = 0;
+        // // dd($pagamentos->get());
 
-        foreach ($pagamentos->get() as $pagamento) {
-            $total += $pagamento->valor_pago;
-            // dd(1);
-        }
+        // foreach ($pagamentos->get() as $pagamento) {
+        //     $total += $pagamento->valor_pago;
+        //     // dd(1);
+        // }
 
 
-        // dd($total);
+        // // dd($total);
 
 
         
         
-        return view('home', ['total' => $total]);
+        return view('home');
     }
 }
