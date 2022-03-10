@@ -208,7 +208,7 @@
 
             <div class="col-md-7 mb-3">
                 <label for="observacao">Observações</label>
-                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações"/>
+                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações">{{ $aluno->observacao }}</x-adminlte-textarea>
                 
             </div>
 
