@@ -15,9 +15,14 @@
         use App\Models\Periodofiscal;
         use App\Models\Aluno;
         $periodofiscal = Periodofiscal::all()->last()->data;
+        
 
         $data = new Carbon($periodofiscal);
-        $data = $data->isoFormat('DD/MM/YYYY');
+        
+
+        
+
+
         
         
         
@@ -25,7 +30,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
 
-<x-adminlte-card class="mt-3" title="Menu Principal - Período fiscal atual: {{ $data }}" theme="dark" icon="far fa-fw fa-compass">
+<x-adminlte-card class="mt-3" title="Menu Principal - Período fiscal atual: {{ $data->isoFormat('MM/YYYY') }}" theme="dark" icon="far fa-fw fa-compass">
 
 
 
@@ -54,7 +59,7 @@
         </div>
         <div class="col-md-4">
         
-            <x-adminlte-info-box title="Valor Arrecadado" icon="fas fa-lg fa-dollar-sign text-green" theme="gray"/>
+            <x-adminlte-info-box title="Valor Arrecadado em {{ $data->monthName }}" text="{{ 'R$ ' . number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-green" theme="gray"/>
 
             
         </div>

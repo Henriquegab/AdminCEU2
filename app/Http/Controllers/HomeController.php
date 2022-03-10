@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Periodofiscal;
 use App\Models\Aluno;
+use App\Models\Pagamento;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -84,7 +85,25 @@ class HomeController extends Controller
 
             
         }
+
+        $data = Periodofiscal::all()->last();
         
-        return view('home');
+        $pagamentos = Pagamento::where('periodo_fiscal', $data->data);
+        // dd($pagamentos->get());
+        $total = 0;
+        // dd($pagamentos->get());
+
+        foreach ($pagamentos->get() as $pagamento) {
+            $total += $pagamento->valor_pago;
+            // dd(1);
+        }
+
+
+        // dd($total);
+
+
+        
+        
+        return view('home', ['total' => $total]);
     }
 }
