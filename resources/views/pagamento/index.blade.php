@@ -69,7 +69,16 @@
                     
 
                     // dd(Aluno::find($pagamento->aluno_id)->nome);
-
+                    
+                        if ($pagamento->mensalidade > $pagamento->valor_pago && $pagamento->valor_pago != 0) {
+                            $cor = '#FFBA41';
+                        }
+                        elseif ($pagamento->mensalidade <= $pagamento->valor_pago) {
+                            $cor = 'LimeGreen';
+                        }
+                        else {
+                            $cor = 'purple';
+                        }
                 @endphp
             <tr>
                 
@@ -81,7 +90,7 @@
                 <td>{{ $pagamento->categoria }}</td>
                 <td>{{ $pagamento->periodo_fiscal }}</td>
                 <td>{{ 'R$ ' . number_format($pagamento->mensalidade, 2) }}</td>
-                <td>{{ 'R$ ' . number_format($pagamento->valor_pago, 2) }}</td>
+                <td style="color: {{ $cor }}">{{ 'R$ ' . number_format($pagamento->valor_pago, 2) }}</td>
                 
                     
                     

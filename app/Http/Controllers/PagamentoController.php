@@ -114,7 +114,7 @@ class PagamentoController extends Controller
     public function edit(Pagamento $pagamento)
     {
         // dd($pagamento->aluno);
-        $aluno = Aluno::find($pagamento->aluno_id);
+        $aluno = Aluno::withTrashed()->find($pagamento->aluno_id);
         return view('pagamento.edit', ['pagamento' => $pagamento, 'aluno' => $aluno]);
     }
 
@@ -130,7 +130,7 @@ class PagamentoController extends Controller
         $pagamento->update([
             'valor_pago' => $request['valor_pago']
         ]);
-        return view('home');
+        return redirect()->route('pagamentos.index');
     }
 
     /**
