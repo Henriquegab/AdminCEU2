@@ -23,7 +23,7 @@
         
         
 
-        for ($i=0; $i < 6 ; $i++) { 
+        for ($i=0; $i < 12 ; $i++) { 
             $calculos = Pagamento::where('periodo_fiscal', $data->subMonth($i));
             
             $total = 0;
@@ -88,7 +88,7 @@
 
     </div>
 
-    <x-adminlte-card title="Valores arrecadados nos ultimos 6 meses" theme="gray" icon="fas fa-lg fa-dollar-sign text-green" removable collapsible >
+    <x-adminlte-card title="Valores arrecadados nos ultimos 12 meses" theme="gray" icon="fas fa-lg fa-dollar-sign text-green" removable collapsible >
         
         
             <canvas id="myChart" width="200" height="50"></canvas>
@@ -97,7 +97,13 @@
                     const myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['<?php echo $data->subMonth(5)->monthName; $data->addMonth(5); ?> de <?php echo $data->subMonth(5)->year; $data->addMonth(5); ?>',
+                            labels: ['<?php echo $data->subMonth(11)->monthName; $data->addMonth(11); ?> de <?php echo $data->subMonth(11)->year; $data->addMonth(11); ?>',
+                            '<?php echo $data->subMonth(10)->monthName; $data->addMonth(10); ?> de <?php echo $data->subMonth(10)->year; $data->addMonth(10); ?>',
+                            '<?php echo $data->subMonth(9)->monthName; $data->addMonth(9); ?> de <?php echo $data->subMonth(9)->year; $data->addMonth(9); ?>',
+                            '<?php echo $data->subMonth(8)->monthName; $data->addMonth(8); ?> de <?php echo $data->subMonth(8)->year; $data->addMonth(8); ?>',
+                            '<?php echo $data->subMonth(7)->monthName; $data->addMonth(7); ?> de <?php echo $data->subMonth(7)->year; $data->addMonth(7); ?>',
+                            '<?php echo $data->subMonth(6)->monthName; $data->addMonth(6); ?> de <?php echo $data->subMonth(6)->year; $data->addMonth(6); ?>',
+                            '<?php echo $data->subMonth(5)->monthName; $data->addMonth(5); ?> de <?php echo $data->subMonth(5)->year; $data->addMonth(5); ?>',
                             '<?php echo $data->subMonth(4)->monthName; $data->addMonth(4); ?> de <?php echo $data->subMonth(4)->year; $data->addMonth(4); ?>',
                             '<?php echo $data->subMonth(3)->monthName; $data->addMonth(3); ?> de <?php echo $data->subMonth(3)->year; $data->addMonth(3); ?>',
                             '<?php echo $data->subMonth(2)->monthName; $data->addMonth(2); ?> de <?php echo $data->subMonth(2)->year; $data->addMonth(2); ?>',
@@ -105,7 +111,14 @@
                             '<?php echo $data->monthName ?> de <?php echo $data->year ?>'],
                             datasets: [{
                                 label: 'Quantia',
-                                data: ['<?php echo $valormes[5] ?>',
+                                data: [
+                                '<?php echo $valormes[11] ?>',
+                                '<?php echo $valormes[10] ?>',
+                                '<?php echo $valormes[9] ?>',
+                                '<?php echo $valormes[8] ?>',
+                                '<?php echo $valormes[7] ?>',
+                                '<?php echo $valormes[6] ?>',
+                                '<?php echo $valormes[5] ?>',
                                 '<?php echo $valormes[4] ?>',
                                 '<?php echo $valormes[3] ?>',
                                 '<?php echo $valormes[2] ?>',
