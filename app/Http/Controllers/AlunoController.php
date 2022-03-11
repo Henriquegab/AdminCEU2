@@ -128,8 +128,8 @@ class AlunoController extends Controller
             'categoria_id' => 'required',
             'modalidade' => 'required',
             
-            'inicio' => 'required|different:termino',
-            'termino' => 'required|different:inicio',
+            'inicio' => 'required|before_or_equal:termino|different:termino',
+            'termino' => 'required|after_or_equal:inicio|different:inicio',
             'data_atestado' => 'required|date|before:'.$hoje,
             
             
@@ -142,8 +142,10 @@ class AlunoController extends Controller
             'cpf.unique' => 'O cpf ja existe!',
             'nascimento.before_or_equal' => 'A data de nascimento não pode ser no futuro e nem hoje!',
             'data_atestado.before' => 'A data do atestado não pode ser no futuro!',
-            'inicio.different' => 'O início não pode ser igual ao termino!',
-            'termino.different' => 'O termino não pode ser igual ao início!',
+            'inicio.before_or_equal' => 'O início não pode ser maior do que o término!',
+            'termino.after_or_equal' => 'O término não pode ser menor do que o início!',
+            'inicio.different' => 'O início não pode ser igual ao término!',
+            'termino.different' => 'O término não pode ser igual ao início!',
             
         ];
 
@@ -236,8 +238,8 @@ class AlunoController extends Controller
             'categoria_id' => 'required',
             'modalidade' => 'required',
             
-            'inicio' => 'required|different:termino',
-            'termino' => 'required|different:inicio',
+            'inicio' => 'required|before_or_equal:termino|different:termino',
+            'termino' => 'required|after_or_equal:inicio|different:inicio',
             'data_atestado' => 'required|date|before:'.$hoje,
             // 'dia' => 'required'
             
@@ -250,8 +252,10 @@ class AlunoController extends Controller
             'cpf.unique' => 'O cpf ja existe!',
             'nascimento.before_or_equal' => 'A data de nascimento não pode ser no futuro e nem hoje!',
             'data_atestado.before' => 'A data do atestado não pode ser no futuro!',
-            'inicio.different' => 'O início não pode ser igual ao termino!',
-            'termino.different' => 'O termino não pode ser igual ao início!',
+            'inicio.before_or_equal' => 'O início não pode ser maior do que o término!',
+            'termino.after_or_equal' => 'O término não pode ser menor do que o início!',
+            'inicio.different' => 'O início não pode ser igual ao término!',
+            'termino.different' => 'O término não pode ser igual ao início!',
             
         ];
 
