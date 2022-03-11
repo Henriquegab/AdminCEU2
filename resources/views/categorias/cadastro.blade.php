@@ -10,9 +10,9 @@
 
 
 
-<div class="row justify-content-center align-self-center">
+<div class="d-flex justify-content-center align-self-center">
 
-    <x-adminlte-card class="mt-3" style="width: 35rem;" title="Cadastro de Categoria" theme="dark" icon="far fa-fw fa-file">
+    <x-adminlte-card class="mt-3" title="Cadastro de Categoria" theme="dark" icon="far fa-fw fa-file">
     
         <form method="post" action="{{ route('categorias.store') }}">
             @csrf
