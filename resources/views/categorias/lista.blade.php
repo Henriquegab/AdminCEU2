@@ -134,6 +134,6 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
 @stop
 
 @section('footer')
-<h6 align="center" style=""></a>Happy System - <a href="https://www.linkedin.com/in/henrique-gabriel-siqueira-da-cruz-0826a4146/">Henrique gabriel</a>  Todos os Direitos Reservados <a href="https://github.com/Henriquegab" class="fa fa-github"></a></h6>
+<h6 align="center" style=""></a>AdminCEU - <a href="https://www.linkedin.com/in/henrique-gabriel-siqueira-da-cruz-0826a4146/">Henrique gabriel</a>  Todos os Direitos Reservados <a href="https://github.com/Henriquegab" class="fa fa-github"></a></h6>
     
 @stop
