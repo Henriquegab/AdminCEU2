@@ -27,25 +27,25 @@
                 <div class="col-md-5 mb-3">
                     <label for="aluno">Nome</label>
                     
-                        <input type="text" class="form-control" disabled value="{{ $pagamento->aluno->nome }}">
+                        <input type="text" class="form-control" disabled value="{{ $aluno->nome }}">
                     
                 </div>
                 <div class="col-md-2">
                     <label for="cpf">CPF</label>
                     
-                        <input type="text" class="form-control" disabled value="{{ $pagamento->aluno->cpf }}">
+                        <input type="text" class="form-control" disabled value="{{ $aluno->cpf }}">
                     
                 </div>
                 <div class="col-md-2 mb-3">
                     <label for="modalidade">Modalidade</label>
                     
-                        <input type="text" class="form-control" disabled value="{{ $pagamento->aluno->modalidade }}">
+                        <input type="text" class="form-control" disabled value="{{ $aluno->modalidade }}">
                     
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="categoria">Categoria</label>
                     
-                        <input type="text" class="form-control" disabled value="{{ $pagamento->aluno->categoria->categoria }}">
+                        <input type="text" class="form-control" disabled value="{{ $aluno->categoria->categoria }}">
                     
                 </div>
         </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-2 mb-3">
                     <label for="aluno">Preço a pagar</label>
                     
-                        <input type="text" class="form-control" name="valor_pretendido" disabled value="{{ 'R$ '.number_format($pagamento->aluno->categoria->preco, 2) }}">
+                        <input type="text" class="form-control" name="valor_pretendido" disabled value="{{ 'R$ '.number_format($aluno->categoria->preco, 2) }}">
 
                     
                         

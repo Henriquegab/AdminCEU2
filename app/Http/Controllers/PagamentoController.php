@@ -113,7 +113,9 @@ class PagamentoController extends Controller
      */
     public function edit(Pagamento $pagamento)
     {
-        return view('pagamento.edit', ['pagamento' => $pagamento]);
+        // dd($pagamento->aluno);
+        $aluno = Aluno::find($pagamento->aluno_id);
+        return view('pagamento.edit', ['pagamento' => $pagamento, 'aluno' => $aluno]);
     }
 
     /**
