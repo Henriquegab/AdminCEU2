@@ -64,7 +64,15 @@
                     $pagamento->data = $pagamento->data->isoFormat('DD/MM/YYYY');
                     $pagamento->periodo_fiscal = new Carbon($pagamento->periodo_fiscal);
                     $pagamento->periodo_fiscal = $pagamento->periodo_fiscal->isoFormat('MM-YYYY');
-                    
+                    if ($pagamento->mensalidade > $pagamento->valor_pago && $pagamento->valor_pago != 0) {
+                            $cor = '#FFBA41';
+                        }
+                        elseif ($pagamento->mensalidade <= $pagamento->valor_pago) {
+                            $cor = 'LimeGreen';
+                        }
+                        else {
+                            $cor = 'purple';
+                        }
 
                     // dd(Aluno::find($pagamento->aluno_id)->nome);
 
@@ -79,7 +87,7 @@
                 <td>{{ $pagamento->categoria }}</td>
                 <td>{{ $pagamento->periodo_fiscal }}</td>
                 <td>{{ 'R$ ' . number_format($pagamento->mensalidade, 2) }}</td>
-                <td>{{ 'R$ ' . number_format($pagamento->valor_pago, 2) }}</td>
+                <td style="color: {{ $cor }}">{{ 'R$ ' . number_format($pagamento->valor_pago, 2) }}</td>
                 
                     
                     
@@ -98,11 +106,11 @@
     <div class="row">
         
         <div class="col-md-6">
-            <x-adminlte-info-box title="Mensalidades Pagas" text="{{ $pagamentos->count() }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/> 
+            <x-adminlte-info-box title="Mensalidades Pagas" text="{{ $pagamentos->count() }}" icon="fas fa-lg fa-wallet text-white" theme="gradient-teal"/> 
             
         </div>
         <div class="col-md-6">
-            <x-adminlte-info-box title="Subtotal" text="{{ 'R$ '.number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/> 
+            <x-adminlte-info-box title="Subtotal" text="{{ 'R$ '.number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-white" theme="gradient-teal"/> 
 
         </div>
         

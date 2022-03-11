@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Pagamentos - Seleção de Mês')
+@section('title', 'Relatório de pagamentos')
 
 @section('content_header')
     
@@ -14,7 +14,7 @@
 
 <div class="row justify-content-center align-self-center">
 
-    <x-adminlte-card class="mt-3" style="width: 50rem;" title="Pagamentos - Seleção de mês" theme="dark" icon="far fa-fw fa-file">
+    <x-adminlte-card class="mt-3" style="width: 50rem;" title="Relatório de pagamentos - Seleção de mês" theme="dark" icon="far fa-fw fa-file">
     
         <form method="get" action="{{ route('pagamentos.lista_relatorio') }}">
             @csrf
