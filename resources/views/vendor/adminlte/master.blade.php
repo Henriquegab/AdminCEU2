@@ -68,6 +68,7 @@
         <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicons/CEU.png') }}">
         <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicons/CEU.png') }}">
         <link rel="manifest" crossorigin="use-credentials" href="{{ asset('favicons/manifest.json') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicons/CEU.png') }}">
     @endif
