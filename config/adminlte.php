@@ -281,7 +281,7 @@ return [
         [
             'text' => 'Relatório de Pagamentos',
             'route' => 'pagamentos.create_relatorio',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-fw fa-folder-open',
         ],
         // [
         //     'text' => 'Relatório de Pagamentos',
