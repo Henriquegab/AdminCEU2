@@ -178,23 +178,23 @@
             
             <div class="col-md-1 mb-3">
                 <label for="segunda">Segunda</label>
-                <input type="checkbox" class="input-group" name="segunda"/>
+                <input type="checkbox" class="input-group" name="segunda" {{ old('segunda') ? 'checked' : ''}}/>
             </div>
             <div class="col-md-1 mb-3">
                 <label for="terca">Terça</label>
-                <input type="checkbox" class="input-group" name="terca"/>
+                <input type="checkbox" class="input-group" name="terca"  {{ old('terca') ? 'checked' : ''}}/>
             </div>
             <div class="col-md-1 mb-3">
                 <label for="quarta">Quarta</label>
-                <input type="checkbox" class="input-group" name="quarta"/>
+                <input type="checkbox" class="input-group" name="quarta"  {{ old('quarta') ? 'checked' : ''}}/>
             </div>
             <div class="col-md-1 mb-3">
                 <label for="quinta">Quinta</label>
-                <input type="checkbox" class="input-group" name="quinta"/>
+                <input type="checkbox" class="input-group" name="quinta"  {{ old('quinta') ? 'checked' : ''}}/>
             </div>
             <div class="col-md-1 mb-3">
                 <label for="sexta">Sexta</label>
-                <input type="checkbox" class="input-group" name="sexta"/>
+                <input type="checkbox" class="input-group" name="sexta"  {{ old('sexta') ? 'checked' : ''}}/>
             </div>
         
             
@@ -204,7 +204,7 @@
 
             <div class="col-md-7 mb-3">
                 <label for="observacao">Observações</label>
-                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações"/>
+                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações">{{ old('observacao') }}</x-adminlte-textarea>
                 
             </div>
 
