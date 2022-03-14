@@ -33,7 +33,7 @@
         
         ['label' => 'Ações', 'no-export' => true, 'width' => 5]];
     $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                    <i class="fa fa-lg fa-fw fa-pen"></i>
+                    <i class="fa fa-lg fa-fw fa-pencil"></i>
                 </button>';
     $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                     <i class="fa fa-lg fa-fw fa-trash"></i>
@@ -101,7 +101,7 @@
 
                     <form action="{{ route('pagamentos.edit', $pagamento->id) }}">
                         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
-                            <i class="fa fa-lg fa-fw fa-pen"></i>
+                            <i class="fa fa-lg fa-fw fa-pencil"></i>
                         </button>
                     </form>
 
