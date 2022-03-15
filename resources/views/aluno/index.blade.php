@@ -92,6 +92,7 @@
                         if ($pago < $aluno->categoria->preco && $pago > 0) {
                             //se o preço for menor que o valor da categoria mas maior que 0 a cor fica amarela
                             $cor = '#FFBA41';
+                            $badge = 'badge badge-warning';
                             $pago = 'R$ ' . number_format($pago, 2);
                         }
                         else {
@@ -99,11 +100,13 @@
                                 //se o valor pago for 0 é considerado isento
                                 $pago = 'Isento!';
                                 $cor = 'purple';
+                                $badge = 'badge badge-light';
                             }
                             else {
                                 //se o valor for igual ou maior que o da categoria ficará verde
                                 $cor = 'LimeGreen';
                                 $pago = 'R$ ' . number_format($pago, 2);
+                                $badge = 'badge badge-success';
 
                             }
                             
@@ -115,10 +118,12 @@
                         if ($status == 1) {
                             $pago = 'Aluno Ausente!';
                             $cor = 'purple';
+                            $badge = 'badge badge-dark';
                         }
                         else {
                             $pago = 'Não pago!';
                             $cor = 'Red';
+                            $badge = 'badge badge-danger';
                         }
                         
                         
@@ -150,9 +155,9 @@
                 <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td>
                 <td>{{ $aluno->categoria->categoria }}</td>
                 <td>{{ $dias }}</td>
-                <td>{{ 'R$ ' . number_format($aluno->categoria->preco, 2) }}</td>
+                <td><span class="badge badge-secondary">{{ 'R$ ' . number_format($aluno->categoria->preco, 2) }}</span></td>
                 <td style="color:{{ $cor }}">
-                    {{ $pago }}</td>
+                    <span class="{{ $badge }}">{{ $pago }}</span></td>
                 <td>
 
 

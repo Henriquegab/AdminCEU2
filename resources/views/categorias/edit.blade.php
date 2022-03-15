@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastro de Categoria')
+@section('title', 'Edição de Categoria')
 
 @section('content_header')
     
@@ -43,7 +43,7 @@
 
 <div class="row justify-content-center align-self-center">
 
-    <x-adminlte-card class="mt-3" style="width: 35rem;" title="Cadastro de Categoria" theme="dark" icon="far fa-fw fa-file">
+    <x-adminlte-card class="mt-3" style="width: 35rem;" title="Edição de Categoria" theme="dark" icon="far fa-fw fa-file">
     
         <form method="post" action="{{ route('categorias.update', ['categoria' => $categoria]) }}">
             @csrf

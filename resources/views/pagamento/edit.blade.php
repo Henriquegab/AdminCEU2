@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastro de Categoria')
+@section('title', 'Edição de Pagamento')
 
 @section('content_header')
     
@@ -14,7 +14,7 @@
 
 <div class="row justify-content-center align-self-center">
 
-    <x-adminlte-card class="mt-3" style="width: 90%;" title="Pagamento" theme="dark" icon="far fa-fw fa-file">
+    <x-adminlte-card class="mt-3" style="width: 90%;" title="Edição de Pagamento" theme="dark" icon="far fa-fw fa-file">
     
         <form method="post" action="{{ route('pagamentos.update', $pagamento) }}">
             @csrf
