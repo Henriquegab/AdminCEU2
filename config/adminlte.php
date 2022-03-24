@@ -244,7 +244,7 @@ return [
             
         ],
         [
-            'text' => 'Lista de Alunoss',
+            'text' => 'Lista de Alunos',
             'route' => 'alunos.index',
             'icon' => 'fas fa-fw fa-user',
         ],
