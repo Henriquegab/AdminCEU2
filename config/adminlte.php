@@ -226,11 +226,7 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
+        
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -243,26 +239,56 @@ return [
         ['header' => 'GERENCIAMENTO DE ALUNOS'],
         [
             'text'        => 'Ficha de inscrição',
-            'route'         => 'alunos.index',
+            'route'         => 'alunos.create',
             'icon'        => 'far fa-fw fa-file',
             
         ],
         [
             'text' => 'Lista de Alunos',
-            'url'  => 'admin/settings',
+            'route' => 'alunos.index',
             'icon' => 'fas fa-fw fa-user',
         ],
+        [
+            'text' => 'Alunos Excluidos',
+            'route' => 'alunos.excluidos',
+            'icon' => 'fas fa-fw fa-user-slash',
+        ],
         ['header' => 'CONTROLE FINANCEIRO'],
+
         [
-            'text' => 'Mensalidades',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-calendar',
+            'text'    => 'Mensalidades',
+            'icon'    => 'fas fa-fw fa-calendar',
+            'submenu' => [
+                [
+                    'text'        => 'Cadastro de Categoria',
+                    'route'       => 'categorias.create',
+                    'icon'        => 'fas fa-cart-plus',
+                    
+                ],
+                [
+                    'text'        => 'Listagem de Categorias',
+                    'route'       => 'categorias.index',
+                    'icon'        => 'fas fa-cart-arrow-down',
+                    
+                ],
+                [
+                    'text' => 'Pagamentos',
+                    'route' => 'pagamentos.create',
+                    'icon' => 'fas fa-fw fa-dollar-sign',
+                ],
+                [
+                    'text' => 'Histórico de Pagamentos',
+                    'route' => 'pagamentos.index',
+                    'icon' => 'fas fa-fw fa-file',
+                ],
+                
+                
+
+            ]
         ],
-        [
-            'text' => 'Pagamentos',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-dollar-sign',
-        ],
+
+        
+        
 
         
        
@@ -304,42 +330,97 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
-        'Select2' => [
-            'active' => false,
+        'DatatablesPlugins' => [
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/buttons/js/dataTables.buttons.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/buttons/js/buttons.bootstrap4.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/buttons/js/buttons.html5.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/buttons/js/buttons.print.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/jszip/jszip.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/pdfmake/pdfmake.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/pdfmake/vfs_fonts.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/buttons/css/buttons.bootstrap4.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.datatables.net/plug-ins/1.11.4/i18n/pt-BR.json',
+                ],
+            ],
+        ],
+        'Select2' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/select2/js/select2.full.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/select2/css/select2.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css',
                 ],
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
