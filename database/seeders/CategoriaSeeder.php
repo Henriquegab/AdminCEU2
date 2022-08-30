@@ -115,6 +115,16 @@ class CategoriaSeeder extends Seeder
             'categoria' => 'Comunidade - 5 aulas',
             'preco' => '80'
         ]);
-    
+        Categoria::create(
+        [
+            'categoria' => 'Aluno - Hidroginástica',
+            'preco' => '30'
+        ]);
+        Categoria::create(
+        [
+            'categoria' => 'Comunidade - Hidroginástica',
+            'preco' => '40'
+        ]);
+
     }
 }

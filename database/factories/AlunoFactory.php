@@ -28,12 +28,12 @@ class AlunoFactory extends Factory
             'numero' => $this->faker->numberBetween(1,1000),
             'telefone' => $this->faker->numerify('(##) ########'),
             'modalidade' => 'Natação',
-            'inicio' => '18:40:00',
-            'termino' => '19:20:00',
-            'segunda' => 'on',
+            // 'inicio' => '18:40:00',
+            // 'termino' => '19:20:00',
+            // 'segunda' => 'on',
             'data_atestado' => $this->faker->dateTime(),
             'categoria_id' => $this->faker->numberBetween(1,10),
-            
+
         ];
     }
 }
