@@ -3,7 +3,7 @@
 @section('title', 'Ficha de Inscrição')
 
 @section('content_header')
-    
+
 @stop
 
 @section('content')
@@ -13,10 +13,10 @@
     $hoje = Carbon::now();
 @endphp
 
-<script> 
+<script>
 // função pra limitar campo de cpf pra ter apenas digitos
     function onlyNumberKey(evt) {
-          
+
         // Only ASCII character in that range allowed
         var ASCIICode = (evt.which) ? evt.which : evt.keyCode
         if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
@@ -50,7 +50,7 @@
     <h6>(*) - Campos Obrigatórios</h6>
     <form method="post" action="{{ route('alunos.store') }}">
         @csrf
-        
+
         <div class="form-row">
 
 
@@ -72,7 +72,7 @@
                 @error('nascimento') <div class="invalid-feedback">{{ $errors->first('nascimento') }}</div> @enderror
             </div>
 
-            
+
 
 
 
@@ -84,12 +84,12 @@
             <div class="col-md-6 mb-3">
                 <label for="pai">Pai</label>
                 <input type="text" class="form-control" name="pai" value="{{ old('pai') }}" placeholder="Roberto Silveira">
-                
+
             </div>
             <div class="col-md-6 mb-3">
                 <label for="mae">Mãe</label>
                 <input type="text" class="form-control" name="mae" value="{{ old('mae') }}" placeholder="Maria do Carmo">
-                
+
             </div>
 
 
@@ -112,12 +112,12 @@
             <div class="col-md-2 mb-3">
                 <label for="telefone">Telefone</label>
                 <input type="text" value="{{ old('telefone') }}" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 000000000">
-                
+
             </div>
 
             @php
                 $optionsc = [];
-        
+
                     foreach ($categorias as $categoria) {
                         $optionsc += [$categoria->id => $categoria->categoria];
                     }
@@ -125,9 +125,9 @@
             <x-adminlte-select2 enable-old-support required label="Categoria*" name="categoria_id" fgroup-class="col-md-4">
                 <x-adminlte-options
 
-                        empty-option="Selecione uma opção"        
-                        :options="$optionsc" 
-                        
+                        empty-option="Selecione uma opção"
+                        :options="$optionsc"
+
                         />
             </x-adminlte-select2>
 
@@ -136,47 +136,52 @@
 
         <div class="form-row">
 
-            <x-adminlte-select enable-old-support required label="Modalidade*" name="modalidade" fgroup-class="col-md-4">
-                
+            {{-- <x-adminlte-select enable-old-support required label="Modalidade*" name="modalidade" fgroup-class="col-md-4">
+
                                     <option selected value="" disabled>Selecione uma opção</option>
                                     <option>Natação</option>
                                     <option>Hidroginástica</option>
                                     <option>Tênis</option>
-                                    
-            </x-adminlte-select>
 
-            
+            </x-adminlte-select> --}}
 
-            <div class="col-md-2 mb-3">
+
+
+            {{-- <div class="col-md-2 mb-3">
                 <label for="inicio">Início*</label>
                 <input type="time" value="{{ old('inicio') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio" placeholder="11:45" required>
                 @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
             </div>
             <div class="col-md-2 mb-3">
-                
+
                     <label for="termino">Término*</label>
                     <input type="time" value="{{ old('termino') }}" class="form-control @error('termino') is-invalid @enderror" name="termino" placeholder="12:45" required>
                     @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
 
-                    
-                
-                
-            </div>
-            
+
+
+
+            </div> --}}
+
             <div class="col-md-4 mb-3">
                 <label for="data_atestado">Data do atestado*</label>
                 <input type="date" value="{{ old('data_atestado') }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012" required required max = {{ date(now()) }}>
                 @error('data_atestado') <div class="invalid-feedback">{{ $errors->first('data_atestado') }}</div> @enderror
             </div>
 
-            
+            <div class="col-md-8 mb-3">
+                <label for="observacao">Observações</label>
+                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações">{{ old('observacao') }}</x-adminlte-textarea>
+
+            </div>
+
 
         </div>
 
         <div class="form-row">
 
-            
-            <div class="col-md-1 mb-3">
+
+            {{-- <div class="col-md-1 mb-3">
                 <label for="segunda">Segunda</label>
                 <input type="checkbox" class="input-group" name="segunda" {{ old('segunda') ? 'checked' : ''}}/>
             </div>
@@ -195,25 +200,21 @@
             <div class="col-md-1 mb-3">
                 <label for="sexta">Sexta</label>
                 <input type="checkbox" class="input-group" name="sexta"  {{ old('sexta') ? 'checked' : ''}}/>
-            </div>
-        
-            
-        
+            </div> --}}
 
-            
 
-            <div class="col-md-7 mb-3">
-                <label for="observacao">Observações</label>
-                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações">{{ old('observacao') }}</x-adminlte-textarea>
-                
-            </div>
+
+
+
+
+
 
         </div>
         <div class="form-row">
-            
-            
+
+
         </div>
-        
+
 
         {{-- <input type="hidden" value="{{ $hoje }}" name="data">
         <input type="hidden" value="" name="dias"> --}}
@@ -221,17 +222,191 @@
         <button class="btn btn-primary" type="submit">Cadastrar</button>
 
 
-        
-        
-        
-        
+
+
+
+
     </form>
 
 
 </x-adminlte-card>
 
-    
-        
+{{-- Componente de seleção de horários --}}
+
+<div class="card card-dark card-outline">
+    <div class="card-body table-responsive px-10 pt-10">
+        <table class="table table-bordered table-striped dataTable dtr-inline">
+            <thead>
+                <th style="width:10%">Ações</th>
+                <th>Dia da Semana</th>
+                <th>Início</th>
+                <th>Término</th>
+
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>
+
+                        <input type="checkbox" class="form-control" name="sexta" id="segunda_ativo">
+
+
+                    </td>
+                    <td>Segunda</td>
+                    <td>
+                        <label for="inicio">Início*</label>
+                        <input type="time" value="{{ old('inicio_segunda') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_segunda" placeholder="11:45" required>
+                        @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
+                    </td>
+                    <td>
+                        <label for="termino">Término*</label>
+                        <input type="time" value="{{ old('termino_segunda') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_segunda" placeholder="12:45" required>
+                        @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+
+                        <input type="checkbox" class="form-control" name="sexta" id="terca_ativo">
+
+
+                    </td>
+                    <td>Terça</td>
+                    <td>
+                        <label for="inicio">Início*</label>
+                        <input type="time" value="{{ old('inicio_terca') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_terca" placeholder="11:45" required>
+                        @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
+                    </td>
+                    <td>
+                        <label for="termino">Término*</label>
+                        <input type="time" value="{{ old('termino_terca') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_terca" placeholder="12:45" required>
+                        @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+
+                        <input type="checkbox" class="form-control" name="sexta" id="quarta_ativo">
+
+
+                    </td>
+                    <td>Quarta</td>
+                    <td>
+                        <label for="inicio">Início*</label>
+                        <input type="time" value="{{ old('inicio_quarta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quarta" placeholder="11:45" required>
+                        @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
+                    </td>
+                    <td>
+                        <label for="termino">Término*</label>
+                        <input type="time" value="{{ old('termino_quarta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quarta" placeholder="12:45" required>
+                        @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+
+                        <input type="checkbox" class="form-control" name="sexta" id="quinta_ativo">
+
+
+                     </td>
+                    <td>Quinta</td>
+                    <td>
+                        <label for="inicio">Início*</label>
+                        <input type="time" value="{{ old('inicio_quinta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quinta" placeholder="11:45" required>
+                        @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
+                    </td>
+                    <td>
+                        <label for="termino">Término*</label>
+                        <input type="time" value="{{ old('termino_quinta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quinta" placeholder="12:45" required>
+                        @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+
+                        <input type="checkbox" class="form-control" name="sexta" id="sexta_ativo">
+
+
+                    </td>
+                    <td>Sexta</td>
+                    <td>
+                        <label for="inicio">Início*</label>
+                        <input type="time" value="{{ old('inicio_sexta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_sexta" placeholder="11:45" required>
+                        @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
+                    </td>
+                    <td>
+                        <label for="termino">Término*</label>
+                        <input type="time" value="{{ old('termino_sexta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_sexta" placeholder="12:45" required>
+                        @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+       {{-- <div class="form-row">
+            <select class="form-select-lg mb-3" name="horarios">
+                <option selected disabled hidden value="">...</option>
+                <option>Segunda</option>
+                <option>Terça</option>
+                <option>Quarta</option>
+                <option>Quinta</option>
+                <option>Sexta</option>
+
+            </select>
+       </div> --}}
+    </div>
+
+</div>
+
+{{-- Quadro de horarios cadastrados --}}
+
+<div class="card card-dark card-outline">
+    <div class="card-body table-responsive px-0 pt-0">
+        {{-- @if ($has_cronograma) --}}
+            <table class="table table-bordered table-striped dataTable dtr-inline">
+                <thead>
+                    <tr>
+                        <th>Dia da Semana</th>
+                        <th>
+                            <div style="width: 80px">Ano</div>
+                        </th>
+
+                        <th style="width: 120px;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        {{-- @else --}}
+            <div class="d-flex align-items-center justify-content-center">
+                <i class="m-2">Sem atividades de projeto adicionadas. Para adicionar uma atividades de projeto,
+                    preencha
+                    os campos acima corretamente e clique em
+                    'Adicionar'.</i>
+            </div>
+
+        {{-- @endif --}}
+    </div>
+
+</div>
+
+
 
 
 
@@ -248,10 +423,10 @@
 
 @section('footer')
 
-    
+
     <h6 align="center" style=""></a>AdminCEU - <a href="https://www.linkedin.com/in/henrique-gabriel-siqueira-da-cruz-0826a4146/">Henrique gabriel</a>  Todos os Direitos Reservados <a href="https://github.com/Henriquegab" class="fa fa-github"></a></h6>
 
 
 
-    
+
 @stop

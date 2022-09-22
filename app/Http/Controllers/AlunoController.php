@@ -23,7 +23,7 @@ class AlunoController extends Controller
     {
         $alunos = Aluno::onlyTrashed()->get();
 
-        
+
 
         return view('aluno.excluidos',['alunos' => $alunos]);
     }
@@ -36,16 +36,16 @@ class AlunoController extends Controller
 
     public function restore(Request $request, $id)
     {
-        
-        
-        
+
+
+
         $aluno = Aluno::onlyTrashed()->where('id', $id)->get()->first();
-        
+
         if($aluno){
             $aluno->restore();
         }
 
-        
+
 
         return redirect()->route('alunos.index');
     }
@@ -57,9 +57,9 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        
-        
-        
+
+
+
         $alunos = Aluno::all();
 
         // dd($alunos);
@@ -70,22 +70,22 @@ class AlunoController extends Controller
         // foreach ($alunos as $aluno) {
         //     $periodofiscal = Periodofiscal::all()->last();
         //     $periodofiscal->data = new Carbon($periodofiscal->data);
-            
-            
-            
 
-            
+
+
+
+
         //     $pagamento = Pagamento::where('periodo_fiscal', $periodofiscal->data->subMonth()->toDateString())->where('aluno_id', $aluno->id)->first();
         //     $periodofiscal->data->addMonth();
         //     if (empty($pagamento) && $aluno->pagamento_id == NULL) {
         //         array_push($teste, $aluno->nome);
         //     }
         //     else {
-                
+
         //         array_push($teste2, $pagamento->id);
-                
+
         //     }
-            
+
         // }
         // dd($teste);
 
@@ -102,6 +102,11 @@ class AlunoController extends Controller
         $categorias = Categoria::all();
         return view('aluno.create', ['categorias' => $categorias]);
     }
+    public function create2()
+    {
+        $categorias = Categoria::all();
+        return view('aluno.create2', ['categorias' => $categorias]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -111,7 +116,7 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        
+
 
         $hoje = Carbon::now();
 
@@ -124,16 +129,16 @@ class AlunoController extends Controller
             'cpf' => 'required|cpf|unique:alunos',
             'nascimento' => 'required|date|before_or_equal:'.$hoje,
             'endereco' => 'required',
-            
+
             'categoria_id' => 'required',
-            'modalidade' => 'required',
-            
+
+
             'inicio' => 'required|before_or_equal:termino|different:termino',
             'termino' => 'required|after_or_equal:inicio|different:inicio',
             'data_atestado' => 'required|date|before:'.$hoje,
-            
-            
-            
+
+
+
         ];
 
         $feedback = [
@@ -146,10 +151,10 @@ class AlunoController extends Controller
             'termino.after_or_equal' => 'O término não pode ser menor do que o início!',
             'inicio.different' => 'O início não pode ser igual ao término!',
             'termino.different' => 'O término não pode ser igual ao início!',
-            
+
         ];
 
-        
+
 
         $request->validate($regras, $feedback);
         // $count = 0;
@@ -162,22 +167,22 @@ class AlunoController extends Controller
         //         $request['dias'] = $request->dias.' '.$dia;
         //     };
         //     $count++;
-            
+
         // }
 
-        
-        
+
+
         // dd($request->all());
 
-        
+
 
         $aluno = Aluno::create($request->all());
-        
-        
-        
+
+
+
 
         return redirect()->route('alunos.index');
-    
+
 
 
 
@@ -234,16 +239,16 @@ class AlunoController extends Controller
             'cpf' => 'required|cpf|unique:alunos,cpf,' .$aluno->id,
             'nascimento' => 'required|date|before_or_equal:'.$hoje,
             'endereco' => 'required',
-            
+
             'categoria_id' => 'required',
             'modalidade' => 'required',
-            
+
             'inicio' => 'required|before_or_equal:termino|different:termino',
             'termino' => 'required|after_or_equal:inicio|different:inicio',
             'data_atestado' => 'required|date|before:'.$hoje,
             // 'dia' => 'required'
-            
-            
+
+
         ];
 
         $feedback = [
@@ -256,10 +261,10 @@ class AlunoController extends Controller
             'termino.after_or_equal' => 'O término não pode ser menor do que o início!',
             'inicio.different' => 'O início não pode ser igual ao término!',
             'termino.different' => 'O término não pode ser igual ao início!',
-            
+
         ];
 
-        
+
 
         $request->validate($regras, $feedback);
         // $count = 0;
@@ -272,22 +277,22 @@ class AlunoController extends Controller
         //         $request['dias'] = $request->dias.' '.$dia;
         //     };
         //     $count++;
-            
+
         // }
 
-        
-        
+
+
         // dd($request->all());
 
-        
+
 
         $aluno->update($request->all());
-        
-        
-        
+
+
+
 
         return redirect()->route('alunos.index');
-    
+
     }
 
     /**
@@ -303,5 +308,5 @@ class AlunoController extends Controller
         return redirect()->route('alunos.index');
     }
 
-    
+
 }
