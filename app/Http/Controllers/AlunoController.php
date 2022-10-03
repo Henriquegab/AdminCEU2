@@ -124,6 +124,12 @@ class AlunoController extends Controller
 
         // dd($request->all());
 
+        $input=$request->all();
+
+        if(!isset($input['inicio'])){
+
+        }
+
         $regras = [
             'nome' => 'required',
             'cpf' => 'required|cpf|unique:alunos',
@@ -133,8 +139,21 @@ class AlunoController extends Controller
             'categoria_id' => 'required',
 
 
-            'inicio' => 'required|before_or_equal:termino|different:termino',
-            'termino' => 'required|after_or_equal:inicio|different:inicio',
+            'inicio_segunda' => 'before_or_equal:termino|different:termino_segunda',
+            'termino_segunda' => 'after_or_equal:inicio|different:inicio_segunda',
+
+            'inicio_terca' => 'before_or_equal:termino|different:termino_terca',
+            'termino_terca' => 'after_or_equal:inicio|different:inicio_terca',
+
+            'inicio_quarta' => 'before_or_equal:termino|different:termino_quarta',
+            'termino_quarta' => 'after_or_equal:inicio|different:inicio_quarta',
+
+            'inicio_quinta' => 'before_or_equal:termino|different:termino_quinta',
+            'termino_quinta' => 'after_or_equal:inicio|different:inicio_quinta',
+
+            'inicio_sexta' => 'before_or_equal:termino|different:termino_sexta',
+            'termino_sexta' => 'after_or_equal:inicio|different:inicio_sexta',
+
             'data_atestado' => 'required|date|before:'.$hoje,
 
 
@@ -147,8 +166,21 @@ class AlunoController extends Controller
             'cpf.unique' => 'O cpf ja existe!',
             'nascimento.before_or_equal' => 'A data de nascimento não pode ser no futuro e nem hoje!',
             'data_atestado.before' => 'A data do atestado não pode ser no futuro!',
-            'inicio.before_or_equal' => 'O início não pode ser maior do que o término!',
-            'termino.after_or_equal' => 'O término não pode ser menor do que o início!',
+            'inicio_segunda.before_or_equal' => 'O início não pode ser maior do que o término de segunda!',
+            'termino_segunda.after_or_equal' => 'O término não pode ser menor do que o início de segunda!',
+
+            'inicio_terca.before_or_equal' => 'O início não pode ser maior do que o término de terca!',
+            'termino_terca.after_or_equal' => 'O término não pode ser menor do que o início de terca!',
+
+            'inicio_quarta.before_or_equal' => 'O início não pode ser maior do que o término de quarta!',
+            'termino_quarta.after_or_equal' => 'O término não pode ser menor do que o início de quarta!',
+
+            'inicio_quinta.before_or_equal' => 'O início não pode ser maior do que o término de quinta!',
+            'termino_quinta.after_or_equal' => 'O término não pode ser menor do que o início de quinta!',
+
+            'inicio_sexta.before_or_equal' => 'O início não pode ser maior do que o término de sexta!',
+            'termino_sexta.after_or_equal' => 'O término não pode ser menor do que o início de sexta!',
+
             'inicio.different' => 'O início não pode ser igual ao término!',
             'termino.different' => 'O término não pode ser igual ao início!',
 

@@ -212,6 +212,7 @@
         </div>
         <div class="form-row">
 
+            <hr>
 
         </div>
 
@@ -237,115 +238,121 @@
     <div class="card-body table-responsive px-10 pt-10">
         <table class="table table-bordered table-striped dataTable dtr-inline">
             <thead>
-                <th style="width:10%">Ações</th>
-                <th>Dia da Semana</th>
+
+                <th style="width:10%">Dia da Semana</th>
                 <th>Início</th>
                 <th>Término</th>
+                <th style="width:15%">Ações</th>
 
             </thead>
             <tbody>
 
                 <tr>
-                    <td>
 
-                        <input type="checkbox" class="form-control" name="sexta" id="segunda_ativo">
-
-
-                    </td>
                     <td>Segunda</td>
                     <td>
-                        <label for="inicio">Início*</label>
-                        <input type="time" value="{{ old('inicio_segunda') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_segunda" placeholder="11:45" required>
+
+                        <input id="inicio_segunda" type="time" value="{{ old('inicio_segunda') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_segunda" placeholder="11:45" required>
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
-                        <label for="termino">Término*</label>
-                        <input type="time" value="{{ old('termino_segunda') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_segunda" placeholder="12:45" required>
+
+                        <input id="termino_segunda" type="time" value="{{ old('termino_segunda') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_segunda" placeholder="12:45" required>
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+                    <td>
+
+                        <button type="button" class="btn btn-danger" id="remover_segunda">Remover</button>
+
 
                     </td>
 
                 </tr>
                 <tr>
-                    <td>
 
-                        <input type="checkbox" class="form-control" name="sexta" id="terca_ativo">
-
-
-                    </td>
                     <td>Terça</td>
                     <td>
-                        <label for="inicio">Início*</label>
-                        <input type="time" value="{{ old('inicio_terca') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_terca" placeholder="11:45" required>
+
+                        <input type="time" id="inicio_terca" value="{{ old('inicio_terca') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_terca" placeholder="11:45" required>
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
-                        <label for="termino">Término*</label>
-                        <input type="time" value="{{ old('termino_terca') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_terca" placeholder="12:45" required>
+
+                        <input type="time" id="termino_terca" value="{{ old('termino_terca') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_terca" placeholder="12:45" required>
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+                    <td>
+
+                        <button type="button" class="btn btn-danger" id="remover_terca">Remover</button>
+
 
                     </td>
 
                 </tr>
                 <tr>
-                    <td>
 
-                        <input type="checkbox" class="form-control" name="sexta" id="quarta_ativo">
-
-
-                    </td>
                     <td>Quarta</td>
                     <td>
-                        <label for="inicio">Início*</label>
-                        <input type="time" value="{{ old('inicio_quarta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quarta" placeholder="11:45" required>
+
+                        <input type="time" id="inicio_quarta" value="{{ old('inicio_quarta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quarta" placeholder="11:45" required>
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
-                        <label for="termino">Término*</label>
-                        <input type="time" value="{{ old('termino_quarta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quarta" placeholder="12:45" required>
+
+                        <input type="time" id="termino_quarta" value="{{ old('termino_quarta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quarta" placeholder="12:45" required>
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+                    <td>
+
+                        <button type="button" class="btn btn-danger" id="remover_quarta">Remover</button>
+
 
                     </td>
 
                 </tr>
                 <tr>
-                    <td>
 
-                        <input type="checkbox" class="form-control" name="sexta" id="quinta_ativo">
-
-
-                     </td>
                     <td>Quinta</td>
                     <td>
-                        <label for="inicio">Início*</label>
-                        <input type="time" value="{{ old('inicio_quinta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quinta" placeholder="11:45" required>
+
+                        <input type="time" id="inicio_quinta" value="{{ old('inicio_quinta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quinta" placeholder="11:45" required>
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
-                        <label for="termino">Término*</label>
-                        <input type="time" value="{{ old('termino_quinta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quinta" placeholder="12:45" required>
+
+                        <input type="time" id="termino_quinta" value="{{ old('termino_quinta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quinta" placeholder="12:45" required>
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+                    <td>
+
+                        <button type="button" class="btn btn-danger" id="remover_quinta">Remover</button>
+
 
                     </td>
 
                 </tr>
                 <tr>
-                    <td>
 
-                        <input type="checkbox" class="form-control" name="sexta" id="sexta_ativo">
-
-
-                    </td>
                     <td>Sexta</td>
                     <td>
-                        <label for="inicio">Início*</label>
-                        <input type="time" value="{{ old('inicio_sexta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_sexta" placeholder="11:45" required>
+
+                        <input type="time" id="inicio_sexta" value="{{ old('inicio_sexta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_sexta" placeholder="11:45" required>
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
-                        <label for="termino">Término*</label>
-                        <input type="time" value="{{ old('termino_sexta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_sexta" placeholder="12:45" required>
+
+                        <input type="time" id="termino_sexta" value="{{ old('termino_sexta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_sexta" placeholder="12:45" required>
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
+
+                    </td>
+                    <td>
+
+                        <button type="button" class="btn btn-danger" id="remover_sexta">Remover</button>
+
 
                     </td>
 
@@ -368,43 +375,7 @@
 
 </div>
 
-{{-- Quadro de horarios cadastrados --}}
 
-<div class="card card-dark card-outline">
-    <div class="card-body table-responsive px-0 pt-0">
-        {{-- @if ($has_cronograma) --}}
-            <table class="table table-bordered table-striped dataTable dtr-inline">
-                <thead>
-                    <tr>
-                        <th>Dia da Semana</th>
-                        <th>
-                            <div style="width: 80px">Ano</div>
-                        </th>
-
-                        <th style="width: 120px;">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
-                </tbody>
-            </table>
-        {{-- @else --}}
-            <div class="d-flex align-items-center justify-content-center">
-                <i class="m-2">Sem atividades de projeto adicionadas. Para adicionar uma atividades de projeto,
-                    preencha
-                    os campos acima corretamente e clique em
-                    'Adicionar'.</i>
-            </div>
-
-        {{-- @endif --}}
-    </div>
-
-</div>
 
 
 
@@ -418,7 +389,35 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+
+        remover_segunda.onclick = function(){
+            document.getElementById("inicio_segunda").value = "";
+            document.getElementById("termino_segunda").value = "";
+        };
+        remover_terca.onclick = function(){
+            document.getElementById("inicio_terca").value = "";
+            document.getElementById("termino_terca").value = "";
+        };
+        remover_quarta.onclick = function(){
+            document.getElementById("inicio_quarta").value = "";
+            document.getElementById("termino_quarta").value = "";
+        };
+        remover_quinta.onclick = function(){
+            document.getElementById("inicio_quinta").value = "";
+            document.getElementById("termino_quinta").value = "";
+        };
+        remover_sexta.onclick = function(){
+            document.getElementById("inicio_sexta").value = "";
+            document.getElementById("termino_sexta").value = "";
+        };
+
+
+
+
+
+
+    </script>
 @stop
 
 @section('footer')
