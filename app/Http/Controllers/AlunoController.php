@@ -7,6 +7,7 @@ use App\Models\Periodofiscal;
 use App\Models\Pagamento;
 
 use App\Models\Categoria;
+use App\Models\Horario;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -126,9 +127,21 @@ class AlunoController extends Controller
 
         $input=$request->all();
 
-        if(!isset($input['inicio'])){
+        // dd($input);
 
+        if(
+            ($input['inicio_segunda'] == NULL || $input['termino_segunda'] == NULL) &&
+            ($input['inicio_terca'] == NULL || $input['termino_terca'] == NULL) &&
+            ($input['inicio_quarta'] == NULL || $input['termino_quarta'] == NULL) &&
+            ($input['inicio_quinta'] == NULL || $input['termino_quinta'] == NULL) &&
+            ($input['inicio_sexta'] == NULL || $input['termino_sexta'] == NULL))
+
+            {
+
+            return back()->with('error', 'insira pelo menos um horário!');
         }
+
+
 
         $regras = [
             'nome' => 'required',
@@ -139,20 +152,20 @@ class AlunoController extends Controller
             'categoria_id' => 'required',
 
 
-            'inicio_segunda' => 'before_or_equal:termino|different:termino_segunda',
-            'termino_segunda' => 'after_or_equal:inicio|different:inicio_segunda',
+            // 'inicio_segunda' => 'before_or_equal:termino_segunda|different:termino_segunda',
+            // 'termino_segunda' => 'after_or_equal:inicio_segunda|different:inicio_segunda',
 
-            'inicio_terca' => 'before_or_equal:termino|different:termino_terca',
-            'termino_terca' => 'after_or_equal:inicio|different:inicio_terca',
+            // 'inicio_terca' => 'before_or_equal:termino_terca|different:termino_terca',
+            // 'termino_terca' => 'after_or_equal:inicio_terca|different:inicio_terca',
 
-            'inicio_quarta' => 'before_or_equal:termino|different:termino_quarta',
-            'termino_quarta' => 'after_or_equal:inicio|different:inicio_quarta',
+            // 'inicio_quarta' => 'before_or_equal:termino_quarta|different:termino_quarta',
+            // 'termino_quarta' => 'after_or_equal:inicio_quarta|different:inicio_quarta',
 
-            'inicio_quinta' => 'before_or_equal:termino|different:termino_quinta',
-            'termino_quinta' => 'after_or_equal:inicio|different:inicio_quinta',
+            // 'inicio_quinta' => 'before_or_equal:termino_quinta|different:termino_quinta',
+            // 'termino_quinta' => 'after_or_equal:inicio_quinta|different:inicio_quinta',
 
-            'inicio_sexta' => 'before_or_equal:termino|different:termino_sexta',
-            'termino_sexta' => 'after_or_equal:inicio|different:inicio_sexta',
+            // 'inicio_sexta' => 'before_or_equal:termino_sexta|different:termino_sexta',
+            // 'termino_sexta' => 'after_or_equal:inicio_sexta|different:inicio_sexta',
 
             'data_atestado' => 'required|date|before:'.$hoje,
 
@@ -207,8 +220,50 @@ class AlunoController extends Controller
         // dd($request->all());
 
 
+        $aluno = Aluno::create($input);
 
-        $aluno = Aluno::create($request->all());
+
+        if($input['inicio_segunda'] != NULL && $input['termino_segunda'] != NULL){
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'segunda',
+                'entrada' =>  $input['inicio_segunda'],
+                'saida' =>  $input['termino_segunda']
+            ]);
+        }
+        if($input['inicio_terca'] != NULL && $input['termino_terca'] != NULL){
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'terca',
+                'entrada' =>  $input['inicio_terca'],
+                'saida' =>  $input['termino_terca']
+            ]);
+        }
+        if($input['inicio_quarta'] != NULL && $input['termino_quarta'] != NULL){
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'quarta',
+                'entrada' =>  $input['inicio_quarta'],
+                'saida' =>  $input['termino_quarta']
+            ]);
+        }
+        if($input['inicio_quinta'] != NULL && $input['termino_quinta'] != NULL){
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'quinta',
+                'entrada' =>  $input['inicio_quinta'],
+                'saida' =>  $input['termino_quinta']
+            ]);
+        }
+        if($input['inicio_sexta'] != NULL && $input['termino_sexta'] != NULL){
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'sexta',
+                'entrada' =>  $input['inicio_sexta'],
+                'saida' =>  $input['termino_sexta']
+            ]);
+        }
+
 
 
 
@@ -273,7 +328,7 @@ class AlunoController extends Controller
             'endereco' => 'required',
 
             'categoria_id' => 'required',
-            'modalidade' => 'required',
+            // 'modalidade' => 'required',
 
             'inicio' => 'required|before_or_equal:termino|different:termino',
             'termino' => 'required|after_or_equal:inicio|different:inicio',
@@ -289,10 +344,10 @@ class AlunoController extends Controller
             'cpf.unique' => 'O cpf ja existe!',
             'nascimento.before_or_equal' => 'A data de nascimento não pode ser no futuro e nem hoje!',
             'data_atestado.before' => 'A data do atestado não pode ser no futuro!',
-            'inicio.before_or_equal' => 'O início não pode ser maior do que o término!',
-            'termino.after_or_equal' => 'O término não pode ser menor do que o início!',
-            'inicio.different' => 'O início não pode ser igual ao término!',
-            'termino.different' => 'O término não pode ser igual ao início!',
+            // 'inicio.before_or_equal' => 'O início não pode ser maior do que o término!',
+            // 'termino.after_or_equal' => 'O término não pode ser menor do que o início!',
+            // 'inicio.different' => 'O início não pode ser igual ao término!',
+            // 'termino.different' => 'O término não pode ser igual ao início!',
 
         ];
 

@@ -227,7 +227,7 @@
 
 
 
-    </form>
+
 
 
 </x-adminlte-card>
@@ -252,12 +252,12 @@
                     <td>Segunda</td>
                     <td>
 
-                        <input id="inicio_segunda" type="time" value="{{ old('inicio_segunda') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_segunda" placeholder="11:45" required>
+                        <input id="inicio_segunda" type="time" value="{{ old('inicio_segunda') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_segunda" placeholder="11:45">
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
 
-                        <input id="termino_segunda" type="time" value="{{ old('termino_segunda') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_segunda" placeholder="12:45" required>
+                        <input id="termino_segunda" type="time" value="{{ old('termino_segunda') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_segunda" placeholder="12:45">
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
 
                     </td>
@@ -274,12 +274,12 @@
                     <td>Terça</td>
                     <td>
 
-                        <input type="time" id="inicio_terca" value="{{ old('inicio_terca') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_terca" placeholder="11:45" required>
+                        <input type="time" id="inicio_terca" value="{{ old('inicio_terca') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_terca" placeholder="11:45">
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
 
-                        <input type="time" id="termino_terca" value="{{ old('termino_terca') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_terca" placeholder="12:45" required>
+                        <input type="time" id="termino_terca" value="{{ old('termino_terca') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_terca" placeholder="12:45">
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
 
                     </td>
@@ -296,12 +296,12 @@
                     <td>Quarta</td>
                     <td>
 
-                        <input type="time" id="inicio_quarta" value="{{ old('inicio_quarta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quarta" placeholder="11:45" required>
+                        <input type="time" id="inicio_quarta" value="{{ old('inicio_quarta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quarta" placeholder="11:45">
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
 
-                        <input type="time" id="termino_quarta" value="{{ old('termino_quarta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quarta" placeholder="12:45" required>
+                        <input type="time" id="termino_quarta" value="{{ old('termino_quarta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quarta" placeholder="12:45">
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
 
                     </td>
@@ -318,12 +318,12 @@
                     <td>Quinta</td>
                     <td>
 
-                        <input type="time" id="inicio_quinta" value="{{ old('inicio_quinta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quinta" placeholder="11:45" required>
+                        <input type="time" id="inicio_quinta" value="{{ old('inicio_quinta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_quinta" placeholder="11:45">
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
 
-                        <input type="time" id="termino_quinta" value="{{ old('termino_quinta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quinta" placeholder="12:45" required>
+                        <input type="time" id="termino_quinta" value="{{ old('termino_quinta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_quinta" placeholder="12:45">
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
 
                     </td>
@@ -340,12 +340,12 @@
                     <td>Sexta</td>
                     <td>
 
-                        <input type="time" id="inicio_sexta" value="{{ old('inicio_sexta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_sexta" placeholder="11:45" required>
+                        <input type="time" id="inicio_sexta" value="{{ old('inicio_sexta') }}" class="form-control @error('inicio') is-invalid @enderror" name="inicio_sexta" placeholder="11:45">
                         @error('inicio') <div class="invalid-feedback">{{ $errors->first('inicio') }}</div> @enderror
                     </td>
                     <td>
 
-                        <input type="time" id="termino_sexta" value="{{ old('termino_sexta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_sexta" placeholder="12:45" required>
+                        <input type="time" id="termino_sexta" value="{{ old('termino_sexta') }}" class="form-control @error('termino') is-invalid @enderror" name="termino_sexta" placeholder="12:45">
                         @error('termino') <div class="invalid-feedback">{{ $errors->first('termino') }}</div> @enderror
 
                     </td>
@@ -359,6 +359,8 @@
                 </tr>
 
             </tbody>
+
+        </form>
         </table>
        {{-- <div class="form-row">
             <select class="form-select-lg mb-3" name="horarios">

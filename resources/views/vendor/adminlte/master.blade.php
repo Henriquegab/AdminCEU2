@@ -19,6 +19,13 @@
         @yield('title_postfix', config('adminlte.title_postfix', ''))
     </title>
 
+    {{-- Toastr --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
 
@@ -45,6 +52,9 @@
             <livewire:styles />
         @endif
     @endif
+
+
+
 
     {{-- Custom Stylesheets (post AdminLTE) --}}
     @yield('adminlte_css')
@@ -113,7 +123,42 @@
             var $  = require( 'jquery' );
             var dt = require('datatables.net')();
             $('#tabela').DataTable();
-            
+
+    </script>
+
+    {{-- Toastr --}}
+    <script>
+        @if (Session::has('message'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.success("{{ session('message') }}");
+        @endif
+
+        @if (Session::has('error'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        @if (Session::has('info'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.info("{{ session('info') }}");
+        @endif
+
+        @if (Session::has('warning'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.warning("{{ session('warning') }}");
+        @endif
     </script>
 
 </body>
