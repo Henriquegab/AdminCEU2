@@ -143,6 +143,12 @@ class AlunoController extends Controller
 
 
 
+
+
+
+
+
+
         $regras = [
             'nome' => 'required',
             'cpf' => 'required|cpf|unique:alunos',
@@ -179,23 +185,7 @@ class AlunoController extends Controller
             'cpf.unique' => 'O cpf ja existe!',
             'nascimento.before_or_equal' => 'A data de nascimento não pode ser no futuro e nem hoje!',
             'data_atestado.before' => 'A data do atestado não pode ser no futuro!',
-            'inicio_segunda.before_or_equal' => 'O início não pode ser maior do que o término de segunda!',
-            'termino_segunda.after_or_equal' => 'O término não pode ser menor do que o início de segunda!',
 
-            'inicio_terca.before_or_equal' => 'O início não pode ser maior do que o término de terca!',
-            'termino_terca.after_or_equal' => 'O término não pode ser menor do que o início de terca!',
-
-            'inicio_quarta.before_or_equal' => 'O início não pode ser maior do que o término de quarta!',
-            'termino_quarta.after_or_equal' => 'O término não pode ser menor do que o início de quarta!',
-
-            'inicio_quinta.before_or_equal' => 'O início não pode ser maior do que o término de quinta!',
-            'termino_quinta.after_or_equal' => 'O término não pode ser menor do que o início de quinta!',
-
-            'inicio_sexta.before_or_equal' => 'O início não pode ser maior do que o término de sexta!',
-            'termino_sexta.after_or_equal' => 'O término não pode ser menor do que o início de sexta!',
-
-            'inicio.different' => 'O início não pode ser igual ao término!',
-            'termino.different' => 'O término não pode ser igual ao início!',
 
         ];
 
@@ -224,6 +214,12 @@ class AlunoController extends Controller
 
 
         if($input['inicio_segunda'] != NULL && $input['termino_segunda'] != NULL){
+
+            if($input['inicio_segunda'] >= $input['termino_segunda']){
+                return back()->with('error', 'insira um horário válido na Segunda-Feira!');
+            }
+
+
             Horario::create([
                 'aluno_id' => $aluno->id,
                 'dia' =>  'segunda',
@@ -232,6 +228,12 @@ class AlunoController extends Controller
             ]);
         }
         if($input['inicio_terca'] != NULL && $input['termino_terca'] != NULL){
+
+
+            if($input['inicio_terca'] >= $input['termino_terca']){
+                return back()->with('error', 'insira um horário válido na Terça-Feira!');
+            }
+
             Horario::create([
                 'aluno_id' => $aluno->id,
                 'dia' =>  'terca',
@@ -240,6 +242,11 @@ class AlunoController extends Controller
             ]);
         }
         if($input['inicio_quarta'] != NULL && $input['termino_quarta'] != NULL){
+
+            if($input['inicio_quarta'] >= $input['termino_quarta']){
+                return back()->with('error', 'insira um horário válido na Quarta-Feira!');
+            }
+
             Horario::create([
                 'aluno_id' => $aluno->id,
                 'dia' =>  'quarta',
@@ -248,6 +255,12 @@ class AlunoController extends Controller
             ]);
         }
         if($input['inicio_quinta'] != NULL && $input['termino_quinta'] != NULL){
+
+
+        if($input['inicio_quinta'] >= $input['termino_quinta']){
+            return back()->with('error', 'insira um horário válido na Quinta-Feira!');
+        }
+
             Horario::create([
                 'aluno_id' => $aluno->id,
                 'dia' =>  'quinta',
@@ -256,6 +269,11 @@ class AlunoController extends Controller
             ]);
         }
         if($input['inicio_sexta'] != NULL && $input['termino_sexta'] != NULL){
+
+            if($input['inicio_sexta'] >= $input['termino_sexta']){
+                return back()->with('error', 'insira um horário válido na Sexta-Feira!');
+            }
+
             Horario::create([
                 'aluno_id' => $aluno->id,
                 'dia' =>  'sexta',
