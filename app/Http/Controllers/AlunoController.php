@@ -118,6 +118,7 @@ class AlunoController extends Controller
     public function store(Request $request)
     {
 
+        $categorias = Categoria::all();
 
         $hoje = Carbon::now();
 
@@ -138,7 +139,9 @@ class AlunoController extends Controller
 
             {
 
-            return back()->with('error', 'insira pelo menos um horário!');
+
+
+            return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira pelo menos um horário!');
         }
 
 
@@ -156,6 +159,7 @@ class AlunoController extends Controller
             'endereco' => 'required',
 
             'categoria_id' => 'required',
+
 
 
             // 'inicio_segunda' => 'before_or_equal:termino_segunda|different:termino_segunda',
@@ -210,13 +214,63 @@ class AlunoController extends Controller
         // dd($request->all());
 
 
-        $aluno = Aluno::create($input);
+
 
 
         if($input['inicio_segunda'] != NULL && $input['termino_segunda'] != NULL){
 
             if($input['inicio_segunda'] >= $input['termino_segunda']){
-                return back()->with('error', 'insira um horário válido na Segunda-Feira!');
+                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Segunda-Feira!');
+            }
+
+
+
+        }
+        if($input['inicio_terca'] != NULL && $input['termino_terca'] != NULL){
+
+
+            if($input['inicio_terca'] >= $input['termino_terca']){
+                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Terça-Feira!');
+            }
+
+
+        }
+        if($input['inicio_quarta'] != NULL && $input['termino_quarta'] != NULL){
+
+            if($input['inicio_quarta'] >= $input['termino_quarta']){
+                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Quarta-Feira!');
+            }
+
+
+        }
+        if($input['inicio_quinta'] != NULL && $input['termino_quinta'] != NULL){
+
+
+        if($input['inicio_quinta'] >= $input['termino_quinta']){
+            return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Quinta-Feira!');
+        }
+
+
+        }
+        if($input['inicio_sexta'] != NULL && $input['termino_sexta'] != NULL){
+
+            if($input['inicio_sexta'] >= $input['termino_sexta']){
+                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Sexta-Feira!');
+            }
+
+
+        }
+
+
+
+        $aluno = Aluno::create($input);
+
+
+
+        if($input['inicio_segunda'] != NULL && $input['termino_segunda'] != NULL){
+
+            if($input['inicio_segunda'] >= $input['termino_segunda']){
+                return view('aluno.create', ['aluno' => $aluno])->with('error', 'insira um horário válido na Segunda-Feira!');
             }
 
 
@@ -231,7 +285,7 @@ class AlunoController extends Controller
 
 
             if($input['inicio_terca'] >= $input['termino_terca']){
-                return back()->with('error', 'insira um horário válido na Terça-Feira!');
+                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Terça-Feira!');
             }
 
             Horario::create([
@@ -244,7 +298,7 @@ class AlunoController extends Controller
         if($input['inicio_quarta'] != NULL && $input['termino_quarta'] != NULL){
 
             if($input['inicio_quarta'] >= $input['termino_quarta']){
-                return back()->with('error', 'insira um horário válido na Quarta-Feira!');
+                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Quarta-Feira!');
             }
 
             Horario::create([
@@ -258,7 +312,7 @@ class AlunoController extends Controller
 
 
         if($input['inicio_quinta'] >= $input['termino_quinta']){
-            return back()->with('error', 'insira um horário válido na Quinta-Feira!');
+            return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Quinta-Feira!');
         }
 
             Horario::create([
@@ -271,7 +325,7 @@ class AlunoController extends Controller
         if($input['inicio_sexta'] != NULL && $input['termino_sexta'] != NULL){
 
             if($input['inicio_sexta'] >= $input['termino_sexta']){
-                return back()->with('error', 'insira um horário válido na Sexta-Feira!');
+                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Sexta-Feira!');
             }
 
             Horario::create([

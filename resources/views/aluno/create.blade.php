@@ -56,19 +56,19 @@
 
             <div class="col-md-6 mb-3">
                 <label for="nome">Nome*</label>
-                <input type="text" class="form-control @error('nome') is-invalid @enderror" value="{{ old('nome') }}" name="nome" placeholder="Henrique Gabriel" required>
+                <input type="text" class="form-control @error('nome') is-invalid @enderror" value="{{ isset($aluno) ? $aluno['nome'] : old('nome') }}" name="nome" placeholder="Henrique Gabriel" required>
                 @error('nome') <div class="invalid-feedback">{{ $errors->first('nome') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
                 <label for="cpf">CPF*</label>
-                <input type="text" value="{{ old('cpf') }}" class="form-control @error('cpf') is-invalid @enderror" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00" required>
+                <input type="text" value="{{ isset($aluno) ? $aluno['cpf'] : old('cpf') }}" class="form-control @error('cpf') is-invalid @enderror" name="cpf" placeholder="111.444.777-99" data-mask="000.000.000-00" required>
                 @error('cpf') <div class="invalid-feedback">{{ $errors->first('cpf') }}</div> @enderror
             </div>
 
             <div class="col-md-4 mb-3">
                 <label for="nascimento">Data de Nascimento*</label>
-                <input type="date" value="{{ old('nascimento') }}" class="form-control @error('nascimento') is-invalid @enderror" name="nascimento" placeholder="12/12/2012" required required max = {{ date(now()) }}>
+                <input type="date" value="{{ isset($aluno) ? $aluno['nascimento'] : old('nascimento') }}" class="form-control @error('nascimento') is-invalid @enderror" name="nascimento" placeholder="12/12/2012" required required max = {{ date(now()) }}>
                 @error('nascimento') <div class="invalid-feedback">{{ $errors->first('nascimento') }}</div> @enderror
             </div>
 
@@ -83,12 +83,12 @@
 
             <div class="col-md-6 mb-3">
                 <label for="pai">Pai</label>
-                <input type="text" class="form-control" name="pai" value="{{ old('pai') }}" placeholder="Roberto Silveira">
+                <input type="text" class="form-control" name="pai" value="{{ isset($aluno) ? $aluno['pai'] : old('pai') }}" placeholder="Roberto Silveira">
 
             </div>
             <div class="col-md-6 mb-3">
                 <label for="mae">Mãe</label>
-                <input type="text" class="form-control" name="mae" value="{{ old('mae') }}" placeholder="Maria do Carmo">
+                <input type="text" class="form-control" name="mae" value="{{ isset($aluno) ? $aluno['mae'] : old('mae') }}" placeholder="Maria do Carmo">
 
             </div>
 
@@ -99,19 +99,19 @@
 
             <div class="col-md-4 mb-3">
                 <label for="endereco">Endereço*</label>
-                <input type="text" value="{{ old('endereco') }}" class="form-control @error('endereco') is-invalid @enderror" name="endereco" placeholder="Rua do Cristal" required>
+                <input type="text" value="{{ isset($aluno) ? $aluno['endereco'] : old('endereco') }}" class="form-control @error('endereco') is-invalid @enderror" name="endereco" placeholder="Rua do Cristal" required>
                 @error('endereco') <div class="invalid-feedback">{{ $errors->first('endereco') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
                 <label for="numero">Número*</label>
-                <input type="text" value="{{ old('numero') }}" class="form-control @error('numero') is-invalid @enderror" name="numero" placeholder="123" required>
+                <input type="text" value="{{ isset($aluno) ? $aluno['numero'] : old('numero') }}" class="form-control @error('numero') is-invalid @enderror" name="numero" placeholder="123" required>
                 @error('numero') <div class="invalid-feedback">{{ $errors->first('numero') }}</div> @enderror
             </div>
 
             <div class="col-md-2 mb-3">
                 <label for="telefone">Telefone</label>
-                <input type="text" value="{{ old('telefone') }}" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 000000000">
+                <input type="text" value="{{ isset($aluno) ? $aluno['telefone'] : old('telefone') }}" class="form-control" name="telefone" placeholder="(38) 94002-8922" data-mask="(00) 000000000">
 
             </div>
 
@@ -127,6 +127,7 @@
 
                         empty-option="Selecione uma opção"
                         :options="$optionsc"
+                        :selected="isset($aluno) ? $aluno['categoria_id'] : '' "
 
                         />
             </x-adminlte-select2>
@@ -165,13 +166,13 @@
 
             <div class="col-md-4 mb-3">
                 <label for="data_atestado">Data do atestado*</label>
-                <input type="date" value="{{ old('data_atestado') }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012" required required max = {{ date(now()) }}>
+                <input type="date" value="{{ isset($aluno) ? $aluno['data_atestado'] : old('data_atestado') }}" class="form-control @error('data_atestado') is-invalid @enderror" name="data_atestado" placeholder="12/12/2012" required required max = {{ date(now()) }}>
                 @error('data_atestado') <div class="invalid-feedback">{{ $errors->first('data_atestado') }}</div> @enderror
             </div>
 
             <div class="col-md-8 mb-3">
                 <label for="observacao">Observações</label>
-                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações">{{ old('observacao') }}</x-adminlte-textarea>
+                <x-adminlte-textarea name="observacao" placeholder="Insira aqui suas observações">{{ isset($aluno) ? $aluno['observacao'] : old('observacao') }}</x-adminlte-textarea>
 
             </div>
 
