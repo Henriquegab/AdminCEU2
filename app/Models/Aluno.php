@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\Categoria;
+use App\Models\Horario;
 use App\Models\Pagamento;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +19,13 @@ class Aluno extends Model
     public function categoria(){
 
         return $this->belongsTo(Categoria::class);
-        
+
+    }
+
+    public function horarios(){
+
+        return $this->hasMany(Horario::class);
+
     }
 
     public function pagamento(){

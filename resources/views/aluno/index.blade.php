@@ -22,14 +22,14 @@
     use Carbon\Carbon;
 
     $heads = [
-        ['label' => 'Nome', 'width' => 20], 
-        ['label' => 'CPF', 'width' => 20], 
-        ['label' => 'Modalidade', 'width' => 20], 
-        ['label' => 'Horário', 'width' => 15], 
-        ['label' => 'Categoria', 'width' => 20], 
-        ['label' => 'Dias', 'width' => 20], 
-        ['label' => 'Mensalidade', 'width' => 20], 
-        ['label' => 'Pagamento', 'width' => 15], 
+        ['label' => 'Nome', 'width' => 20],
+        ['label' => 'CPF', 'width' => 20],
+        ['label' => 'Modalidade', 'width' => 20],
+
+        ['label' => 'Categoria', 'width' => 20],
+        ['label' => 'Dias', 'width' => 20],
+        ['label' => 'Mensalidade', 'width' => 20],
+        ['label' => 'Pagamento', 'width' => 15],
         ['label' => 'Ações', 'no-export' => true, 'width' => 5]];
     $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                     <i class="fa fa-lg fa-fw fa-pencil"></i>
@@ -46,14 +46,14 @@
         // 'filter' => true,
 
         'order' => [[0, 'asc']],
-        'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
+        'columns' => [ ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
     ];
 
 
 
     @endphp
 
-    
+
 
     <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable
         with-buttons beautify>
@@ -64,10 +64,10 @@
             $periodofiscal->data = new Carbon($periodofiscal->data);
             $aluno->created_at = new Carbon($aluno->created_at);
             $hoje = Carbon::now();
-            
-            
 
-            
+
+
+
             $pagamento = Pagamento::where('periodo_fiscal', $periodofiscal->data->subMonth()->toDateString())->where('aluno_id', $aluno->id)->first();
             $periodofiscal->data->addMonth();
             //aluno ausente
@@ -77,16 +77,16 @@
                 $bgcolor = 'rgba(255, 160, 160, 0.250)';
             }
             else {
-                
+
                 $status = 0;
                 $bgcolor = '';
             }
             // dd(2);
-            
+
         @endphp
             <tr style="background-color: {{ $bgcolor }}">
                 @php
-                    
+
                     if ($aluno->pagamento_id) {
                         $pago = $aluno->pagamento->valor_pago;
                         if ($pago < $aluno->categoria->preco && $pago > 0) {
@@ -109,9 +109,9 @@
                                 $badge = 'badge badge-success';
 
                             }
-                            
+
                         }
-                        
+
 
                     } else {
                         //se nenhum pagamento foi constado ficará vermelho com status de não pago
@@ -125,8 +125,8 @@
                             $cor = 'Red';
                             $badge = 'badge badge-danger';
                         }
-                        
-                        
+
+
                     }
                     $dias = '';
                     //lógica para printar os dias na lista
@@ -145,14 +145,14 @@
                     if ($aluno->sexta) {
                         $dias = $dias.' '.'Sexta';
                     }
-                    
-                    
+
+
                 @endphp
 
                 <td>{{ $aluno->nome }}</td>
                 <td>{{ $aluno->cpf }}</td>
                 <td>{{ $aluno->modalidade }}</td>
-                <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td>
+                {{-- <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td> --}}
                 <td>{{ $aluno->categoria->categoria }}</td>
                 <td>{{ $dias }}</td>
                 <td><span class="badge badge-secondary">{{ 'R$ ' . number_format($aluno->categoria->preco, 2) }}</span></td>
@@ -170,7 +170,7 @@
 
 
 
-                    
+
 
 
 
@@ -237,5 +237,5 @@
 
 @section('footer')
 <h6 align="center" style=""></a>AdminCEU - <a href="https://www.linkedin.com/in/henrique-gabriel-siqueira-da-cruz-0826a4146/">Henrique gabriel</a>  Todos os Direitos Reservados <a href="https://github.com/Henriquegab" class="fa fa-github"></a></h6>
-    
+
 @stop

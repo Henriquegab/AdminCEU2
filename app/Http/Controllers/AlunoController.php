@@ -220,7 +220,8 @@ class AlunoController extends Controller
         if($input['inicio_segunda'] != NULL && $input['termino_segunda'] != NULL){
 
             if($input['inicio_segunda'] >= $input['termino_segunda']){
-                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Segunda-Feira!');
+                return redirect()->back()->with('error', 'O horário de segunda é invalido!');
+
             }
 
 
@@ -230,7 +231,8 @@ class AlunoController extends Controller
 
 
             if($input['inicio_terca'] >= $input['termino_terca']){
-                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Terça-Feira!');
+                return redirect()->back()->with('error', 'O horário de terça é invalido!');
+
             }
 
 
@@ -238,7 +240,8 @@ class AlunoController extends Controller
         if($input['inicio_quarta'] != NULL && $input['termino_quarta'] != NULL){
 
             if($input['inicio_quarta'] >= $input['termino_quarta']){
-                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Quarta-Feira!');
+                return redirect()->back()->with('error', 'O horário de quarta é invalido!');
+
             }
 
 
@@ -246,16 +249,19 @@ class AlunoController extends Controller
         if($input['inicio_quinta'] != NULL && $input['termino_quinta'] != NULL){
 
 
-        if($input['inicio_quinta'] >= $input['termino_quinta']){
-            return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Quinta-Feira!');
+            if($input['inicio_quinta'] >= $input['termino_quinta']){
+                return redirect()->back()->with('error', 'O horário de quinta é invalido!');
+
+            }
         }
 
 
-        }
+
         if($input['inicio_sexta'] != NULL && $input['termino_sexta'] != NULL){
 
             if($input['inicio_sexta'] >= $input['termino_sexta']){
-                return view('aluno.create', ['categorias' => $categorias, 'aluno' => $input])->with('error', 'insira um horário válido na Sexta-Feira!');
+                return redirect()->back()->with('error', 'O horário de sexta é invalido!');
+
             }
 
 
@@ -373,6 +379,7 @@ class AlunoController extends Controller
     public function edit(Aluno $aluno)
     {
         $categorias = Categoria::all();
+        // dd($aluno->horarios->first()->dia);
         return view('aluno.edit', ['categorias' => $categorias, 'aluno' => $aluno]);
     }
 
@@ -393,6 +400,26 @@ class AlunoController extends Controller
 
         // dd($request->all());
 
+
+        $input=$request->all();
+
+        // dd($input);
+
+        if(
+            ($input['inicio_segunda'] == NULL || $input['termino_segunda'] == NULL) &&
+            ($input['inicio_terca'] == NULL || $input['termino_terca'] == NULL) &&
+            ($input['inicio_quarta'] == NULL || $input['termino_quarta'] == NULL) &&
+            ($input['inicio_quinta'] == NULL || $input['termino_quinta'] == NULL) &&
+            ($input['inicio_sexta'] == NULL || $input['termino_sexta'] == NULL))
+
+            {
+
+
+
+            return redirect()->back()->with('error', 'insira pelo menos um horário!');
+        }
+
+
         $regras = [
             'nome' => 'required',
             'cpf' => 'required|cpf|unique:alunos,cpf,' .$aluno->id,
@@ -402,8 +429,7 @@ class AlunoController extends Controller
             'categoria_id' => 'required',
             // 'modalidade' => 'required',
 
-            'inicio' => 'required|before_or_equal:termino|different:termino',
-            'termino' => 'required|after_or_equal:inicio|different:inicio',
+
             'data_atestado' => 'required|date|before:'.$hoje,
             // 'dia' => 'required'
 
@@ -443,6 +469,55 @@ class AlunoController extends Controller
 
         // dd($request->all());
 
+        if($input['inicio_segunda'] != NULL && $input['termino_segunda'] != NULL){
+
+            if($input['inicio_segunda'] >= $input['termino_segunda']){
+                return redirect()->back()->with('error', 'O horário de segunda é invalido!');
+
+            }
+
+
+
+        }
+        if($input['inicio_terca'] != NULL && $input['termino_terca'] != NULL){
+
+
+            if($input['inicio_terca'] >= $input['termino_terca']){
+                return redirect()->back()->with('error', 'O horário de terça é invalido!');
+
+            }
+
+
+        }
+        if($input['inicio_quarta'] != NULL && $input['termino_quarta'] != NULL){
+
+            if($input['inicio_quarta'] >= $input['termino_quarta']){
+                return redirect()->back()->with('error', 'O horário de quarta é invalido!');
+
+            }
+
+
+        }
+        if($input['inicio_quinta'] != NULL && $input['termino_quinta'] != NULL){
+
+
+            if($input['inicio_quinta'] >= $input['termino_quinta']){
+                return redirect()->back()->with('error', 'O horário de quinta é invalido!');
+
+            }
+        }
+
+
+
+        if($input['inicio_sexta'] != NULL && $input['termino_sexta'] != NULL){
+
+            if($input['inicio_sexta'] >= $input['termino_sexta']){
+                return redirect()->back()->with('error', 'O horário de sexta é invalido!');
+
+            }
+
+
+        }
 
 
         $aluno->update($request->all());
