@@ -20,14 +20,14 @@
     use App\Models\Pagamento;
 
     $heads = [
-        ['label' => 'Nome', 'width' => 20], 
-        ['label' => 'CPF', 'width' => 20], 
-        ['label' => 'Modalidade', 'width' => 20], 
-        ['label' => 'Horário', 'width' => 15], 
-        ['label' => 'Categoria', 'width' => 20], 
-        ['label' => 'Dias', 'width' => 20], 
-        ['label' => 'Mensalidade', 'width' => 20], 
-        ['label' => 'Pagamento', 'width' => 15], 
+        ['label' => 'Nome', 'width' => 20],
+        ['label' => 'CPF', 'width' => 20],
+
+
+        ['label' => 'Categoria', 'width' => 20],
+        ['label' => 'Dias', 'width' => 20],
+        ['label' => 'Mensalidade', 'width' => 20],
+        // ['label' => 'Pagamento', 'width' => 15],
         ['label' => 'Ações', 'no-export' => true, 'width' => 5]];
     $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                     <i class="fa fa-lg fa-fw fa-pencil"></i>
@@ -44,89 +44,91 @@
         'filter' => true,
 
         'order' => [[0, 'asc']],
-        'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
+        'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
     ];
 
     @endphp
 
-    
+
 
     <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable
         with-buttons beautify>
         @foreach ($alunos as $aluno)
-            
-            <tr style="background-color: rgba(255, 160, 160, 0.159)"> 
+
+            <tr style="background-color: rgba(255, 160, 160, 0.159)">
                 @php
-                    
-                    if ($aluno->pagamento_id) {
-                        $pago = $aluno->pagamento->valor_pago;
-                        if ($pago < $aluno->categoria->preco && $pago > 0) {
-                            //se o preço for menor que o valor da categoria mas maior que 0 a cor fica amarela
-                            $cor = '#FFBA41';
-                            $pago = 'R$ ' . number_format($pago, 2);
-                        }
-                        else {
-                            if ($pago == 0) {
-                                //se o valor pago for 0 é considerado isento
-                                $pago = 'Isento!';
-                                $cor = 'purple';
-                            }
-                            else {
-                                //se o valor for igual ou maior que o da categoria ficará verde
-                                $cor = 'LimeGreen';
-                                $pago = 'R$ ' . number_format($pago, 2);
 
-                            }
-                            
-                        }
-                        
+                    // if ($aluno->pagamento_id) {
+                    //     $pago = $aluno->pagamento->valor_pago;
+                    //     if ($pago < $aluno->categoria->preco && $pago > 0) {
+                    //         //se o preço for menor que o valor da categoria mas maior que 0 a cor fica amarela
+                    //         $cor = '#FFBA41';
+                    //         $pago = 'R$ ' . number_format($pago, 2);
+                    //     }
+                    //     else {
+                    //         if ($pago == 0) {
+                    //             //se o valor pago for 0 é considerado isento
+                    //             $pago = 'Isento!';
+                    //             $cor = 'purple';
+                    //         }
+                    //         else {
+                    //             //se o valor for igual ou maior que o da categoria ficará verde
+                    //             $cor = 'LimeGreen';
+                    //             $pago = 'R$ ' . number_format($pago, 2);
 
-                    } else {
-                        //se nenhum pagamento foi constado ficará vermelho com status de não pago
-                        $pago = 'Não pago!';
-                        $cor = 'Red';
-                    }
+                    //         }
+
+                    //     }
+
+
+                    // } else {
+                    //     //se nenhum pagamento foi constado ficará vermelho com status de não pago
+                    //     $pago = 'Não pago!';
+                    //     $cor = 'Red';
+                    // }
 
                     $dias = '';
-                    //lógica para printar os dias na lista
-                    if ($aluno->segunda) {
-                        $dias = $dias.'Segunda';
-                    }
-                    if ($aluno->terca) {
-                        $dias = $dias.' '.'Terça';
-                    }
-                    if ($aluno->quarta) {
-                        $dias = $dias.' '.'Quarta';
-                    }
-                    if ($aluno->quinta) {
-                        $dias = $dias.' '.'Quinta';
-                    }
-                    if ($aluno->sexta) {
-                        $dias = $dias.' '.'Sexta';
+                    foreach ($aluno->horarios as $horario) {
+                            //lógica para printar os dias na lista
+                        if ($horario->dia == 'segunda') {
+                            $dias = $dias.'Segunda';
+                        }
+                        if ($horario->dia == 'terca') {
+                            $dias = $dias.' '.'Terça';
+                        }
+                        if ($horario->dia == 'quarta') {
+                            $dias = $dias.' '.'Quarta';
+                        }
+                        if ($horario->dia == 'quinta') {
+                            $dias = $dias.' '.'Quinta';
+                        }
+                        if ($horario->dia == 'sexta') {
+                            $dias = $dias.' '.'Sexta';
+                        }
                     }
 
-                    
-                    
+
                 @endphp
 
                 <td>{{ $aluno->nome }}</td>
                 <td>{{ $aluno->cpf }}</td>
-                <td>{{ $aluno->modalidade }}</td>
-                <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td>
+                {{-- <td>{{ $aluno->modalidade }}</td> --}}
+                {{-- <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td> --}}
                 <td>{{ $aluno->categoria->categoria }}</td>
                 <td>{{ $dias }}</td>
                 <td>{{ 'R$ ' . number_format($aluno->categoria->preco, 2) }}</td>
-                <td style="color:{{ $cor }}">
-                    {{ $pago }}</td>
+                {{-- <td style="color:{{ $cor }}">
+                    {{ $pago }}</td> --}}
                 <td>
 
 
 
-                    
 
 
 
-                    
+
+
+
 
 
 
@@ -144,14 +146,14 @@
                                 <input type="hidden" value="{{ $aluno->id }}" name= "id">
                                 <x-adminlte-button theme="danger" label="Não" data-dismiss="modal" />
                                 @csrf
-                                
+
                             </x-slot>
                         </x-adminlte-modal>
 
 
 
 
-                        
+
 
 
                     </form>
@@ -159,13 +161,14 @@
                     <button class="btn btn-xs btn-default text-danger mx-1 shadow" data-toggle="modal"
                         data-target="{{ '#ctz' . $aluno->id }}" title="Restaurar">
                         <i class="fa fa-lg fa-fw fa-backward"></i>
-                        
+
                     </button>
+
 
                 </td>
             </tr>
-            
-            
+
+
         @endforeach
 
     </x-adminlte-datatable>
@@ -197,5 +200,5 @@
 
 @section('footer')
 <h6 align="center" style=""></a>AdminCEU - <a href="https://www.linkedin.com/in/henrique-gabriel-siqueira-da-cruz-0826a4146/">Henrique gabriel</a>  Todos os Direitos Reservados <a href="https://github.com/Henriquegab" class="fa fa-github"></a></h6>
-    
+
 @stop

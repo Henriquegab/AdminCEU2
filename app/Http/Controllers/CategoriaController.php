@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
@@ -56,7 +57,7 @@ class CategoriaController extends Controller
         Categoria::create($request->all());
 
         return view('home');
-        
+
     }
 
     /**
@@ -106,11 +107,11 @@ class CategoriaController extends Controller
 
         $request->validate($regras, $feedback);
 
-        
+
 
         $categoria->update($request->all());
-        
-        
+
+
 
         return view('home');
     }
@@ -123,8 +124,17 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        $deletar = Categoria::where('id', $categoria->id);
-        $deletar->delete();
-        return redirect()->route('categorias.index');
+        $procura = Aluno::where('categoria_id', $categoria->id)->withTrashed()->get();
+        if($procura->first()){
+            return redirect()->back()->with('error', 'Essa categoria está sendo utilizada por algum aluno cadastrado!');
+        }
+        else{
+
+            $deletar = Categoria::where('id', $categoria->id);
+            $deletar->delete();
+            return redirect()->route('categorias.index');
+
+        }
+
     }
 }

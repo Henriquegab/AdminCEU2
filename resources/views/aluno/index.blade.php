@@ -24,7 +24,7 @@
     $heads = [
         ['label' => 'Nome', 'width' => 20],
         ['label' => 'CPF', 'width' => 20],
-        ['label' => 'Modalidade', 'width' => 20],
+
 
         ['label' => 'Categoria', 'width' => 20],
         ['label' => 'Dias', 'width' => 20],
@@ -46,7 +46,7 @@
         // 'filter' => true,
 
         'order' => [[0, 'asc']],
-        'columns' => [ ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
+        'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => false]],
     ];
 
 
@@ -129,29 +129,34 @@
 
                     }
                     $dias = '';
-                    //lógica para printar os dias na lista
-                    if ($aluno->segunda) {
-                        $dias = $dias.'Segunda';
+
+                    foreach ($aluno->horarios as $horario) {
+                            //lógica para printar os dias na lista
+                        if ($horario->dia == 'segunda') {
+                            $dias = $dias.'Segunda';
+                        }
+                        if ($horario->dia == 'terca') {
+                            $dias = $dias.' '.'Terça';
+                        }
+                        if ($horario->dia == 'quarta') {
+                            $dias = $dias.' '.'Quarta';
+                        }
+                        if ($horario->dia == 'quinta') {
+                            $dias = $dias.' '.'Quinta';
+                        }
+                        if ($horario->dia == 'sexta') {
+                            $dias = $dias.' '.'Sexta';
+                        }
                     }
-                    if ($aluno->terca) {
-                        $dias = $dias.' '.'Terça';
-                    }
-                    if ($aluno->quarta) {
-                        $dias = $dias.' '.'Quarta';
-                    }
-                    if ($aluno->quinta) {
-                        $dias = $dias.' '.'Quinta';
-                    }
-                    if ($aluno->sexta) {
-                        $dias = $dias.' '.'Sexta';
-                    }
+
+
 
 
                 @endphp
 
                 <td>{{ $aluno->nome }}</td>
                 <td>{{ $aluno->cpf }}</td>
-                <td>{{ $aluno->modalidade }}</td>
+                {{-- <td>{{ $aluno->modalidade }}</td> --}}
                 {{-- <td>{{ substr($aluno->inicio, 0, 5) }} até {{ substr($aluno->termino, 0, 5) }}</td> --}}
                 <td>{{ $aluno->categoria->categoria }}</td>
                 <td>{{ $dias }}</td>
