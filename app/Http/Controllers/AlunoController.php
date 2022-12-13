@@ -346,7 +346,7 @@ class AlunoController extends Controller
 
 
 
-        return redirect()->route('alunos.index');
+        return redirect()->route('alunos.index')->with('message', 'Aluno Criado com Sucesso!');
 
 
 
@@ -519,10 +519,73 @@ class AlunoController extends Controller
 
         }
 
+        // dd($aluno->horarios()->first());
+
+
+
+
 
         $aluno->update($request->all());
 
+        $horarios = Horario::where('aluno_id', $aluno->id)->delete();
 
+
+
+        // if($horarios){
+        //     foreach($horarios as $horario){
+        //         $horario->destroy();
+        //     }
+        // }
+
+
+
+
+        if($input['inicio_segunda'] != NULL && $input['termino_segunda'] != NULL){
+
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'segunda',
+                'entrada' =>  $input['inicio_segunda'],
+                'saida' =>  $input['termino_segunda']
+            ]);
+        }
+        if($input['inicio_terca'] != NULL && $input['termino_terca'] != NULL){
+
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'terca',
+                'entrada' =>  $input['inicio_terca'],
+                'saida' =>  $input['termino_terca']
+            ]);
+        }
+        if($input['inicio_quarta'] != NULL && $input['termino_quarta'] != NULL){
+
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'quarta',
+                'entrada' =>  $input['inicio_quarta'],
+                'saida' =>  $input['termino_quarta']
+            ]);
+        }
+        if($input['inicio_quinta'] != NULL && $input['termino_quinta'] != NULL){
+
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'quinta',
+                'entrada' =>  $input['inicio_quinta'],
+                'saida' =>  $input['termino_quinta']
+            ]);
+        }
+
+        if($input['inicio_sexta'] != NULL && $input['termino_sexta'] != NULL){
+
+            Horario::create([
+                'aluno_id' => $aluno->id,
+                'dia' =>  'sexta',
+                'entrada' =>  $input['inicio_sexta'],
+                'saida' =>  $input['termino_sexta']
+            ]);
+        }
 
 
         return redirect()->route('alunos.index');

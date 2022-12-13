@@ -226,22 +226,22 @@ return [
 
     'menu' => [
         // Navbar items:
-        
+
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        
-        
-        
+
+
+
         ['header' => 'GERENCIAMENTO DE ALUNOS'],
         [
             'text'        => 'Ficha de inscrição',
             'route'         => 'alunos.create',
             'icon'        => 'far fa-fw fa-file',
-            
+
         ],
         [
             'text' => 'Lista de Alunos',
@@ -258,18 +258,18 @@ return [
             'text'        => 'Cadastro de Categoria',
             'route'       => 'categorias.create',
             'icon'        => 'fas fa-cart-plus',
-            
+
         ],
         [
             'text'        => 'Listagem de Categorias',
             'route'       => 'categorias.index',
             'icon'        => 'fas fa-cart-arrow-down',
-            
+
         ],
         ['header' => 'CONTROLE FINANCEIRO'],
 
         [
-                    'text' => 'Pagar',
+                    'text' => 'Confirmar Pagamento',
                     'route' => 'pagamentos.create',
                     'icon' => 'fas fa-fw fa-dollar-sign',
         ],
@@ -288,13 +288,13 @@ return [
         //     'route' => 'pagamentos.index',
         //     'icon' => 'fas fa-fw fa-file',
         // ],
-        
 
-        
-        
 
-        
-       
+
+
+
+
+
     ],
 
     /*
