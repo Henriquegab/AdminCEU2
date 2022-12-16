@@ -9,41 +9,41 @@
 
 @section('content')
 @php
-        
+
         use Carbon\Carbon;
         use App\Models\Pagamento;
         use App\Models\Periodofiscal;
         use App\Models\Aluno;
         $periodofiscal = Periodofiscal::all()->last()->data;
-        
+
 
         $data = new Carbon($periodofiscal);
-        
-        $valormes = [];
-        
-        
 
-        for ($i=0; $i < 12 ; $i++) { 
+        $valormes = [];
+
+
+
+        for ($i=0; $i < 12 ; $i++) {
             $calculos = Pagamento::where('periodo_fiscal', $data->subMonth($i));
-            
+
             $total = 0;
-            
+
 
             foreach ($calculos->get() as $calculo) {
                 $total += $calculo->valor_pago;
-                
+
             }
             array_push($valormes, $total);
             $data->addMonth($i);
         }
-        
-        
-        
-        
-        
+
+
+
+
+
     @endphp
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
 
 <x-adminlte-card class="mt-3" title="Menu Principal - Período fiscal atual: {{ $data->isoFormat('MM/YYYY') }}" theme="dark" icon="far fa-fw fa-compass">
 
@@ -52,20 +52,20 @@
     @if (isset($notification))
 
     @component('_components.modal.modalNotification', ['notification' => $notification])
-    
+
     @endcomponent
-    
+
     @endif
 
-   
-    
 
 
-    
 
-    
 
-    
+
+
+
+
+
     <div class="row">
 
         <div class="col-md-4">
@@ -73,24 +73,24 @@
             <x-adminlte-info-box title="Alunos Cadastrados" text="{{ Aluno::count() }}" icon="fas fa-lg fa-user" theme="gray"/>
         </div>
         <div class="col-md-4">
-        
+
             <x-adminlte-info-box title="Valor Arrecadado em {{ $data->monthName }}" text="{{ 'R$ ' . number_format($valormes[0], 2) }}" icon="fas fa-lg fa-dollar-sign text-green" theme="gray"/>
 
-            
+
         </div>
 
         <div class="col-md-4">
             <x-adminlte-info-box title="Mensalidades Pagas" text="{{ Pagamento::where('periodo_fiscal', '=', $periodofiscal)->count() }}" icon="fas fa-lg fa-user-plus text-gray"
             theme="gray" icon-theme="white"/>
 
-            
+
         </div>
 
     </div>
 
-    <x-adminlte-card title="Valores arrecadados nos ultimos 12 meses" theme="gray" icon="fas fa-lg fa-dollar-sign text-green" removable collapsible >
-        
-        
+    {{-- <x-adminlte-card title="Valores arrecadados nos ultimos 12 meses" theme="gray" icon="fas fa-lg fa-dollar-sign text-green" removable collapsible >
+
+
             <canvas id="myChart" width="200" height="50"></canvas>
                 <script>
                     const ctx = document.getElementById('myChart').getContext('2d');
@@ -164,12 +164,12 @@
                         }
                     });
                 </script>
-        
 
 
-    </x-adminlte-card>
 
-    
+    </x-adminlte-card> --}}
+
+
 
 
 
@@ -189,5 +189,5 @@
 
 @section('footer')
     <h6 align="center" style=""></a>AdminCEU - <a href="https://www.linkedin.com/in/henrique-gabriel-siqueira-da-cruz-0826a4146/">Henrique gabriel</a>  Todos os Direitos Reservados <a href="https://github.com/Henriquegab" class="fa fa-github"></a></h6>
-    
+
 @stop
